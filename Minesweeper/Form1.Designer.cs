@@ -52,9 +52,10 @@
             // 
             // mainScreen
             // 
-            this.mainScreen.Location = new System.Drawing.Point(12, 77);
+            this.mainScreen.Location = new System.Drawing.Point(16, 95);
+            this.mainScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainScreen.Name = "mainScreen";
-            this.mainScreen.Size = new System.Drawing.Size(830, 562);
+            this.mainScreen.Size = new System.Drawing.Size(1107, 692);
             this.mainScreen.TabIndex = 0;
             this.mainScreen.TabStop = false;
             this.mainScreen.Paint += new System.Windows.Forms.PaintEventHandler(this.mainScreen_Paint);
@@ -62,12 +63,14 @@
             // 
             // miniMenu
             // 
+            this.miniMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.miniMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gameToolStripMenuItem,
             this.optionsToolStripMenuItem});
             this.miniMenu.Location = new System.Drawing.Point(0, 0);
             this.miniMenu.Name = "miniMenu";
-            this.miniMenu.Size = new System.Drawing.Size(854, 24);
+            this.miniMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.miniMenu.Size = new System.Drawing.Size(1139, 28);
             this.miniMenu.TabIndex = 1;
             this.miniMenu.Text = "menuStrip1";
             // 
@@ -82,48 +85,48 @@
             this.backToMainMenuToolStripMenuItem,
             this.toolStripSeparator3});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // resetGameToolStripMenuItem
             // 
             this.resetGameToolStripMenuItem.Name = "resetGameToolStripMenuItem";
-            this.resetGameToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.resetGameToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.resetGameToolStripMenuItem.Text = "Reset game";
             // 
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.newGameToolStripMenuItem.Text = "New Game";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(208, 6);
             // 
             // leaderboardsToolStripMenuItem
             // 
             this.leaderboardsToolStripMenuItem.Name = "leaderboardsToolStripMenuItem";
-            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.leaderboardsToolStripMenuItem.Text = "Leaderboards";
             // 
             // chooseDifficultyToolStripMenuItem
             // 
             this.chooseDifficultyToolStripMenuItem.Name = "chooseDifficultyToolStripMenuItem";
-            this.chooseDifficultyToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.chooseDifficultyToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.chooseDifficultyToolStripMenuItem.Text = "Choose difficulty";
             // 
             // backToMainMenuToolStripMenuItem
             // 
             this.backToMainMenuToolStripMenuItem.Name = "backToMainMenuToolStripMenuItem";
-            this.backToMainMenuToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.backToMainMenuToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.backToMainMenuToolStripMenuItem.Text = "Back to main menu";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(208, 6);
             // 
             // optionsToolStripMenuItem
             // 
@@ -132,39 +135,39 @@
             this.soundOptionsToolStripMenuItem,
             this.toolStripSeparator2});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // windowSizeToolStripMenuItem
             // 
             this.windowSizeToolStripMenuItem.Name = "windowSizeToolStripMenuItem";
-            this.windowSizeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.windowSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.windowSizeToolStripMenuItem.Text = "Window size";
             // 
             // soundOptionsToolStripMenuItem
             // 
             this.soundOptionsToolStripMenuItem.Name = "soundOptionsToolStripMenuItem";
-            this.soundOptionsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.soundOptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.soundOptionsToolStripMenuItem.Text = "Sound options";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // time
             // 
             this.time.AutoSize = true;
             this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time.Location = new System.Drawing.Point(12, 41);
+            this.time.Location = new System.Drawing.Point(16, 50);
+            this.time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(129, 33);
+            this.time.Size = new System.Drawing.Size(159, 42);
             this.time.TabIndex = 2;
             this.time.Text = "Time : 0";
             // 
             // timer
             // 
-            this.timer.Enabled = true;
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
@@ -172,23 +175,25 @@
             // 
             this.flag.AutoSize = true;
             this.flag.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flag.Location = new System.Drawing.Point(706, 41);
+            this.flag.Location = new System.Drawing.Point(941, 50);
+            this.flag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.flag.Name = "flag";
-            this.flag.Size = new System.Drawing.Size(136, 33);
+            this.flag.Size = new System.Drawing.Size(170, 42);
             this.flag.TabIndex = 4;
             this.flag.Text = "Flags : 0";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 651);
+            this.ClientSize = new System.Drawing.Size(1139, 801);
             this.Controls.Add(this.flag);
             this.Controls.Add(this.time);
             this.Controls.Add(this.mainScreen);
             this.Controls.Add(this.miniMenu);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.miniMenu;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).EndInit();

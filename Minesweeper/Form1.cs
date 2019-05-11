@@ -42,6 +42,7 @@ namespace Minesweeper
         {
             gameEnd = false;
             seconds = 0;
+            timer.Start();
             grid = new Grid(numberOfBombs);
             numberOfFlags = numberOfBombs;
             flag.Text = "Flags : " + numberOfFlags.ToString();
@@ -87,7 +88,10 @@ namespace Minesweeper
         private void timer_Tick(object sender, EventArgs e)
         {
             seconds++;
-            time.Text = "Time : "+seconds.ToString();
+            if(seconds < 60)
+                time.Text = "Time: " + seconds.ToString("00");
+            else
+                time.Text = "Time: " + (seconds / 60).ToString() + ":" + (seconds % 60).ToString("00");
         }
 
         private void mainScreen_MouseClick(object sender, MouseEventArgs e)
@@ -121,14 +125,18 @@ namespace Minesweeper
 
         private void endGame()
         {
-            DialogResult result = MessageBox.Show("You lost! Do you want to try again?","Oops!",MessageBoxButtons.YesNo);
+            timer.Stop();
+            for (int i = 0; i < tileRowNumber; i++)
+                for (int j = 0; j < tileColumnNumber; j++)
+                    if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())
+                        grid.mainMatrix[i][j].click();
+            DialogResult result = MessageBox.Show("You lost! Do you want to try again?","Oops!",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
                 newGame();
             }
             else
                 this.Close();
-            
         }
     }
 }

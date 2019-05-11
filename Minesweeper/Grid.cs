@@ -12,7 +12,7 @@ namespace Minesweeper
     class Grid
     {
         Random generator { get; set; }
-        Tile[][] mainMatrix { get; set; }
+        public Tile[][] mainMatrix { get; set; }
         List<ImageWrapper> mainImages { get; set; }
         int bombCount { get; set; }
         int tileNumber { get; set; }
@@ -36,7 +36,7 @@ namespace Minesweeper
 
         private void addImages()
         {
-            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Form1.Width, Form1.Height)));            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Form1.Width, Form1.Height)));
+            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Form1.Width, Form1.Height)));
             mainImages.Add(new ImageWrapper(1, Resizer.ResizeImage(Resources._1, Form1.Width, Form1.Height)));
             mainImages.Add(new ImageWrapper(2, Resizer.ResizeImage(Resources._2, Form1.Width, Form1.Height)));
             mainImages.Add(new ImageWrapper(3, Resizer.ResizeImage(Resources._3, Form1.Width, Form1.Height)));
