@@ -192,7 +192,7 @@ namespace Minesweeper
                 if (i + 1 <= Form1.tileRowNumber - 1 && j + 1 <= Form1.tileColumnNumber - 1) 
                     tileClicked(i + 1, j + 1);
                 //bottom
-                if (i + 1 <= Form1.tileRowNumber)
+                if (i + 1 <= Form1.tileRowNumber - 1)
                     tileClicked(i + 1, j);
                 //bottom-left
                 if (i + 1 <= Form1.tileRowNumber - 1 && j - 1 >= 0)
