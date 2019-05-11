@@ -46,14 +46,21 @@
             this.time = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.flag = new System.Windows.Forms.Label();
+            this.menuPanel = new System.Windows.Forms.Panel();
+            this.btnPlay = new System.Windows.Forms.Button();
+            this.btnAchievements = new System.Windows.Forms.Button();
+            this.btnLeaderboards = new System.Windows.Forms.Button();
+            this.btnSkins = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).BeginInit();
             this.miniMenu.SuspendLayout();
+            this.menuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainScreen
             // 
             this.mainScreen.Location = new System.Drawing.Point(16, 95);
-            this.mainScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainScreen.Margin = new System.Windows.Forms.Padding(4);
             this.mainScreen.Name = "mainScreen";
             this.mainScreen.Size = new System.Drawing.Size(1107, 692);
             this.mainScreen.TabIndex = 0;
@@ -70,7 +77,7 @@
             this.miniMenu.Location = new System.Drawing.Point(0, 0);
             this.miniMenu.Name = "miniMenu";
             this.miniMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.miniMenu.Size = new System.Drawing.Size(1139, 28);
+            this.miniMenu.Size = new System.Drawing.Size(616, 28);
             this.miniMenu.TabIndex = 1;
             this.miniMenu.Text = "menuStrip1";
             // 
@@ -182,23 +189,90 @@
             this.flag.TabIndex = 4;
             this.flag.Text = "Flags : 0";
             // 
+            // menuPanel
+            // 
+            this.menuPanel.Controls.Add(this.btnQuit);
+            this.menuPanel.Controls.Add(this.btnSkins);
+            this.menuPanel.Controls.Add(this.btnLeaderboards);
+            this.menuPanel.Controls.Add(this.btnAchievements);
+            this.menuPanel.Controls.Add(this.btnPlay);
+            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuPanel.Location = new System.Drawing.Point(0, 28);
+            this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Size = new System.Drawing.Size(616, 432);
+            this.menuPanel.TabIndex = 5;
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnPlay.Location = new System.Drawing.Point(217, 67);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(185, 46);
+            this.btnPlay.TabIndex = 0;
+            this.btnPlay.Text = "Play";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
+            // btnAchievements
+            // 
+            this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAchievements.Location = new System.Drawing.Point(217, 132);
+            this.btnAchievements.Name = "btnAchievements";
+            this.btnAchievements.Size = new System.Drawing.Size(185, 46);
+            this.btnAchievements.TabIndex = 1;
+            this.btnAchievements.Text = "Achievements";
+            this.btnAchievements.UseVisualStyleBackColor = true;
+            // 
+            // btnLeaderboards
+            // 
+            this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLeaderboards.Location = new System.Drawing.Point(217, 192);
+            this.btnLeaderboards.Name = "btnLeaderboards";
+            this.btnLeaderboards.Size = new System.Drawing.Size(185, 46);
+            this.btnLeaderboards.TabIndex = 2;
+            this.btnLeaderboards.Text = "Leaderboards";
+            this.btnLeaderboards.UseVisualStyleBackColor = true;
+            // 
+            // btnSkins
+            // 
+            this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSkins.Location = new System.Drawing.Point(217, 255);
+            this.btnSkins.Name = "btnSkins";
+            this.btnSkins.Size = new System.Drawing.Size(185, 46);
+            this.btnSkins.TabIndex = 3;
+            this.btnSkins.Text = "Skins and Backgrounds";
+            this.btnSkins.UseVisualStyleBackColor = true;
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnQuit.Location = new System.Drawing.Point(217, 316);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(185, 46);
+            this.btnQuit.TabIndex = 4;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 801);
+            this.ClientSize = new System.Drawing.Size(616, 460);
+            this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.flag);
             this.Controls.Add(this.time);
             this.Controls.Add(this.mainScreen);
             this.Controls.Add(this.miniMenu);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.miniMenu;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).EndInit();
             this.miniMenu.ResumeLayout(false);
             this.miniMenu.PerformLayout();
+            this.menuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +297,12 @@
         private System.Windows.Forms.Label time;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label flag;
+        private System.Windows.Forms.Panel menuPanel;
+        private System.Windows.Forms.Button btnPlay;
+        private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnSkins;
+        private System.Windows.Forms.Button btnLeaderboards;
+        private System.Windows.Forms.Button btnAchievements;
     }
 }
 

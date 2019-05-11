@@ -90,6 +90,7 @@ namespace Minesweeper
             if (!isRevealed)
             {
                 isRevealed = true;
+                Form1.openedTiles++;
                 return true;
             }
             else

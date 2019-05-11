@@ -28,6 +28,7 @@ namespace Minesweeper
         public static int Height { get; set; }
         int numberOfBombs { get; set; }
         int numberOfFlags { get; set; }
+        public static int openedTiles { get; set; }
         Grid grid { get; set; }
 
         public Form1(difficulty diff)
@@ -35,17 +36,20 @@ namespace Minesweeper
             this.diff = diff;
             InitializeComponent();
             mainScreen.Size = setScreen(diff);
-            newGame();
+            menuPanel.Visible = true;
+            miniMenu.Visible = false;
         }
 
         private void newGame()
         {
             gameEnd = false;
             seconds = 0;
+            openedTiles = 0;
+            miniMenu.Visible = true;
             timer.Start();
             grid = new Grid(numberOfBombs);
             numberOfFlags = numberOfBombs;
-            flag.Text = "Flags : " + numberOfFlags.ToString();
+            flag.Text = "Flags: " + numberOfFlags.ToString();
             this.ClientSize = new Size(mainWindowSize.Width + 20, mainWindowSize.Height + 95);
             time.Location = new Point(ClientRectangle.Left + 10, ClientRectangle.Top + 40);
             flag.Location = new Point(ClientRectangle.Right - 160, ClientRectangle.Top + 40);
@@ -101,25 +105,39 @@ namespace Minesweeper
             int i = (clickLocation.Y) / Height;
             if (e.Button == MouseButtons.Left)
             {
-                if(grid.getFlagged(i,j))
-                {
-                    numberOfFlags++;
-                    flag.Text = "Flags : " + numberOfFlags.ToString();
-                }
+                if (grid.getFlagged(i, j))
+                    return;
                 grid.tileClicked(i, j);
                 mainScreen.Invalidate();
+                checkWin();
                 if (gameEnd)
                     endGame();
             }
             else
             {
-                if (grid.flag(i, j))
+                if(numberOfFlags == 0)
+                    return;
+                else if (grid.flag(i, j))
                     numberOfFlags--;
                 else
                     numberOfFlags++;
 
-                flag.Text = "Flags : " + numberOfFlags.ToString();
+                flag.Text = "Flags: " + numberOfFlags.ToString();
                 mainScreen.Invalidate();
+                checkWin();
+            }
+        }
+
+        private void checkWin()
+        {
+            if (numberOfFlags == 0 && openedTiles == tileColumnNumber * tileRowNumber - numberOfBombs)
+            {
+                timer.Stop();
+                DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    newGame();
+                else goToMenu();
+
             }
         }
 
@@ -135,8 +153,25 @@ namespace Minesweeper
             {
                 newGame();
             }
-            else
-                this.Close();
+            else goToMenu();
+            
+        }
+
+        private void goToMenu()
+        {
+            miniMenu.Visible = false;
+            menuPanel.Visible = true;
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            menuPanel.Visible = false;
+            newGame();
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
