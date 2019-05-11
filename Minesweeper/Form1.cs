@@ -173,5 +173,43 @@ namespace Minesweeper
         {
             Application.Exit();
         }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newGame();
+        }
+
+        private void CheckMenuItem(ToolStripMenuItem menu, ToolStripMenuItem checked_item)
+        {
+            foreach (ToolStripMenuItem item in menu.DropDownItems)
+            {
+                if (item == checked_item)
+                    item.Checked = true;
+                else item.Checked = false;
+            }
+        }
+
+        private void easyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckMenuItem(chooseDifficultyToolStripMenuItem, easyToolStripMenuItem);
+            this.diff = difficulty.EASY;
+        }
+
+        private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckMenuItem(chooseDifficultyToolStripMenuItem, mediumToolStripMenuItem);
+            this.diff = difficulty.INTERMEDIATE;
+        }
+
+        private void hardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckMenuItem(chooseDifficultyToolStripMenuItem, hardToolStripMenuItem);
+            this.diff = difficulty.HARD;
+        }
+
+        private void backToMainMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            goToMenu();
+        }
     }
 }

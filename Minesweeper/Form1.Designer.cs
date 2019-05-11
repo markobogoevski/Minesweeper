@@ -32,11 +32,13 @@
             this.mainScreen = new System.Windows.Forms.PictureBox();
             this.miniMenu = new System.Windows.Forms.MenuStrip();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.leaderboardsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chooseDifficultyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backToMainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,11 +49,11 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.flag = new System.Windows.Forms.Label();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.btnPlay = new System.Windows.Forms.Button();
-            this.btnAchievements = new System.Windows.Forms.Button();
-            this.btnLeaderboards = new System.Windows.Forms.Button();
-            this.btnSkins = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
+            this.btnSkins = new System.Windows.Forms.Button();
+            this.btnLeaderboards = new System.Windows.Forms.Button();
+            this.btnAchievements = new System.Windows.Forms.Button();
+            this.btnPlay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).BeginInit();
             this.miniMenu.SuspendLayout();
             this.menuPanel.SuspendLayout();
@@ -77,14 +79,13 @@
             this.miniMenu.Location = new System.Drawing.Point(0, 0);
             this.miniMenu.Name = "miniMenu";
             this.miniMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.miniMenu.Size = new System.Drawing.Size(616, 28);
+            this.miniMenu.Size = new System.Drawing.Size(520, 28);
             this.miniMenu.TabIndex = 1;
             this.miniMenu.Text = "menuStrip1";
             // 
             // gameToolStripMenuItem
             // 
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resetGameToolStripMenuItem,
             this.newGameToolStripMenuItem,
             this.toolStripSeparator1,
             this.leaderboardsToolStripMenuItem,
@@ -95,17 +96,12 @@
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.gameToolStripMenuItem.Text = "Game";
             // 
-            // resetGameToolStripMenuItem
-            // 
-            this.resetGameToolStripMenuItem.Name = "resetGameToolStripMenuItem";
-            this.resetGameToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
-            this.resetGameToolStripMenuItem.Text = "Reset game";
-            // 
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
             this.newGameToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.newGameToolStripMenuItem.Text = "New Game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -120,15 +116,43 @@
             // 
             // chooseDifficultyToolStripMenuItem
             // 
+            this.chooseDifficultyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.easyToolStripMenuItem,
+            this.mediumToolStripMenuItem,
+            this.hardToolStripMenuItem});
             this.chooseDifficultyToolStripMenuItem.Name = "chooseDifficultyToolStripMenuItem";
             this.chooseDifficultyToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.chooseDifficultyToolStripMenuItem.Text = "Choose difficulty";
+            // 
+            // easyToolStripMenuItem
+            // 
+            this.easyToolStripMenuItem.Checked = true;
+            this.easyToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.easyToolStripMenuItem.Name = "easyToolStripMenuItem";
+            this.easyToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.easyToolStripMenuItem.Text = "Easy";
+            this.easyToolStripMenuItem.Click += new System.EventHandler(this.easyToolStripMenuItem_Click);
+            // 
+            // mediumToolStripMenuItem
+            // 
+            this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
+            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.mediumToolStripMenuItem.Text = "Medium";
+            this.mediumToolStripMenuItem.Click += new System.EventHandler(this.mediumToolStripMenuItem_Click);
+            // 
+            // hardToolStripMenuItem
+            // 
+            this.hardToolStripMenuItem.Name = "hardToolStripMenuItem";
+            this.hardToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.hardToolStripMenuItem.Text = "Hard";
+            this.hardToolStripMenuItem.Click += new System.EventHandler(this.hardToolStripMenuItem_Click);
             // 
             // backToMainMenuToolStripMenuItem
             // 
             this.backToMainMenuToolStripMenuItem.Name = "backToMainMenuToolStripMenuItem";
             this.backToMainMenuToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.backToMainMenuToolStripMenuItem.Text = "Back to main menu";
+            this.backToMainMenuToolStripMenuItem.Click += new System.EventHandler(this.backToMainMenuToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -169,9 +193,9 @@
             this.time.Location = new System.Drawing.Point(16, 50);
             this.time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(159, 42);
+            this.time.Size = new System.Drawing.Size(181, 42);
             this.time.TabIndex = 2;
-            this.time.Text = "Time : 0";
+            this.time.Text = "Time : 00";
             // 
             // timer
             // 
@@ -191,62 +215,21 @@
             // 
             // menuPanel
             // 
+            this.menuPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.menuPanel.Controls.Add(this.btnQuit);
             this.menuPanel.Controls.Add(this.btnSkins);
             this.menuPanel.Controls.Add(this.btnLeaderboards);
             this.menuPanel.Controls.Add(this.btnAchievements);
             this.menuPanel.Controls.Add(this.btnPlay);
-            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuPanel.Location = new System.Drawing.Point(0, 28);
+            this.menuPanel.Location = new System.Drawing.Point(-325, -157);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(616, 432);
+            this.menuPanel.Size = new System.Drawing.Size(1171, 822);
             this.menuPanel.TabIndex = 5;
-            // 
-            // btnPlay
-            // 
-            this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPlay.Location = new System.Drawing.Point(217, 67);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(185, 46);
-            this.btnPlay.TabIndex = 0;
-            this.btnPlay.Text = "Play";
-            this.btnPlay.UseVisualStyleBackColor = true;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
-            // 
-            // btnAchievements
-            // 
-            this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAchievements.Location = new System.Drawing.Point(217, 132);
-            this.btnAchievements.Name = "btnAchievements";
-            this.btnAchievements.Size = new System.Drawing.Size(185, 46);
-            this.btnAchievements.TabIndex = 1;
-            this.btnAchievements.Text = "Achievements";
-            this.btnAchievements.UseVisualStyleBackColor = true;
-            // 
-            // btnLeaderboards
-            // 
-            this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLeaderboards.Location = new System.Drawing.Point(217, 192);
-            this.btnLeaderboards.Name = "btnLeaderboards";
-            this.btnLeaderboards.Size = new System.Drawing.Size(185, 46);
-            this.btnLeaderboards.TabIndex = 2;
-            this.btnLeaderboards.Text = "Leaderboards";
-            this.btnLeaderboards.UseVisualStyleBackColor = true;
-            // 
-            // btnSkins
-            // 
-            this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSkins.Location = new System.Drawing.Point(217, 255);
-            this.btnSkins.Name = "btnSkins";
-            this.btnSkins.Size = new System.Drawing.Size(185, 46);
-            this.btnSkins.TabIndex = 3;
-            this.btnSkins.Text = "Skins and Backgrounds";
-            this.btnSkins.UseVisualStyleBackColor = true;
             // 
             // btnQuit
             // 
             this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnQuit.Location = new System.Drawing.Point(217, 316);
+            this.btnQuit.Location = new System.Drawing.Point(494, 511);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(185, 46);
             this.btnQuit.TabIndex = 4;
@@ -254,11 +237,52 @@
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
+            // btnSkins
+            // 
+            this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSkins.Location = new System.Drawing.Point(494, 450);
+            this.btnSkins.Name = "btnSkins";
+            this.btnSkins.Size = new System.Drawing.Size(185, 46);
+            this.btnSkins.TabIndex = 3;
+            this.btnSkins.Text = "Skins and Backgrounds";
+            this.btnSkins.UseVisualStyleBackColor = true;
+            // 
+            // btnLeaderboards
+            // 
+            this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLeaderboards.Location = new System.Drawing.Point(494, 387);
+            this.btnLeaderboards.Name = "btnLeaderboards";
+            this.btnLeaderboards.Size = new System.Drawing.Size(185, 46);
+            this.btnLeaderboards.TabIndex = 2;
+            this.btnLeaderboards.Text = "Leaderboards";
+            this.btnLeaderboards.UseVisualStyleBackColor = true;
+            // 
+            // btnAchievements
+            // 
+            this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAchievements.Location = new System.Drawing.Point(494, 327);
+            this.btnAchievements.Name = "btnAchievements";
+            this.btnAchievements.Size = new System.Drawing.Size(185, 46);
+            this.btnAchievements.TabIndex = 1;
+            this.btnAchievements.Text = "Achievements";
+            this.btnAchievements.UseVisualStyleBackColor = true;
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnPlay.Location = new System.Drawing.Point(494, 262);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(185, 46);
+            this.btnPlay.TabIndex = 0;
+            this.btnPlay.Text = "Play";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 460);
+            this.ClientSize = new System.Drawing.Size(520, 480);
             this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.flag);
             this.Controls.Add(this.time);
@@ -268,7 +292,8 @@
             this.MainMenuStrip = this.miniMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Minesweeper";
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).EndInit();
             this.miniMenu.ResumeLayout(false);
             this.miniMenu.PerformLayout();
@@ -283,7 +308,6 @@
         private System.Windows.Forms.PictureBox mainScreen;
         private System.Windows.Forms.MenuStrip miniMenu;
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resetGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem soundOptionsToolStripMenuItem;
@@ -303,6 +327,9 @@
         private System.Windows.Forms.Button btnSkins;
         private System.Windows.Forms.Button btnLeaderboards;
         private System.Windows.Forms.Button btnAchievements;
+        private System.Windows.Forms.ToolStripMenuItem easyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mediumToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hardToolStripMenuItem;
     }
 }
 
