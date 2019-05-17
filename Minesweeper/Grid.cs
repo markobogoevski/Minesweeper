@@ -75,7 +75,7 @@ namespace Minesweeper
         private void fillBombs()
         {
             int bombsSet = 0;
-            while(bombsSet!=bombCount)
+            while(bombsSet < bombCount)
             {
                 int randomX = generator.Next(Form1.tileRowNumber);
                 int randomY = generator.Next(Form1.tileColumnNumber);

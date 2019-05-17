@@ -35,7 +35,6 @@ namespace Minesweeper
         {
             this.diff = diff;
             InitializeComponent();
-            mainScreen.Size = setScreen(diff);
             menuPanel.Visible = true;
             miniMenu.Visible = false;
         }
@@ -45,7 +44,9 @@ namespace Minesweeper
             gameEnd = false;
             seconds = 0;
             openedTiles = 0;
+            mainScreen.Size = setScreen(diff);
             miniMenu.Visible = true;
+            time.Text = "Time: 00";
             timer.Start();
             grid = new Grid(numberOfBombs);
             numberOfFlags = numberOfBombs;

@@ -79,7 +79,7 @@
             this.miniMenu.Location = new System.Drawing.Point(0, 0);
             this.miniMenu.Name = "miniMenu";
             this.miniMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.miniMenu.Size = new System.Drawing.Size(520, 28);
+            this.miniMenu.Size = new System.Drawing.Size(487, 28);
             this.miniMenu.TabIndex = 1;
             this.miniMenu.Text = "menuStrip1";
             // 
@@ -193,9 +193,9 @@
             this.time.Location = new System.Drawing.Point(16, 50);
             this.time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(181, 42);
+            this.time.Size = new System.Drawing.Size(170, 42);
             this.time.TabIndex = 2;
-            this.time.Text = "Time : 00";
+            this.time.Text = "Time: 00";
             // 
             // timer
             // 
@@ -209,9 +209,9 @@
             this.flag.Location = new System.Drawing.Point(941, 50);
             this.flag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.flag.Name = "flag";
-            this.flag.Size = new System.Drawing.Size(170, 42);
+            this.flag.Size = new System.Drawing.Size(159, 42);
             this.flag.TabIndex = 4;
-            this.flag.Text = "Flags : 0";
+            this.flag.Text = "Flags: 0";
             // 
             // menuPanel
             // 
@@ -221,7 +221,7 @@
             this.menuPanel.Controls.Add(this.btnLeaderboards);
             this.menuPanel.Controls.Add(this.btnAchievements);
             this.menuPanel.Controls.Add(this.btnPlay);
-            this.menuPanel.Location = new System.Drawing.Point(-325, -157);
+            this.menuPanel.Location = new System.Drawing.Point(-342, -157);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(1171, 822);
             this.menuPanel.TabIndex = 5;
@@ -282,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 480);
+            this.ClientSize = new System.Drawing.Size(487, 480);
             this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.flag);
             this.Controls.Add(this.time);
