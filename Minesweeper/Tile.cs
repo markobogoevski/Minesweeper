@@ -16,8 +16,8 @@ namespace Minesweeper
         public static Image backgroundImage { get; set; }
         Image flaggedImage { get; set; }
         Image mainImage { get; set; }
-        public static int Width = Form1.Width;
-        public static int Height = Form1.Height;
+        public static int Width = Game.Width;
+        public static int Height = Game.Height;
         bool hasBomb { get; set; }
         bool isRevealed { get; set; }
         Point location { get; set; }
@@ -90,6 +90,7 @@ namespace Minesweeper
             if (!isRevealed)
             {
                 isRevealed = true;
+                Game.openedTiles++;
                 return true;
             }
             else

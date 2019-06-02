@@ -12,7 +12,7 @@ namespace Minesweeper
     class Grid
     {
         Random generator { get; set; }
-        Tile[][] mainMatrix { get; set; }
+        public Tile[][] mainMatrix { get; set; }
         List<ImageWrapper> mainImages { get; set; }
         int bombCount { get; set; }
         int tileNumber { get; set; }
@@ -24,10 +24,10 @@ namespace Minesweeper
 
             bombCount = numberOfBombs;
             generator = new Random();
-            mainMatrix = new Tile[Form1.tileRowNumber][];
+            mainMatrix = new Tile[Game.tileRowNumber][];
             for (int i = 0; i < mainMatrix.Length; i++)
             {
-                mainMatrix[i] = new Tile[Form1.tileColumnNumber];
+                mainMatrix[i] = new Tile[Game.tileColumnNumber];
             }
 
             setTileNumber();
@@ -36,29 +36,29 @@ namespace Minesweeper
 
         private void addImages()
         {
-            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Form1.Width, Form1.Height)));            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(1, Resizer.ResizeImage(Resources._1, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(2, Resizer.ResizeImage(Resources._2, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(3, Resizer.ResizeImage(Resources._3, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(4, Resizer.ResizeImage(Resources._4, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(5, Resizer.ResizeImage(Resources._5, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(6, Resizer.ResizeImage(Resources._6, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(7, Resizer.ResizeImage(Resources._7, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(8, Resizer.ResizeImage(Resources._8, Form1.Width, Form1.Height)));
-            mainImages.Add(new ImageWrapper(9, Resizer.ResizeImage(Resources._9, Form1.Width, Form1.Height)));
+            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(1, Resizer.ResizeImage(Resources._1, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(2, Resizer.ResizeImage(Resources._2, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(3, Resizer.ResizeImage(Resources._3, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(4, Resizer.ResizeImage(Resources._4, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(5, Resizer.ResizeImage(Resources._5, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(6, Resizer.ResizeImage(Resources._6, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(7, Resizer.ResizeImage(Resources._7, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(8, Resizer.ResizeImage(Resources._8, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(9, Resizer.ResizeImage(Resources._9, Game.Width, Game.Height)));
         }
 
         private void setTileNumber()
         {
-            tileNumber = Form1.tileColumnNumber * Form1.tileRowNumber;
+            tileNumber = Game.tileColumnNumber * Game.tileRowNumber;
         }
 
 
         private void fillMatrix()
         {
-           for(int i = 0; i < Form1.tileRowNumber; i++)
+           for(int i = 0; i < Game.tileRowNumber; i++)
             {
-                for(int j = 0; j < Form1.tileColumnNumber; j++)
+                for(int j = 0; j < Game.tileColumnNumber; j++)
                 {
                     Tile newTile = new Tile(j * Tile.Width, i * Tile.Height);
                     mainMatrix[i][j] = newTile;
@@ -75,10 +75,10 @@ namespace Minesweeper
         private void fillBombs()
         {
             int bombsSet = 0;
-            while(bombsSet!=bombCount)
+            while(bombsSet < bombCount)
             {
-                int randomX = generator.Next(Form1.tileRowNumber);
-                int randomY = generator.Next(Form1.tileColumnNumber);
+                int randomX = generator.Next(Game.tileRowNumber);
+                int randomY = generator.Next(Game.tileColumnNumber);
                 if (!mainMatrix[randomX][randomY].getBomb())
                 {
                     mainMatrix[randomX][randomY].setBomb(true);
@@ -89,28 +89,28 @@ namespace Minesweeper
 
         private void fillNumbersOfTiles()
         {
-            for (int i = 0; i < Form1.tileRowNumber; i++)
+            for (int i = 0; i < Game.tileRowNumber; i++)
             {
-                for (int j = 0; j < Form1.tileColumnNumber; j++)
+                for (int j = 0; j < Game.tileColumnNumber; j++)
                 {
                     int numberOfNeighbourBombs = 0;
                     //top
                     if (i - 1 >= 0 && mainMatrix[i - 1][j].getBomb())
                         numberOfNeighbourBombs++;
                     //top-right
-                    if (i - 1 >= 0 && j + 1 <= Form1.tileColumnNumber - 1 && mainMatrix[i - 1][j + 1].getBomb())
+                    if (i - 1 >= 0 && j + 1 <= Game.tileColumnNumber - 1 && mainMatrix[i - 1][j + 1].getBomb())
                         numberOfNeighbourBombs++;
                     //right
-                    if (j + 1 <= Form1.tileColumnNumber - 1 && mainMatrix[i][j + 1].getBomb())
+                    if (j + 1 <= Game.tileColumnNumber - 1 && mainMatrix[i][j + 1].getBomb())
                         numberOfNeighbourBombs++;
                     //bottom-right
-                    if (i + 1 <= Form1.tileRowNumber - 1 && j + 1 <= Form1.tileColumnNumber - 1 && mainMatrix[i + 1][j + 1].getBomb())
+                    if (i + 1 <= Game.tileRowNumber - 1 && j + 1 <= Game.tileColumnNumber - 1 && mainMatrix[i + 1][j + 1].getBomb())
                         numberOfNeighbourBombs++;
                     //bottom
-                    if (i + 1 <= Form1.tileRowNumber-1 && mainMatrix[i + 1][j].getBomb())
+                    if (i + 1 <= Game.tileRowNumber-1 && mainMatrix[i + 1][j].getBomb())
                         numberOfNeighbourBombs++;
                     //bottom-left
-                    if (i + 1 <= Form1.tileRowNumber-1 && j - 1 >= 0 && mainMatrix[i + 1][j - 1].getBomb())
+                    if (i + 1 <= Game.tileRowNumber-1 && j - 1 >= 0 && mainMatrix[i + 1][j - 1].getBomb())
                         numberOfNeighbourBombs++;
                     //left
                     if (j - 1 >= 0 && mainMatrix[i][j - 1].getBomb())
@@ -126,9 +126,9 @@ namespace Minesweeper
 
         private void fillImages()
         {
-            for (int i = 0; i < Form1.tileRowNumber; i++)
+            for (int i = 0; i < Game.tileRowNumber; i++)
             {
-                for (int j = 0; j < Form1.tileColumnNumber; j++)
+                for (int j = 0; j < Game.tileColumnNumber; j++)
                 {
                     if (mainMatrix[i][j].getBomb())
                     {
@@ -156,9 +156,9 @@ namespace Minesweeper
 
         public void draw(Graphics g)
         {
-            for (int i = 0; i < Form1.tileRowNumber; i++)
+            for (int i = 0; i < Game.tileRowNumber; i++)
             {
-                for (int j = 0; j < Form1.tileColumnNumber; j++)
+                for (int j = 0; j < Game.tileColumnNumber; j++)
                 {
                     mainMatrix[i][j].draw(g);
                 }
@@ -173,7 +173,7 @@ namespace Minesweeper
 
             if (mainMatrix[i][j].getBomb())
             {
-                Form1.gameEnd = true;
+                Game.gameEnd = true;
                 return;
             }
 
@@ -183,19 +183,19 @@ namespace Minesweeper
                 if (i - 1 >= 0)
                     tileClicked(i - 1, j);
                 //top-right
-                if (i - 1 >= 0 && j + 1 <= Form1.tileColumnNumber - 1)
+                if (i - 1 >= 0 && j + 1 <= Game.tileColumnNumber - 1)
                   tileClicked(i - 1, j + 1);
                 //right
-                if (j + 1 <= Form1.tileColumnNumber - 1)
+                if (j + 1 <= Game.tileColumnNumber - 1)
                     tileClicked(i, j + 1);
                 //bottom-right
-                if (i + 1 <= Form1.tileRowNumber - 1 && j + 1 <= Form1.tileColumnNumber - 1) 
+                if (i + 1 <= Game.tileRowNumber - 1 && j + 1 <= Game.tileColumnNumber - 1) 
                     tileClicked(i + 1, j + 1);
                 //bottom
-                if (i + 1 <= Form1.tileRowNumber - 1)
+                if (i + 1 <= Game.tileRowNumber - 1)
                     tileClicked(i + 1, j);
                 //bottom-left
-                if (i + 1 <= Form1.tileRowNumber - 1 && j - 1 >= 0)
+                if (i + 1 <= Game.tileRowNumber - 1 && j - 1 >= 0)
                     tileClicked(i + 1, j - 1);
                 //left
                 if (j - 1 >= 0)
