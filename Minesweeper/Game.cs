@@ -31,13 +31,14 @@ namespace Minesweeper
         public static int openedTiles { get; set; }
         Grid grid { get; set; }
 
-        public Game()
+        public Game(difficulty d)
         {
             mainScreen = new PictureBox();
             miniMenu = new MenuStrip();
             timer = new Timer();
             time = new Label();
             flag = new Label();
+            DIFF = d;
             InitializeComponent();
             newGame();
         }
@@ -65,21 +66,21 @@ namespace Minesweeper
             {
                 case difficulty.EASY:
                     tileRowNumber = tileColumnNumber = 9;
-                    Width = Height = 50;
+                    Width = Height = 40;
                     mainWindowSize = new Size(tileColumnNumber*Width,tileRowNumber*Height);
                     numberOfBombs = 10;
                     break;
                 case difficulty.INTERMEDIATE:
                     tileRowNumber = tileColumnNumber = 16;
                     numberOfBombs = 40;
-                    Width = Height = 36;
+                    Width = Height = 40;
                     mainWindowSize = new Size(tileColumnNumber*Width,tileRowNumber*Height);
                     break;
                 case difficulty.HARD:
                     tileRowNumber = 16;
                     tileColumnNumber = 30;
                     numberOfBombs = 99;
-                    Width = Height = 36;
+                    Width = Height = 40;
                     mainWindowSize = new Size(tileColumnNumber*Width, tileRowNumber*Height);
                     break;
             }
@@ -134,7 +135,10 @@ namespace Minesweeper
                 timer.Stop();
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
+                {
                     newGame();
+                    this.CenterToScreen();
+                }
                 else
                 {
                     this.Close();
@@ -153,6 +157,7 @@ namespace Minesweeper
             if (result == DialogResult.Yes)
             {
                 newGame();
+                this.CenterToScreen();
             }
             else this.Close();
             
@@ -161,6 +166,7 @@ namespace Minesweeper
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             newGame();
+            this.CenterToScreen();
         }
 
         private void CheckMenuItem(ToolStripMenuItem menu, ToolStripMenuItem checked_item)

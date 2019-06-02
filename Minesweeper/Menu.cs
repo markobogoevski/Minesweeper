@@ -17,9 +17,16 @@ namespace Minesweeper
             InitializeComponent();
         }
 
+        private difficulty getChecked()
+        {
+            if (rbEasy.Checked) return difficulty.EASY;
+            else if (rbMedium.Checked) return difficulty.INTERMEDIATE;
+            else return difficulty.HARD;
+        }
+
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Game g = new Game();
+            Game g = new Game(getChecked());
             g.FormClosed += new FormClosedEventHandler(game_FormClosed);
             g.Show();
             this.Hide();
@@ -33,6 +40,21 @@ namespace Minesweeper
         private void btnQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAchievements_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLeaderboards_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSkins_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
