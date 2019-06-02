@@ -16,41 +16,43 @@ namespace Minesweeper
         INTERMEDIATE,
         HARD
     }
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
-        difficulty diff { get; set; }
+        public static difficulty DIFF { get; set; }
         int seconds { get; set; }
         public static bool gameEnd=false;
         public static Size mainWindowSize { get; set; }
         public static int tileRowNumber { get; set; }
         public static int tileColumnNumber { get; set; }
-        public static int Width { get; set; }
-        public static int Height { get; set; }
+        public new static int Width { get; set; }
+        public new static int Height { get; set; }
         int numberOfBombs { get; set; }
         int numberOfFlags { get; set; }
         public static int openedTiles { get; set; }
         Grid grid { get; set; }
 
-        public Form1(difficulty diff)
+        public Game()
         {
-            this.diff = diff;
+            mainScreen = new PictureBox();
+            miniMenu = new MenuStrip();
+            timer = new Timer();
+            time = new Label();
+            flag = new Label();
             InitializeComponent();
-            menuPanel.Visible = true;
-            miniMenu.Visible = false;
+            newGame();
         }
 
         private void newGame()
         {
+            
             gameEnd = false;
             seconds = 0;
             openedTiles = 0;
-            mainScreen.Size = setScreen(diff);
+            mainScreen.Size = setScreen(Game.DIFF);
             miniMenu.Visible = true;
-            time.Text = "Time: 00";
             timer.Start();
             grid = new Grid(numberOfBombs);
             numberOfFlags = numberOfBombs;
-            flag.Text = "Flags: " + numberOfFlags.ToString();
             this.ClientSize = new Size(mainWindowSize.Width + 20, mainWindowSize.Height + 95);
             time.Location = new Point(ClientRectangle.Left + 10, ClientRectangle.Top + 40);
             flag.Location = new Point(ClientRectangle.Right - 160, ClientRectangle.Top + 40);
@@ -93,10 +95,7 @@ namespace Minesweeper
         private void timer_Tick(object sender, EventArgs e)
         {
             seconds++;
-            if(seconds < 60)
-                time.Text = "Time: " + seconds.ToString("00");
-            else
-                time.Text = "Time: " + (seconds / 60).ToString() + ":" + (seconds % 60).ToString("00");
+            Invalidate(true);
         }
 
         private void mainScreen_MouseClick(object sender, MouseEventArgs e)
@@ -122,11 +121,10 @@ namespace Minesweeper
                     numberOfFlags--;
                 else
                     numberOfFlags++;
-
-                flag.Text = "Flags: " + numberOfFlags.ToString();
                 mainScreen.Invalidate();
                 checkWin();
             }
+            Invalidate(true);
         }
 
         private void checkWin()
@@ -137,8 +135,10 @@ namespace Minesweeper
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                     newGame();
-                else goToMenu();
-
+                else
+                {
+                    this.Close();
+                }
             }
         }
 
@@ -154,25 +154,8 @@ namespace Minesweeper
             {
                 newGame();
             }
-            else goToMenu();
+            else this.Close();
             
-        }
-
-        private void goToMenu()
-        {
-            miniMenu.Visible = false;
-            menuPanel.Visible = true;
-        }
-
-        private void btnPlay_Click(object sender, EventArgs e)
-        {
-            menuPanel.Visible = false;
-            newGame();
-        }
-
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,24 +176,38 @@ namespace Minesweeper
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckMenuItem(chooseDifficultyToolStripMenuItem, easyToolStripMenuItem);
-            this.diff = difficulty.EASY;
+            Game.DIFF = difficulty.EASY;
         }
 
         private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckMenuItem(chooseDifficultyToolStripMenuItem, mediumToolStripMenuItem);
-            this.diff = difficulty.INTERMEDIATE;
+            Game.DIFF = difficulty.INTERMEDIATE;
         }
 
         private void hardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CheckMenuItem(chooseDifficultyToolStripMenuItem, hardToolStripMenuItem);
-            this.diff = difficulty.HARD;
+            Game.DIFF = difficulty.HARD;
         }
 
         private void backToMainMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            goToMenu();
+            this.Close();
         }
+
+        private void time_Paint(object sender, PaintEventArgs e)
+        {
+            if (seconds < 60)
+                time.Text = "Time: " + seconds.ToString("00");
+            else
+                time.Text = "Time: " + (seconds / 60).ToString() + ":" + (seconds % 60).ToString("00");
+        }
+
+        private void flag_Paint(object sender, PaintEventArgs e)
+        {
+            flag.Text = "Flags: " + numberOfFlags.ToString();
+        }
+
     }
 }
