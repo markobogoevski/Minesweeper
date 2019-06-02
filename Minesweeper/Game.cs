@@ -114,9 +114,9 @@ namespace Minesweeper
                 if (gameEnd)
                     endGame();
             }
-            else
+            else if(e.Button == MouseButtons.Right)
             {
-                if(numberOfFlags == 0)
+                if(numberOfFlags == 0 && !grid.getFlagged(i, j))
                     return;
                 else if (grid.flag(i, j))
                     numberOfFlags--;
