@@ -66,21 +66,21 @@ namespace Minesweeper
             {
                 case difficulty.EASY:
                     tileRowNumber = tileColumnNumber = 9;
-                    Width = Height = 40;
+                    Width = Height = 36;
                     mainWindowSize = new Size(tileColumnNumber*Width,tileRowNumber*Height);
                     numberOfBombs = 10;
                     break;
                 case difficulty.INTERMEDIATE:
                     tileRowNumber = tileColumnNumber = 16;
                     numberOfBombs = 40;
-                    Width = Height = 40;
+                    Width = Height = 36;
                     mainWindowSize = new Size(tileColumnNumber*Width,tileRowNumber*Height);
                     break;
                 case difficulty.HARD:
                     tileRowNumber = 16;
                     tileColumnNumber = 30;
                     numberOfBombs = 99;
-                    Width = Height = 40;
+                    Width = Height = 36;
                     mainWindowSize = new Size(tileColumnNumber*Width, tileRowNumber*Height);
                     break;
             }
