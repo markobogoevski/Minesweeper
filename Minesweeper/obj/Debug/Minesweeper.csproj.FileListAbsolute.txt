@@ -19,3 +19,4 @@ C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweep
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Game.resources
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Menu.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Leaderboards.resources

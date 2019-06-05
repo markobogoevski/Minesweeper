@@ -27,12 +27,12 @@ namespace Minesweeper
         private void btnPlay_Click(object sender, EventArgs e)
         {
             Game g = new Game(getChecked());
-            g.FormClosed += new FormClosedEventHandler(game_FormClosed);
+            g.FormClosed += new FormClosedEventHandler(window_FormClosed);
             g.Show();
             this.Hide();
         }
 
-        private void game_FormClosed(object sender, FormClosedEventArgs e)
+        private void window_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
         }
@@ -50,6 +50,10 @@ namespace Minesweeper
         private void btnLeaderboards_Click(object sender, EventArgs e)
         {
             // TODO: Implement the leaderboards form, showing best scores sorted by time descending, for each difficulty.
+            Leaderboards l = new Leaderboards();
+            l.FormClosed += new FormClosedEventHandler(window_FormClosed);
+            l.Show();
+            this.Hide();
         }
 
         private void btnSkins_Click(object sender, EventArgs e)
