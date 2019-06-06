@@ -45,17 +45,21 @@ namespace Minesweeper
        
         public Game(difficulty d)
         {
+            this.DoubleBuffered = true;
             mainScreen = new PictureBox();
             miniMenu = new MenuStrip();
             timer = new Timer();
             time = new Label();
             flag = new Label();
+            boostedLabel = new Label();
+            this.ClientSize = new Size(800, 600);
             InitializeComponent();
             newGame(d);
         }
 
         private void newGame(difficulty d)
         {
+            mainScreen.Hide();
             boosted = false;
             simulation = 0;
             currentStreak = 0;
@@ -67,7 +71,6 @@ namespace Minesweeper
             miniMenu.Visible = true;
 
             //setting window size based on resolution (default)
-            this.ClientSize = new Size(1024,768);
             //setting picture box Size based on window size
             mainScreen.Size = setScreenOptions(Game.DIFF);
             //cutting bottom
@@ -79,13 +82,15 @@ namespace Minesweeper
           
 
             //starting game..
-            timer.Start();
-            timer1.Stop();
-            timer1.Enabled = false;
+           
 
             grid = new Grid(numberOfBombs);
             numberOfFlags = numberOfBombs;
-
+            mainScreen.Show();
+            timer.Start();
+            timer1.Stop();
+            timer1.Enabled = false;
+            boostedLabel.Hide();
             mainScreen.Invalidate();
         }
 
@@ -185,7 +190,7 @@ namespace Minesweeper
             if (!boosted)
             {
                 simulation++;
-                if (simulation % 15 == 0)
+                if (simulation % 30 == 0)
                 {
                     currentStreak = 0;
                     simulation = 0;
@@ -195,15 +200,15 @@ namespace Minesweeper
             {
                 if(simulation%2==0)
                 {
-                    this.BackColor = Color.OrangeRed;
+                    this.BackColor = Color.Orange;
                 }
                 else
                 {
-                    this.BackColor = Color.Red;
+                    this.BackColor = Color.YellowGreen;
                 }
 
                 simulation++;
-                if (simulation % 4 == 0)
+                if (simulation % 8 == 0)
                 {
                     simulation = 0;
                     endBoost();
@@ -220,20 +225,14 @@ namespace Minesweeper
             grid.revertAll();
             timer1.Enabled = false;
             timer1.Stop();
+            boostedLabel.Hide();
         }
 
         private void enableBoost()
         {
-            boostLabel = new Label();
-            boostLabel.ForeColor = Color.Black;
-            boostLabel.Text = "BOOSTED!";
-            boostLabel.Font = new Font(boostLabel.Font.FontFamily, 20);
-            boostLabel.Width = 20;
-            boostLabel.Height = 10;
-            boostLabel.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - boostLabel.Width / 2, mainScreen.Top - boostLabel.Height);
-            boostLabel.Show();
-
-            this.BackColor = Color.OrangeRed;
+            boostedLabel.Show();
+            boostedLabel.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - boostedLabel.Width / 2, mainScreen.Top - boostedLabel.Height-5);
+            this.BackColor = Color.Orange;
             simulation = 0;
             boosted = true;
             grid.showAll();
@@ -266,6 +265,7 @@ namespace Minesweeper
 
                     if (currentStreak == 10)
                     {
+                        currentStreak = 0;
                         enableBoost();
                     }
                 }
@@ -306,6 +306,13 @@ namespace Minesweeper
 
         private void endGame()
         {
+
+            //this.Hide();
+            //new form
+
+
+
+            //
             for (int i = 0; i < tileRowNumber; i++)
                 for (int j = 0; j < tileColumnNumber; j++)
                     if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())
@@ -339,6 +346,7 @@ namespace Minesweeper
         private void hardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             newGame(difficulty.HARD);
+
         }
 
         private void backToMainMenuToolStripMenuItem_Click(object sender, EventArgs e)

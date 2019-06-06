@@ -51,6 +51,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.mainScreen = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.boostedLabel = new System.Windows.Forms.Label();
             this.miniMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).BeginInit();
             this.SuspendLayout();
@@ -83,19 +84,19 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
             // 
             // leaderboardsToolStripMenuItem
             // 
             this.leaderboardsToolStripMenuItem.Name = "leaderboardsToolStripMenuItem";
-            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.leaderboardsToolStripMenuItem.Text = "Leaderboards";
             // 
             // chooseDifficultyToolStripMenuItem
@@ -105,7 +106,7 @@
             this.mediumToolStripMenuItem,
             this.hardToolStripMenuItem});
             this.chooseDifficultyToolStripMenuItem.Name = "chooseDifficultyToolStripMenuItem";
-            this.chooseDifficultyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chooseDifficultyToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.chooseDifficultyToolStripMenuItem.Text = "Choose difficulty";
             // 
             // easyToolStripMenuItem
@@ -113,35 +114,35 @@
             this.easyToolStripMenuItem.Checked = true;
             this.easyToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.easyToolStripMenuItem.Name = "easyToolStripMenuItem";
-            this.easyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.easyToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.easyToolStripMenuItem.Text = "Easy";
             this.easyToolStripMenuItem.Click += new System.EventHandler(this.easyToolStripMenuItem_Click);
             // 
             // mediumToolStripMenuItem
             // 
             this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
-            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.mediumToolStripMenuItem.Text = "Medium";
             this.mediumToolStripMenuItem.Click += new System.EventHandler(this.mediumToolStripMenuItem_Click);
             // 
             // hardToolStripMenuItem
             // 
             this.hardToolStripMenuItem.Name = "hardToolStripMenuItem";
-            this.hardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hardToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.hardToolStripMenuItem.Text = "Hard";
             this.hardToolStripMenuItem.Click += new System.EventHandler(this.hardToolStripMenuItem_Click);
             // 
             // backToMainMenuToolStripMenuItem
             // 
             this.backToMainMenuToolStripMenuItem.Name = "backToMainMenuToolStripMenuItem";
-            this.backToMainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backToMainMenuToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.backToMainMenuToolStripMenuItem.Text = "Back to main menu";
             this.backToMainMenuToolStripMenuItem.Click += new System.EventHandler(this.backToMainMenuToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(174, 6);
             // 
             // optionsToolStripMenuItem
             // 
@@ -229,14 +230,25 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // boostedLabel
+            // 
+            this.boostedLabel.AutoSize = true;
+            this.boostedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boostedLabel.Location = new System.Drawing.Point(344, 24);
+            this.boostedLabel.Name = "boostedLabel";
+            this.boostedLabel.Size = new System.Drawing.Size(154, 31);
+            this.boostedLabel.TabIndex = 5;
+            this.boostedLabel.Text = "BOOSTED";
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 666);
+            this.Controls.Add(this.boostedLabel);
             this.Controls.Add(this.flag);
             this.Controls.Add(this.time);
             this.Controls.Add(this.mainScreen);
@@ -280,6 +292,7 @@
         private System.Windows.Forms.ToolStripMenuItem resolutionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem x1080ToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label boostedLabel;
     }
 }
 
