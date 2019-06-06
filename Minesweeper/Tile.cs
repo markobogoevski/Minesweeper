@@ -14,7 +14,7 @@ namespace Minesweeper
         //Position info
         int XCoord { get; set; }
         int YCoord { get; set; }
-        Point location { get; set; }
+        public Point location { get; set; }
 
         //Size info 
         public static int Width = Game.TileWidth;
@@ -22,8 +22,8 @@ namespace Minesweeper
 
         //Images
         public static Image backgroundImage { get; set; }
-        Image flaggedImage { get; set; }
-        Image mainImage { get; set; }
+        public static Image flaggedImage { get; set; }
+        public Image mainImage { get; set; }
         
         //Logic
         private bool hasBomb { get; set; }
@@ -36,11 +36,25 @@ namespace Minesweeper
         {
             XCoord = xCoord;
             YCoord = yCoord;
-            flaggedImage = Resizer.ResizeImage(Resources.flagged,Game.TileWidth,Game.TileHeight);
-            backgroundImage = Resizer.ResizeImage(Resources.back, Game.TileWidth, Game.TileHeight);
-            location = new Point(XCoord, YCoord);
+            setImagesSizeWithoutMain();
+            setLocation();
         }
 
+
+        // Images options
+        public void setImagesSizeWithoutMain()
+        {
+            flaggedImage = Resizer.ResizeImage(Resources.flagged, Game.TileWidth, Game.TileHeight);
+            backgroundImage = Resizer.ResizeImage(Resources.back, Game.TileWidth, Game.TileHeight);
+        }
+
+        public void setMainImage(Image image)
+        {
+            this.mainImage = image;
+            mainImage = Resizer.ResizeImage(mainImage, Game.TileWidth, Game.TileHeight);
+        }
+
+        //checks to see if there is a bomb in tile
         public bool getBomb() { return hasBomb; }
 
         public void setBomb(bool hasBomb)
@@ -48,8 +62,10 @@ namespace Minesweeper
             this.hasBomb = hasBomb;
         }
         
+        //checks if tile is flagged
         public bool getFlag() { return flagged; }
 
+        //toggles the flag on tile
         public bool flag()
         {
             if (!flagged)
@@ -64,22 +80,26 @@ namespace Minesweeper
             }
         }
 
-        public void setImage(Image image)
-        {
-            this.mainImage = image;
-        }
-
+        //for numbering the grid, calculates neighbour bombs number
         public int getNeighbourBombs() { return neighbourBombs; }
 
         public void setNeighbourBombs(int bombs)
         {
             this.neighbourBombs = bombs;
         }
-        
+
+        //draws tile (3 images - background, flagged and main image)
+
+        private void setLocation()
+        {
+            location = new Point(XCoord, YCoord);
+        }
         public void draw(Graphics g)
         {
             if (isRevealed)
             {
+                if (hasBomb)
+                    g.FillRectangle(new SolidBrush(Color.IndianRed), new Rectangle(location, new Size(Game.TileWidth, Game.TileHeight)));
                 g.DrawImageUnscaled(mainImage, location);
             }
             else
@@ -89,8 +109,10 @@ namespace Minesweeper
                 else
                 g.DrawImageUnscaled(backgroundImage, location);
             }
+            g.DrawRectangle(new Pen(Color.Black, 2), new Rectangle(location, new Size(Game.TileWidth, Game.TileHeight)));
         }
 
+        //click function, tries to click the tiled and indicates if success (game.openedTiles)
         public bool click()
         {
             if (!isRevealed)
@@ -104,6 +126,8 @@ namespace Minesweeper
             return false;
         }
 
+
+        //Equality utilities
         public override bool Equals(object obj)
         {
             return Equals(obj as Tile);

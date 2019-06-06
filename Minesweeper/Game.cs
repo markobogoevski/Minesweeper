@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,7 @@ namespace Minesweeper
         public int currentStreak { get; set; }
         public bool boosted { get; set; }
         public int simulation { get; set; }
-        Label boostLabel { get; set; }
+        public bool wow { get; set; }
 
         //Drawing
         public static Size mainWindowSize { get; set; }
@@ -39,8 +40,9 @@ namespace Minesweeper
         public static int TileHeight { get; set; }
         public static int windowWidth{get;set;}
         public static int windowHeight { get; set; }
-        public static int WidthOffset = 25;
-        public static int HeightOffset = 50;
+        public static int WidthOffset = 10;
+        public static int HeightOffset = 25;
+        public Size initialSize { get; set; }
 
        
         public Game(difficulty d)
@@ -52,29 +54,45 @@ namespace Minesweeper
             time = new Label();
             flag = new Label();
             boostedLabel = new Label();
+            this.BackColor = Color.LightGray ;
             this.ClientSize = new Size(800, 600);
+            initialSize = this.ClientSize;
+
             InitializeComponent();
             newGame(d);
         }
 
         private void newGame(difficulty d)
         {
+            wow = false;
+            button1.Enabled = false;
+            button1.BackgroundImage = Resources.smileyHappy;
+            grid = null;
+            HeightOffset = miniMenu.Height + button1.Height ;
             mainScreen.Hide();
             boosted = false;
             simulation = 0;
             currentStreak = 0;
-            this.BackColor = Color.LightGray;
             DIFF = d;
             gameEnd = false;
             seconds = 0;
             openedTiles = 0;
-            miniMenu.Visible = true;
+
+            //cutting bottom
+            if (DIFF == difficulty.HARD)
+                this.ClientSize = cutBottom();
+            else
+                this.ClientSize = initialSize;
 
             //setting window size based on resolution (default)
             //setting picture box Size based on window size
             mainScreen.Size = setScreenOptions(Game.DIFF);
+
             //cutting bottom
-            this.ClientSize = cutBottom();
+            if (DIFF == difficulty.HARD)
+                this.ClientSize = cutBottom();
+            else
+                this.ClientSize = initialSize;
 
 
             //centering screen 
@@ -104,10 +122,11 @@ namespace Minesweeper
             //center picture box
             mainScreen.Location = new Point((ClientSize.Width - mainScreen.Width) / 2,
                miniMenu.Height+HeightOffset);
-            
+
             //center labels
-            time.Location = new Point(mainScreen.Left, mainScreen.Top-time.Height);
-            flag.Location = new Point(mainScreen.Right-flag.Width-8, mainScreen.Top-flag.Height);
+            button1.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - button1.Width / 2, mainScreen.Top - button1.Height - 5);
+            time.Location = new Point(mainScreen.Left, mainScreen.Top-button1.Height+5);
+            flag.Location = new Point(mainScreen.Right-flag.Width-8, mainScreen.Top-button1.Height+5);
         }
 
         private int getTileSize(int tileRowNumber, int tileColumnNumber)
@@ -218,7 +237,7 @@ namespace Minesweeper
 
         private void endBoost()
         {
-            boostLabel = null;
+            button1.Show();
             simulation = 0;
             boosted = false;
             this.BackColor = Color.LightGray;
@@ -230,6 +249,7 @@ namespace Minesweeper
 
         private void enableBoost()
         {
+            button1.Hide();
             boostedLabel.Show();
             boostedLabel.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - boostedLabel.Width / 2, mainScreen.Top - boostedLabel.Height-5);
             this.BackColor = Color.Orange;
@@ -253,7 +273,15 @@ namespace Minesweeper
                 checkWin();
                 if (gameEnd)
                     endGame();
-
+                if (Game.openedTiles >= 1 && !wow)
+                {
+                    button1.BackgroundImage = Resources.smileyWow;
+                    wow = true;
+                }
+                else if (grid.visibleNumber() >= (Game.tileRowNumber * Game.tileColumnNumber / 2))
+                    button1.BackgroundImage = Resources.smileyGlasses;
+                
+                
                 if (!boosted)
                 {
                     currentStreak++;
@@ -313,10 +341,14 @@ namespace Minesweeper
 
 
             //
-            for (int i = 0; i < tileRowNumber; i++)
+            if (boosted)
+                endBoost();
+
+                for (int i = 0; i < tileRowNumber; i++)
                 for (int j = 0; j < tileColumnNumber; j++)
                     if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())
                         grid.mainMatrix[i][j].click();
+            button1.BackgroundImage = Resources.smileyDead;
             DialogResult result = MessageBox.Show("You lost! Do you want to try again?","Oops!",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
@@ -367,5 +399,20 @@ namespace Minesweeper
             flag.Text = "Flags: " + numberOfFlags.ToString();
         }
 
+        private void Game_Resize(object sender, EventArgs e)
+        {
+            this.SuspendLayout();
+            mainScreen.Hide();
+            if (grid != null)
+            {
+                mainScreen.Size = setScreenOptions(DIFF);
+                centerTheScreen();
+                grid.changeMatrix();
+            }
+            Invalidate();
+            mainScreen.Show();
+            this.ResumeLayout();
+
+        }
     }
 }

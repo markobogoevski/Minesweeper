@@ -12,7 +12,8 @@ namespace Minesweeper
     class Grid
     {
         //utility
-        Random generator { get; set; }
+        static Random generator = new Random();
+        Dictionary<int, ImageWrapper> imagesByNumber { get; set; }
         List<ImageWrapper> mainImages { get; set; }
 
         //main info
@@ -22,11 +23,13 @@ namespace Minesweeper
 
         public Grid(int numberOfBombs)
         {
+            imagesByNumber = new Dictionary<int, ImageWrapper>();
+            //add images
             mainImages = new List<ImageWrapper>();
             addImages();
 
+            //initialize matrix
             bombCount = numberOfBombs;
-            generator = new Random();
             mainMatrix = new Tile[Game.tileRowNumber][];
             for (int i = 0; i < mainMatrix.Length; i++)
             {
@@ -37,26 +40,45 @@ namespace Minesweeper
             fillMatrix();
         }
 
+        //filling hash map and adding images
         private void addImages()
         {
-            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(1, Resizer.ResizeImage(Resources._1, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(2, Resizer.ResizeImage(Resources._2, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(3, Resizer.ResizeImage(Resources._3, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(4, Resizer.ResizeImage(Resources._4, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(5, Resizer.ResizeImage(Resources._5, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(6, Resizer.ResizeImage(Resources._6, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(7, Resizer.ResizeImage(Resources._7, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(8, Resizer.ResizeImage(Resources._8, Game.TileWidth, Game.TileHeight)));
-            mainImages.Add(new ImageWrapper(9, Resizer.ResizeImage(Resources._9, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(0, Resources._0));
+            mainImages.Add(new ImageWrapper(1, Resources._1));
+            mainImages.Add(new ImageWrapper(2, Resources._2));
+            mainImages.Add(new ImageWrapper(3, Resources._3));
+            mainImages.Add(new ImageWrapper(4, Resources._4));
+            mainImages.Add(new ImageWrapper(5, Resources._5));
+            mainImages.Add(new ImageWrapper(6, Resources._6));
+            mainImages.Add(new ImageWrapper(7, Resources._7));
+            mainImages.Add(new ImageWrapper(8, Resources._8));
+            mainImages.Add(new ImageWrapper(9, Resources._9));
+            for(int i = 0; i < 9; i++)
+            {
+                imagesByNumber.Add(i, mainImages.ElementAt(i));
+            }
         }
 
+        //determine number of tiles
         private void setTileNumber()
         {
             tileNumber = Game.tileColumnNumber * Game.tileRowNumber;
         }
 
+        public void changeMatrix()
+        {
+            for (int i = 0; i < Game.tileRowNumber; i++)
+            {
+                for (int j = 0; j < Game.tileColumnNumber; j++)
+                {
+                    mainMatrix[i][j].location = new Point(j * Game.TileWidth, i * Game.TileHeight);
+                    mainMatrix[i][j].setImagesSizeWithoutMain();
+                    mainMatrix[i][j].setMainImage(mainMatrix[i][j].mainImage);
+                }
+            }
 
+        }
+        //fill the matrix with tiles determined from image sizes, 
         private void fillMatrix()
         {
            for(int i = 0; i < Game.tileRowNumber; i++)
@@ -90,6 +112,20 @@ namespace Minesweeper
             }
         }
 
+        public int visibleNumber()
+        {
+            int count = 0;
+            for (int i = 0; i < Game.tileRowNumber; i++)
+            {
+                for (int j = 0; j < Game.tileColumnNumber; j++)
+                {
+                    if (mainMatrix[i][j].isRevealed)
+                        count++;
+                }
+            }
+            return count;
+        }
+        //calculate numbers for each tiles using neighbour bombs
         private void fillNumbersOfTiles()
         {
             for (int i = 0; i < Game.tileRowNumber; i++)
@@ -127,36 +163,41 @@ namespace Minesweeper
             }
         }
 
+        //fill the main images
         private void fillImages()
         {
             for (int i = 0; i < Game.tileRowNumber; i++)
             {
                 for (int j = 0; j < Game.tileColumnNumber; j++)
                 {
+                    //if bomb
                     if (mainMatrix[i][j].getBomb())
                     {
-                        mainMatrix[i][j].setImage(mainImages.ElementAt(mainImages.Count - 1).getImage());
+                        mainMatrix[i][j].setMainImage(mainImages.ElementAt(mainImages.Count - 1).getImage());
                         continue;
                     }
-                    foreach(ImageWrapper image in mainImages)
-                    {
-                        if (image.getNumber() == mainMatrix[i][j].getNeighbourBombs())
-                            mainMatrix[i][j].setImage(image.getImage());
+                    //else fill with number image
+                    else
+                    { 
+                        mainMatrix[i][j].setMainImage(imagesByNumber[mainMatrix[i][j].getNeighbourBombs()].getImage());
                     }
                 }
             }
         }
 
+        //get flag status for i and j coordinate, used elsewhere
         public bool getFlagged(int i,int j)
         {
             return mainMatrix[i][j].getFlag();
         }
 
+        //trigger flag on a tile for i and j coordinate
         public bool flag(int i,int j)
         {
             return mainMatrix[i][j].flag();
         }
 
+        //draw all tiles
         public void draw(Graphics g)
         {
             for (int i = 0; i < Game.tileRowNumber; i++)
@@ -166,8 +207,11 @@ namespace Minesweeper
                     mainMatrix[i][j].draw(g);
                 }
             }
+            g.DrawRectangle(new Pen(Color.Black, 2), new Rectangle(mainMatrix[0][0].location,new Size(
+                Game.tileColumnNumber * Game.TileWidth, Game.tileRowNumber * Game.TileHeight)));
         }
-
+        
+        //recursive function to click a tile
         public void tileClicked(int i,int j)
         {
 
@@ -209,6 +253,7 @@ namespace Minesweeper
             }
         }
 
+        //show All for boosted status
         public void showAll()
         {
             for (int i = 0; i < Game.tileRowNumber; i++)
@@ -225,6 +270,7 @@ namespace Minesweeper
             }
         }
 
+        //revert all for boost end
         public void revertAll()
         {
             for (int i = 0; i < Game.tileRowNumber; i++)
