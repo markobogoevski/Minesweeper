@@ -31,6 +31,8 @@ namespace Minesweeper
         public bool boosted { get; set; }
         public int simulation { get; set; }
         public bool wow { get; set; }
+        public int simulationIdleEvent { get; set; }
+        Tile hintTile { get; set; }
 
         //Drawing
         public static Size mainWindowSize { get; set; }
@@ -62,13 +64,20 @@ namespace Minesweeper
             newGame(d);
         }
 
+        //main func
         private void newGame(difficulty d)
         {
+            hintTile = null;
+
+            if (d == DIFF)
+                this.ClientSize = initialSize;
+
             wow = false;
             button1.Enabled = false;
             button1.BackgroundImage = Resources.smileyHappy;
             grid = null;
             HeightOffset = miniMenu.Height + button1.Height ;
+            this.Cursor = Cursors.WaitCursor;
             mainScreen.Hide();
             boosted = false;
             simulation = 0;
@@ -106,12 +115,15 @@ namespace Minesweeper
             numberOfFlags = numberOfBombs;
             mainScreen.Show();
             timer.Start();
+            idleTimer.Start();
             timer1.Stop();
             timer1.Enabled = false;
             boostedLabel.Hide();
-            mainScreen.Invalidate();
+            this.Cursor = Cursors.Default;
+            Invalidate();
         }
 
+        //some window utilities
         private Size cutBottom()
         {
             return new Size(ClientSize.Width, miniMenu.Height + HeightOffset * 2 + mainScreen.Height);
@@ -196,20 +208,68 @@ namespace Minesweeper
         {
             Graphics graphics = e.Graphics;
             grid.draw(graphics);
+            if (hintTile != null)
+            {
+                Rectangle rectangle = new Rectangle(hintTile.location, new Size(Game.TileWidth, Game.TileHeight));
+                graphics.FillPolygon(new SolidBrush(Color.Gold), StarPoints(5, rectangle));
+            }
         }
 
-        private void timer_Tick(object sender, EventArgs e)
-        { 
+        //utility for star
+        private PointF[] StarPoints(int num_points, Rectangle bounds)
+        {
+            // Make room for the points.
+            PointF[] pts = new PointF[num_points];
+            double rx = bounds.Width / 2;
+            double ry = bounds.Height / 2;
+            double cx = bounds.X + rx;
+            double cy = bounds.Y + ry;
+
+            // Start at the top.
+            double theta = -Math.PI / 2;
+            double dtheta = 4 * Math.PI / num_points;
+            for (int i = 0; i < num_points; i++)
+            {
+                pts[i] = new PointF(
+                (float)(cx + rx * Math.Cos(theta)),
+                (float)(cy + ry * Math.Sin(theta)));
+                theta += dtheta;
+            }
+
+            return pts;
+        }
+
+            //seconds timer for seconds and idle time event trigger
+            private void timer_Tick(object sender, EventArgs e)
+        {
             seconds++;
             Invalidate(true);
         }
 
+
+        private void idleTimer_Tick(object sender, EventArgs e)
+        {
+            simulationIdleEvent++;
+            if (simulationIdleEvent % 5 == 0)
+            {
+                simulationIdleEvent = 0;
+                idleTimeEvent();
+            }
+        }
+        //showing hint if idle 5 seconds!
+        private void idleTimeEvent()
+        {
+            hintTile = grid.getUnopened();
+            Invalidate();
+        }
+
+        // BOOSTED TIMER SIMULATION
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (!boosted)
             {
                 simulation++;
-                if (simulation % 30 == 0)
+                if (simulation % 20 == 0)
                 {
                     currentStreak = 0;
                     simulation = 0;
@@ -235,6 +295,7 @@ namespace Minesweeper
             }
         }
 
+        //ends boost and enables timer toggle
         private void endBoost()
         {
             button1.Show();
@@ -245,8 +306,10 @@ namespace Minesweeper
             timer1.Enabled = false;
             timer1.Stop();
             boostedLabel.Hide();
+            Invalidate();
         }
 
+        //starts boost and enables timer toggle
         private void enableBoost()
         {
             button1.Hide();
@@ -256,11 +319,15 @@ namespace Minesweeper
             simulation = 0;
             boosted = true;
             grid.showAll();
-            Invalidate(true);
+            Invalidate();
         }
 
+        //everything on click..
         private void mainScreen_MouseClick(object sender, MouseEventArgs e)
         {
+            simulationIdleEvent = 0;
+            idleTimer.Start();
+            hintTile = null;
             Point clickLocation = e.Location;
             int j = (clickLocation.X) / TileWidth;
             int i = (clickLocation.Y) / TileHeight;
@@ -273,6 +340,7 @@ namespace Minesweeper
                 checkWin();
                 if (gameEnd)
                     endGame();
+
                 if (Game.openedTiles >= 1 && !wow)
                 {
                     button1.BackgroundImage = Resources.smileyWow;
@@ -312,12 +380,23 @@ namespace Minesweeper
             }
 
             Invalidate(true);
+            idleTimer.Start();
         }
 
+        //check to see if you've won
         private void checkWin()
         {
+            
             if (openedTiles == tileColumnNumber * tileRowNumber - numberOfBombs)
             {
+                timer.Stop();
+                timer1.Stop();
+                timer1.Enabled = false;
+                idleTimer.Stop();
+                if (boosted)
+                {
+                    endBoost();
+                }
                 timer.Stop();
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -332,9 +411,9 @@ namespace Minesweeper
             }
         }
 
+        //end the game or run mini game
         private void endGame()
         {
-
             //this.Hide();
             //new form
 
@@ -342,18 +421,23 @@ namespace Minesweeper
 
             //
             if (boosted)
+            {
                 endBoost();
+            }
 
-                for (int i = 0; i < tileRowNumber; i++)
+            for (int i = 0; i < tileRowNumber; i++)
                 for (int j = 0; j < tileColumnNumber; j++)
                     if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())
                         grid.mainMatrix[i][j].click();
             button1.BackgroundImage = Resources.smileyDead;
+            timer1.Stop();
+            timer.Stop();
+            idleTimer.Stop();
             DialogResult result = MessageBox.Show("You lost! Do you want to try again?","Oops!",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
+                initialSize = this.ClientSize;
                 newGame(DIFF);
-                this.CenterToScreen();
             }
             else this.Close();
             
@@ -399,6 +483,7 @@ namespace Minesweeper
             flag.Text = "Flags: " + numberOfFlags.ToString();
         }
 
+        //when resizing
         private void Game_Resize(object sender, EventArgs e)
         {
             this.SuspendLayout();
@@ -414,5 +499,6 @@ namespace Minesweeper
             this.ResumeLayout();
 
         }
+
     }
 }

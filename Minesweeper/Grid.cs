@@ -281,5 +281,19 @@ namespace Minesweeper
                 }
             }
         }
+
+        //get unopened tile without bomb
+        public Tile getUnopened()
+        {
+            while (true)
+            {
+                int randomX = generator.Next(Game.tileRowNumber);
+                int randomY = generator.Next(Game.tileColumnNumber);
+                if(!mainMatrix[randomX][randomY].isRevealed&&!mainMatrix[randomX][randomY].getBomb())
+                {
+                    return mainMatrix[randomX][randomY];
+                }
+            }
+        }
     }
 }

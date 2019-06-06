@@ -53,6 +53,7 @@
             this.boostedLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.mainScreen = new System.Windows.Forms.PictureBox();
+            this.idleTimer = new System.Windows.Forms.Timer(this.components);
             this.miniMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).BeginInit();
             this.SuspendLayout();
@@ -255,6 +256,12 @@
             this.mainScreen.Paint += new System.Windows.Forms.PaintEventHandler(this.mainScreen_Paint);
             this.mainScreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainScreen_MouseClick);
             // 
+            // idleTimer
+            // 
+            this.idleTimer.Enabled = true;
+            this.idleTimer.Interval = 1000;
+            this.idleTimer.Tick += new System.EventHandler(this.idleTimer_Tick);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +315,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label boostedLabel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer idleTimer;
     }
 }
 
