@@ -11,28 +11,34 @@ namespace Minesweeper
 {
     class Tile : IEquatable<Tile>
     {
+        //Position info
         int XCoord { get; set; }
         int YCoord { get; set; }
+        Point location { get; set; }
+
+        //Size info 
+        public static int Width = Game.TileWidth;
+        public static int Height = Game.TileHeight;
+
+        //Images
         public static Image backgroundImage { get; set; }
         Image flaggedImage { get; set; }
         Image mainImage { get; set; }
-        public static int Width = Game.Width;
-        public static int Height = Game.Height;
-        bool hasBomb { get; set; }
-        bool isRevealed { get; set; }
-        Point location { get; set; }
-        int neighbourBombs { get; set; }
-        bool flagged { get; set; }
+        
+        //Logic
+        private bool hasBomb { get; set; }
+        public bool previousState { get; set; }
+        public bool isRevealed { get; set; }
+        private int neighbourBombs { get; set; }
+        private bool flagged { get; set; }
 
         public Tile(int xCoord, int yCoord)
         {
             XCoord = xCoord;
             YCoord = yCoord;
-            flaggedImage = Resizer.ResizeImage(Resources.flagged, Width, Height);
-            backgroundImage = Resizer.ResizeImage(Resources.back,Width,Height);
-            isRevealed = false;
+            flaggedImage = Resizer.ResizeImage(Resources.flagged,Game.TileWidth,Game.TileHeight);
+            backgroundImage = Resizer.ResizeImage(Resources.back, Game.TileWidth, Game.TileHeight);
             location = new Point(XCoord, YCoord);
-            flagged = false;
         }
 
         public bool getBomb() { return hasBomb; }
@@ -90,6 +96,7 @@ namespace Minesweeper
             if (!isRevealed)
             {
                 isRevealed = true;
+                previousState = isRevealed;
                 Game.openedTiles++;
                 return true;
             }

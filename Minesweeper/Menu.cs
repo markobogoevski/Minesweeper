@@ -61,5 +61,7 @@ namespace Minesweeper
             // TODO: Implement the skins form, where you can choose which image to display for mines from the list of unlocked skins
             // and which backgrounds you can apply to the game form, from the list of unlocked backgrounds.
         }
+
+   
     }
 }

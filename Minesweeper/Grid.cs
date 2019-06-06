@@ -11,9 +11,12 @@ namespace Minesweeper
 {
     class Grid
     {
+        //utility
         Random generator { get; set; }
-        public Tile[][] mainMatrix { get; set; }
         List<ImageWrapper> mainImages { get; set; }
+
+        //main info
+        public Tile[][] mainMatrix { get; set; }
         int bombCount { get; set; }
         int tileNumber { get; set; }
 
@@ -36,16 +39,16 @@ namespace Minesweeper
 
         private void addImages()
         {
-            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(1, Resizer.ResizeImage(Resources._1, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(2, Resizer.ResizeImage(Resources._2, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(3, Resizer.ResizeImage(Resources._3, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(4, Resizer.ResizeImage(Resources._4, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(5, Resizer.ResizeImage(Resources._5, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(6, Resizer.ResizeImage(Resources._6, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(7, Resizer.ResizeImage(Resources._7, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(8, Resizer.ResizeImage(Resources._8, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(9, Resizer.ResizeImage(Resources._9, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(0, Resizer.ResizeImage(Resources._0, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(1, Resizer.ResizeImage(Resources._1, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(2, Resizer.ResizeImage(Resources._2, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(3, Resizer.ResizeImage(Resources._3, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(4, Resizer.ResizeImage(Resources._4, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(5, Resizer.ResizeImage(Resources._5, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(6, Resizer.ResizeImage(Resources._6, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(7, Resizer.ResizeImage(Resources._7, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(8, Resizer.ResizeImage(Resources._8, Game.TileWidth, Game.TileHeight)));
+            mainImages.Add(new ImageWrapper(9, Resizer.ResizeImage(Resources._9, Game.TileWidth, Game.TileHeight)));
         }
 
         private void setTileNumber()
@@ -60,7 +63,7 @@ namespace Minesweeper
             {
                 for(int j = 0; j < Game.tileColumnNumber; j++)
                 {
-                    Tile newTile = new Tile(j * Tile.Width, i * Tile.Height);
+                    Tile newTile = new Tile(j * Game.TileWidth, i * Game.TileHeight);
                     mainMatrix[i][j] = newTile;
                 }
             }
@@ -206,5 +209,31 @@ namespace Minesweeper
             }
         }
 
+        public void showAll()
+        {
+            for (int i = 0; i < Game.tileRowNumber; i++)
+            {
+                for (int j = 0; j < Game.tileColumnNumber; j++)
+                {
+                    if (mainMatrix[i][j].getBomb())
+                    {
+                        mainMatrix[i][j].previousState = mainMatrix[i][j].isRevealed;
+                        mainMatrix[i][j].isRevealed = true;
+                    }
+                    
+                }
+            }
+        }
+
+        public void revertAll()
+        {
+            for (int i = 0; i < Game.tileRowNumber; i++)
+            {
+                for (int j = 0; j < Game.tileColumnNumber; j++)
+                {
+                    mainMatrix[i][j].isRevealed = mainMatrix[i][j].previousState;
+                }
+            }
+        }
     }
 }
