@@ -13,25 +13,38 @@ namespace Minesweeper
     public partial class Spin : Form
     {
         private static Random rand = new Random();
-        List<Image> spinImages;
+        List<Achievement> spinImages;
         public Image award;
         PictureBox[] pictureBoxes;
         int spins;
         int count;
         int[] rotateAngles;
-        public Spin()
-        {
+
+        public Spin(List<Achievement> listaLockedAchievements){
+            if (listaLockedAchievements.Count >= 5) // ako se >=5 zemi gi prvite 5
+                for (int i = 0; i < 5; i++)
+                    spinImages.Add(listaLockedAchievements[i]);
+            else {                                  // ako ne, povtoruvaj gi istit dodeka ne bidat 5
+                while (spinImages.Count != 5) { 
+                    foreach (var item in listaLockedAchievements){
+                        spinImages.Add(item);
+                        if (spinImages.Count == 5) break;
+                    }
+                }
+            }
+            spinImages.Add(new Achievement("EXTRA LIFE", null)); // posleden achievement e extra life
+            
             InitializeComponent();
             this.DoubleBuffered = true;
-            spinImages = new List<Image>();
+            spinImages = new List<Achievement>();
             pictureBoxes = new PictureBox[6];
 
-            spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg"));
-            spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png"));
-            spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg"));
-            spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png"));
-            spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg"));
-            spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg"));
+            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg"));
+            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png"));
+            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg"));
+            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png"));
+            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg"));
+            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg"));
 
 
             rotateAngles = new int[6];
@@ -59,7 +72,7 @@ namespace Minesweeper
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Size = new Size(60, 60);
                 pictureBoxes[i].Location = locations[i];
-                Bitmap bmp = new Bitmap(spinImages[i]);
+                Bitmap bmp = new Bitmap(spinImages[i].getImage());
                 bmp = RotateBitmap(bmp, rotateAngles[i]);
                 pictureBoxes[i].Image = bmp;
             }
@@ -74,7 +87,7 @@ namespace Minesweeper
             //sekoja slika ja rotiram i ja stavam vo soodvetniot Picturebox
             for (int i = 0; i < pictureBoxes.Count(); i++)
             {
-                Bitmap bmp = new Bitmap(spinImages[i]);
+                Bitmap bmp = new Bitmap(spinImages[i].getImage());
                 bmp = RotateBitmap(bmp, rotateAngles[i]);
                 pictureBoxes[i].Image = bmp;
             }
@@ -120,7 +133,7 @@ namespace Minesweeper
             if (count == spins+1){
                 timer1.Stop();
                 returnAward();
-                AwardAccept awardForm = new AwardAccept("Bomba", spinImages[1]);
+                AwardAccept awardForm = new AwardAccept(spinImages[0].getName(), spinImages[0].getImage());
                 awardForm.Show();
                 this.Close();
                 // da se vrati nultiot element 
@@ -132,7 +145,7 @@ namespace Minesweeper
         }
 
         public void returnAward(){
-            this.award = spinImages[0];
+            this.award = spinImages[0].getImage();
         }
 
         private void Button1_Click(object sender, EventArgs e){

@@ -64,7 +64,11 @@ namespace Minesweeper
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Spin forma = new Spin();
+            List<Achievement> lista = new List<Achievement>();
+            lista.Add(new Achievement("Bomba", Image.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg")));
+            lista.Add(new Achievement("Strelka", Image.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg")));
+            lista.Add(new Achievement("Leaderboards", Image.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png")));
+            Spin forma = new Spin(lista);
             forma.Show();
         }
     }

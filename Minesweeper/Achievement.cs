@@ -7,20 +7,24 @@ using System.Threading.Tasks;
 
 namespace Minesweeper
 {
-    class Achievement{
+    public class Achievement{
         string name;
+        bool isLocked;
         Image image;
-        bool unlocked;
-        
 
         public Achievement(string name, Image image){
             this.name = name;
             this.image = image;
-            this.unlocked = false;
+            this.isLocked = true;
         }
+
+        public void Unlock(){
+            this.isLocked = false;
+        }
+        public bool iSLocked() { return isLocked; }
 
         public string getName() { return name; }
         public Image getImage() { return image; }
-        public bool isLocked() { return unlocked; }
+
     }
 }
