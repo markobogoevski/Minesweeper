@@ -19,7 +19,6 @@ namespace Minesweeper
         int spins;
         int count;
         int[] rotateAngles;
-        PictureBox pic;
         public Spin()
         {
             InitializeComponent();
@@ -73,12 +72,12 @@ namespace Minesweeper
             spinImages.RemoveAt(0);
 
             //sekoja slika ja rotiram i ja stavam vo soodvetniot Picturebox
-            //for (int i = 0; i < pictureBoxes.Count(); i++)
-            //{
-            //    Bitmap bmp = new Bitmap(spinImages[i]);
-            //    bmp = RotateBitmap(bmp, rotateAngles[i]);
-            //    pictureBoxes[i].Image = bmp;
-            //}
+            for (int i = 0; i < pictureBoxes.Count(); i++)
+            {
+                Bitmap bmp = new Bitmap(spinImages[i]);
+                bmp = RotateBitmap(bmp, rotateAngles[i]);
+                pictureBoxes[i].Image = bmp;
+            }
         }
 
 
@@ -122,7 +121,6 @@ namespace Minesweeper
                 timer1.Stop();
                 returnAward();
                 AwardAccept awardForm = new AwardAccept("Bomba", spinImages[1]);
-                pictureBox7.Image = spinImages[0];
                 awardForm.Show();
                 this.Close();
                 // da se vrati nultiot element 

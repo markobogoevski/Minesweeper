@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
@@ -42,14 +43,12 @@
             this.btnLeaderboards = new System.Windows.Forms.Button();
             this.btnAchievements = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPanel
             // 
-            this.menuPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuPanel.BackgroundImage")));
             this.menuPanel.Controls.Add(this.button1);
             this.menuPanel.Controls.Add(this.pictureBox1);
             this.menuPanel.Controls.Add(this.lblName);
@@ -69,6 +68,16 @@
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(352, 407);
             this.menuPanel.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(25, 180);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // pictureBox1
             // 
@@ -98,11 +107,7 @@
             // 
             this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
-            this.tbName.Location = new System.Drawing.Point(364, 30);
-=======
             this.tbName.Location = new System.Drawing.Point(216, 30);
->>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.tbName.Margin = new System.Windows.Forms.Padding(2);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(128, 26);
@@ -158,11 +163,7 @@
             // btnQuit
             // 
             this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
-            this.btnQuit.Location = new System.Drawing.Point(317, 363);
-=======
             this.btnQuit.Location = new System.Drawing.Point(105, 300);
->>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnQuit.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(139, 37);
@@ -174,11 +175,7 @@
             // btnSkins
             // 
             this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
-            this.btnSkins.Location = new System.Drawing.Point(317, 320);
-=======
             this.btnSkins.Location = new System.Drawing.Point(105, 257);
->>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnSkins.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkins.Name = "btnSkins";
             this.btnSkins.Size = new System.Drawing.Size(139, 37);
@@ -190,11 +187,7 @@
             // btnLeaderboards
             // 
             this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
-            this.btnLeaderboards.Location = new System.Drawing.Point(317, 278);
-=======
             this.btnLeaderboards.Location = new System.Drawing.Point(105, 215);
->>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(2);
             this.btnLeaderboards.Name = "btnLeaderboards";
             this.btnLeaderboards.Size = new System.Drawing.Size(139, 37);
@@ -206,11 +199,7 @@
             // btnAchievements
             // 
             this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
-            this.btnAchievements.Location = new System.Drawing.Point(317, 236);
-=======
             this.btnAchievements.Location = new System.Drawing.Point(105, 173);
->>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnAchievements.Margin = new System.Windows.Forms.Padding(2);
             this.btnAchievements.Name = "btnAchievements";
             this.btnAchievements.Size = new System.Drawing.Size(139, 37);
@@ -222,11 +211,7 @@
             // btnPlay
             // 
             this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
-<<<<<<< HEAD
-            this.btnPlay.Location = new System.Drawing.Point(317, 194);
-=======
             this.btnPlay.Location = new System.Drawing.Point(105, 131);
->>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnPlay.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(139, 37);
@@ -234,16 +219,6 @@
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(86, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Menu
             // 
