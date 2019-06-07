@@ -374,6 +374,7 @@ namespace Minesweeper
             {
                 if (grid.getFlagged(i, j))
                 {
+                    numberOfFlags++;
                     grid.questionMark(i, j);
                 }
                 else if (grid.getQuestionMark(i, j))
