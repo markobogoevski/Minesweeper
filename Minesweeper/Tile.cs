@@ -46,7 +46,10 @@ namespace Minesweeper
         // Images options
         public void setImagesSizeWithoutMain()
         {
-            questionMark = Resizer.ResizeImage(Resources.questionMark, Game.TileWidth, Game.TileHeight);
+            //questionMark = Resources.questionMark;
+            //flaggedImage = Resources.flagged;
+            //backgroundImage = Resources.back;
+           questionMark = Resizer.ResizeImage(Resources.questionMark, Game.TileWidth, Game.TileHeight);
             flaggedImage = Resizer.ResizeImage(Resources.flagged, Game.TileWidth, Game.TileHeight);
             backgroundImage = Resizer.ResizeImage(Resources.back, Game.TileWidth, Game.TileHeight);
         }

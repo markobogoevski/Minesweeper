@@ -77,6 +77,7 @@ namespace Minesweeper
             grid = null;
             HeightOffset = miniMenu.Height + button1.Height ;
             this.Cursor = Cursors.WaitCursor;
+            Invalidate();
             mainScreen.Hide();
             boosted = false;
             simulation = 0;
@@ -137,8 +138,8 @@ namespace Minesweeper
 
             //center labels
             button1.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - button1.Width / 2, mainScreen.Top - button1.Height - 5);
-            time.Location = new Point(mainScreen.Left, mainScreen.Top-button1.Height+5);
-            flag.Location = new Point(mainScreen.Right-flag.Width-8, mainScreen.Top-button1.Height+5);
+            time.Location = new Point(mainScreen.Left, mainScreen.Top-(int)(time.Height*1.6));
+            flag.Location = new Point(mainScreen.Right-flag.Width-8, mainScreen.Top-(int)(flag.Height*1.6));
         }
 
         private int getTileSize(int tileRowNumber, int tileColumnNumber)
@@ -383,7 +384,7 @@ namespace Minesweeper
                 }
                 else
                 {
-                    if (!boosted)
+                    if (boosted&&!grid.getBomb(i,j) || !boosted)
                     {
                         if (numberOfFlags == 0)
                             return;
@@ -497,6 +498,7 @@ namespace Minesweeper
         //when resizing
         private void Game_Resize(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             this.SuspendLayout();
             mainScreen.Hide();
             if (grid != null)
@@ -507,6 +509,7 @@ namespace Minesweeper
             }
             Invalidate();
             mainScreen.Show();
+            this.Cursor = Cursors.Default;
             this.ResumeLayout();
 
         }
