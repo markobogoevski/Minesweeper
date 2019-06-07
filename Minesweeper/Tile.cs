@@ -23,6 +23,7 @@ namespace Minesweeper
         //Images
         public static Image backgroundImage { get; set; }
         public static Image flaggedImage { get; set; }
+        public static Image questionMark { get; set; }
         public Image mainImage { get; set; }
         
         //Logic
@@ -31,6 +32,7 @@ namespace Minesweeper
         public bool isRevealed { get; set; }
         private int neighbourBombs { get; set; }
         private bool flagged { get; set; }
+        private bool questionMarked { get; set; }
 
         public Tile(int xCoord, int yCoord)
         {
@@ -44,6 +46,7 @@ namespace Minesweeper
         // Images options
         public void setImagesSizeWithoutMain()
         {
+            questionMark = Resizer.ResizeImage(Resources.questionMark, Game.TileWidth, Game.TileHeight);
             flaggedImage = Resizer.ResizeImage(Resources.flagged, Game.TileWidth, Game.TileHeight);
             backgroundImage = Resizer.ResizeImage(Resources.back, Game.TileWidth, Game.TileHeight);
         }
@@ -80,6 +83,22 @@ namespace Minesweeper
             }
         }
 
+        //question mark
+        public void tryToQuestionMark()
+        {
+            if (flagged)
+            {
+                questionMarked = true;
+            }
+            else if (questionMarked)
+            {
+                questionMarked = false;
+            }
+            flagged = false;
+        }
+        public bool getQuestionMark() { return questionMarked; }
+
+
         //for numbering the grid, calculates neighbour bombs number
         public int getNeighbourBombs() { return neighbourBombs; }
 
@@ -106,6 +125,8 @@ namespace Minesweeper
             {
                 if (flagged)
                     g.DrawImageUnscaled(flaggedImage, location);
+                else if (questionMarked)
+                    g.DrawImageUnscaled(questionMark, location);
                 else
                 g.DrawImageUnscaled(backgroundImage, location);
             }
@@ -122,7 +143,6 @@ namespace Minesweeper
                 Game.openedTiles++;
                 return true;
             }
-            else
             return false;
         }
 

@@ -197,6 +197,17 @@ namespace Minesweeper
             return mainMatrix[i][j].flag();
         }
 
+        //question mark
+        public bool getQuestionMark(int i, int j)
+        {
+            return mainMatrix[i][j].getQuestionMark();
+        }
+
+        public void questionMark(int i, int j)
+        {
+            mainMatrix[i][j].tryToQuestionMark();
+        }
+
         //draw all tiles
         public void draw(Graphics g)
         {
@@ -214,15 +225,15 @@ namespace Minesweeper
         //recursive function to click a tile
         public void tileClicked(int i,int j)
         {
-
-            if (!mainMatrix[i][j].click())
-                return;
-
             if (mainMatrix[i][j].getBomb())
             {
                 Game.gameEnd = true;
                 return;
             }
+
+            if (!mainMatrix[i][j].click())
+                return;
+
 
             if (mainMatrix[i][j].getNeighbourBombs()==0)
             {
@@ -260,7 +271,7 @@ namespace Minesweeper
             {
                 for (int j = 0; j < Game.tileColumnNumber; j++)
                 {
-                    if (mainMatrix[i][j].getBomb())
+                    if (mainMatrix[i][j].getBomb() && !mainMatrix[i][j].isRevealed&&!mainMatrix[i][j].getFlag())
                     {
                         mainMatrix[i][j].previousState = mainMatrix[i][j].isRevealed;
                         mainMatrix[i][j].isRevealed = true;

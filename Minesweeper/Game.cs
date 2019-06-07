@@ -73,7 +73,6 @@ namespace Minesweeper
                 this.ClientSize = initialSize;
 
             wow = false;
-            button1.Enabled = false;
             button1.BackgroundImage = Resources.smileyHappy;
             grid = null;
             HeightOffset = miniMenu.Height + button1.Height ;
@@ -114,6 +113,7 @@ namespace Minesweeper
             grid = new Grid(numberOfBombs);
             numberOfFlags = numberOfBombs;
             mainScreen.Show();
+            simulationIdleEvent = 0;
             timer.Start();
             idleTimer.Start();
             timer1.Stop();
@@ -335,6 +335,7 @@ namespace Minesweeper
             {
                 if (grid.getFlagged(i, j))
                     return;
+
                 grid.tileClicked(i, j);
                 mainScreen.Invalidate();
                 checkWin();
@@ -363,20 +364,32 @@ namespace Minesweeper
                     {
                         currentStreak = 0;
                         enableBoost();
+
                     }
                 }
 
             }
-            else if(e.Button == MouseButtons.Right)
+            //question mark + flag part
+            else if (e.Button == MouseButtons.Right)
             {
-                if(numberOfFlags == 0 && !grid.getFlagged(i, j))
-                    return;
-                else if (grid.flag(i, j))
-                    numberOfFlags--;
+                if (grid.getFlagged(i, j))
+                {
+                    grid.questionMark(i, j);
+                }
+                else if (grid.getQuestionMark(i, j))
+                {
+                    grid.questionMark(i, j);
+                }
                 else
-                    numberOfFlags++;
-                mainScreen.Invalidate();
-                checkWin();
+                {
+                    if (!boosted)
+                    {
+                        if (numberOfFlags == 0)
+                            return;
+                        grid.flag(i, j);
+                        numberOfFlags--;
+                    }
+                }
             }
 
             Invalidate(true);
@@ -391,18 +404,15 @@ namespace Minesweeper
             {
                 timer.Stop();
                 timer1.Stop();
-                timer1.Enabled = false;
                 idleTimer.Stop();
                 if (boosted)
                 {
                     endBoost();
                 }
-                timer.Stop();
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     newGame(DIFF);
-                    this.CenterToScreen();
                 }
                 else
                 {
@@ -500,5 +510,11 @@ namespace Minesweeper
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            newGame(DIFF);
+        }
+
+     
     }
 }
