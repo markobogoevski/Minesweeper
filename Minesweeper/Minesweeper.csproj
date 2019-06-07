@@ -157,5 +157,20 @@
   <ItemGroup>
     <None Include="Resources\flagged.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smileyDead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smileyHappy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smileyWow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smileyGlasses.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\questionMark.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

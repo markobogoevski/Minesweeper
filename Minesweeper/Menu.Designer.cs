@@ -67,7 +67,7 @@
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(512, 531);
+            this.menuPanel.Size = new System.Drawing.Size(352, 407);
             this.menuPanel.TabIndex = 6;
             // 
             // pictureBox1
@@ -86,7 +86,7 @@
             this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(416, 7);
+            this.lblName.Location = new System.Drawing.Point(256, 7);
             this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(93, 20);
@@ -98,10 +98,14 @@
             // 
             this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.tbName.Location = new System.Drawing.Point(364, 30);
+=======
+            this.tbName.Location = new System.Drawing.Point(216, 30);
+>>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.tbName.Margin = new System.Windows.Forms.Padding(2);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(140, 26);
+            this.tbName.Size = new System.Drawing.Size(128, 26);
             this.tbName.TabIndex = 12;
             // 
             // rbMedium
@@ -154,7 +158,11 @@
             // btnQuit
             // 
             this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
+<<<<<<< HEAD
             this.btnQuit.Location = new System.Drawing.Point(317, 363);
+=======
+            this.btnQuit.Location = new System.Drawing.Point(105, 300);
+>>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnQuit.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(139, 37);
@@ -166,7 +174,11 @@
             // btnSkins
             // 
             this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
+<<<<<<< HEAD
             this.btnSkins.Location = new System.Drawing.Point(317, 320);
+=======
+            this.btnSkins.Location = new System.Drawing.Point(105, 257);
+>>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnSkins.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkins.Name = "btnSkins";
             this.btnSkins.Size = new System.Drawing.Size(139, 37);
@@ -178,7 +190,11 @@
             // btnLeaderboards
             // 
             this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
+<<<<<<< HEAD
             this.btnLeaderboards.Location = new System.Drawing.Point(317, 278);
+=======
+            this.btnLeaderboards.Location = new System.Drawing.Point(105, 215);
+>>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(2);
             this.btnLeaderboards.Name = "btnLeaderboards";
             this.btnLeaderboards.Size = new System.Drawing.Size(139, 37);
@@ -190,7 +206,11 @@
             // btnAchievements
             // 
             this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
+<<<<<<< HEAD
             this.btnAchievements.Location = new System.Drawing.Point(317, 236);
+=======
+            this.btnAchievements.Location = new System.Drawing.Point(105, 173);
+>>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnAchievements.Margin = new System.Windows.Forms.Padding(2);
             this.btnAchievements.Name = "btnAchievements";
             this.btnAchievements.Size = new System.Drawing.Size(139, 37);
@@ -202,7 +222,11 @@
             // btnPlay
             // 
             this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
+<<<<<<< HEAD
             this.btnPlay.Location = new System.Drawing.Point(317, 194);
+=======
+            this.btnPlay.Location = new System.Drawing.Point(105, 131);
+>>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
             this.btnPlay.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(139, 37);
@@ -225,7 +249,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 531);
+            this.ClientSize = new System.Drawing.Size(352, 407);
             this.Controls.Add(this.menuPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(349, 446);

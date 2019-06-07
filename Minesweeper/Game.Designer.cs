@@ -49,9 +49,11 @@
             this.flag = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.mainScreen = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.boostedLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.mainScreen = new System.Windows.Forms.PictureBox();
+            this.idleTimer = new System.Windows.Forms.Timer(this.components);
             this.miniMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).BeginInit();
             this.SuspendLayout();
@@ -216,18 +218,6 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // mainScreen
-            // 
-            this.mainScreen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mainScreen.Location = new System.Drawing.Point(12, 77);
-            this.mainScreen.Name = "mainScreen";
-            this.mainScreen.Size = new System.Drawing.Size(830, 562);
-            this.mainScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.mainScreen.TabIndex = 0;
-            this.mainScreen.TabStop = false;
-            this.mainScreen.Paint += new System.Windows.Forms.PaintEventHandler(this.mainScreen_Paint);
-            this.mainScreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainScreen_MouseClick);
-            // 
             // timer1
             // 
             this.timer1.Interval = 500;
@@ -243,11 +233,42 @@
             this.boostedLabel.TabIndex = 5;
             this.boostedLabel.Text = "BOOSTED";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button1.BackgroundImage = global::Minesweeper.Properties.Resources.smileyHappy;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Location = new System.Drawing.Point(395, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(62, 47);
+            this.button1.TabIndex = 6;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // mainScreen
+            // 
+            this.mainScreen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mainScreen.Location = new System.Drawing.Point(12, 77);
+            this.mainScreen.Name = "mainScreen";
+            this.mainScreen.Size = new System.Drawing.Size(830, 562);
+            this.mainScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.mainScreen.TabIndex = 0;
+            this.mainScreen.TabStop = false;
+            this.mainScreen.Paint += new System.Windows.Forms.PaintEventHandler(this.mainScreen_Paint);
+            this.mainScreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainScreen_MouseClick);
+            // 
+            // idleTimer
+            // 
+            this.idleTimer.Enabled = true;
+            this.idleTimer.Interval = 1000;
+            this.idleTimer.Tick += new System.EventHandler(this.idleTimer_Tick);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 666);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.boostedLabel);
             this.Controls.Add(this.flag);
             this.Controls.Add(this.time);
@@ -260,6 +281,7 @@
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minesweeper";
+            this.Resize += new System.EventHandler(this.Game_Resize);
             this.miniMenu.ResumeLayout(false);
             this.miniMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).EndInit();
@@ -293,6 +315,8 @@
         private System.Windows.Forms.ToolStripMenuItem x1080ToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label boostedLabel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer idleTimer;
     }
 }
 
