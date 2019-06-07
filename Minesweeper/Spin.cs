@@ -21,6 +21,7 @@ namespace Minesweeper
         int[] rotateAngles;
 
         public Spin(List<Achievement> listaLockedAchievements){
+            spinImages = new List<Achievement>();
             if (listaLockedAchievements.Count >= 5) // ako se >=5 zemi gi prvite 5
                 for (int i = 0; i < 5; i++)
                     spinImages.Add(listaLockedAchievements[i]);
@@ -32,20 +33,11 @@ namespace Minesweeper
                     }
                 }
             }
-            spinImages.Add(new Achievement("EXTRA LIFE", null)); // posleden achievement e extra life
+            spinImages.Add(new Achievement("EXTRA LIFE", Properties.Resources.smileyHappy)); // posleden achievement e extra life
             
             InitializeComponent();
             this.DoubleBuffered = true;
-            spinImages = new List<Achievement>();
             pictureBoxes = new PictureBox[6];
-
-            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg"));
-            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png"));
-            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg"));
-            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png"));
-            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg"));
-            //spinImages.Add(Bitmap.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg"));
-
 
             rotateAngles = new int[6];
             rotateAngles[0] = 0;
@@ -67,8 +59,7 @@ namespace Minesweeper
             pictureBoxes[3] = pictureBox4;
             pictureBoxes[4] = pictureBox5;
             pictureBoxes[5] = pictureBox6;
-            for (int i = 0; i < pictureBoxes.Count(); i++)
-            {
+            for (int i = 0; i < pictureBoxes.Count(); i++){
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Size = new Size(60, 60);
                 pictureBoxes[i].Location = locations[i];
@@ -132,8 +123,8 @@ namespace Minesweeper
         private void Timer1_Tick(object sender, EventArgs e){
             if (count == spins+1){
                 timer1.Stop();
-                returnAward();
-                AwardAccept awardForm = new AwardAccept(spinImages[0].getName(), spinImages[0].getImage());
+                Achievement awardWon = returnAward();
+                AwardAccept awardForm = new AwardAccept(awardWon.getName(), awardWon.getImage());
                 awardForm.Show();
                 this.Close();
                 // da se vrati nultiot element 
@@ -144,8 +135,9 @@ namespace Minesweeper
             Invalidate();
         }
 
-        public void returnAward(){
-            this.award = spinImages[0].getImage();
+        public Achievement returnAward(){
+            this.award = spinImages[1].getImage();
+            return spinImages[1];
         }
 
         private void Button1_Click(object sender, EventArgs e){

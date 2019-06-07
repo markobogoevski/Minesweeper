@@ -64,7 +64,7 @@ namespace Minesweeper
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            List<Achievement> lista = new List<Achievement>();
+            List<Achievement> lista = new List<Achievement>(); // da se zeme listata so LOCKED achievements
             lista.Add(new Achievement("Bomba", Image.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg")));
             lista.Add(new Achievement("Strelka", Image.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg")));
             lista.Add(new Achievement("Leaderboards", Image.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png")));
