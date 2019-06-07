@@ -62,6 +62,10 @@ namespace Minesweeper
             // and which backgrounds you can apply to the game form, from the list of unlocked backgrounds.
         }
 
-   
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Spin forma = new Spin();
+            forma.Show();
+        }
     }
 }

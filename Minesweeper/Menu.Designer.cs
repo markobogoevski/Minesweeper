@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.rbMedium = new System.Windows.Forms.RadioButton();
@@ -40,11 +42,16 @@
             this.btnLeaderboards = new System.Windows.Forms.Button();
             this.btnAchievements = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPanel
             // 
+            this.menuPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuPanel.BackgroundImage")));
+            this.menuPanel.Controls.Add(this.button1);
+            this.menuPanel.Controls.Add(this.pictureBox1);
             this.menuPanel.Controls.Add(this.lblName);
             this.menuPanel.Controls.Add(this.tbName);
             this.menuPanel.Controls.Add(this.rbMedium);
@@ -58,10 +65,21 @@
             this.menuPanel.Controls.Add(this.btnPlay);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
-            this.menuPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(512, 531);
             this.menuPanel.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(86, 414);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(317, 66);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
             // 
             // lblName
             // 
@@ -81,7 +99,7 @@
             this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbName.Location = new System.Drawing.Point(364, 30);
-            this.tbName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbName.Margin = new System.Windows.Forms.Padding(2);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(140, 26);
             this.tbName.TabIndex = 12;
@@ -90,7 +108,7 @@
             // 
             this.rbMedium.AutoSize = true;
             this.rbMedium.Location = new System.Drawing.Point(13, 52);
-            this.rbMedium.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbMedium.Margin = new System.Windows.Forms.Padding(2);
             this.rbMedium.Name = "rbMedium";
             this.rbMedium.Size = new System.Drawing.Size(62, 17);
             this.rbMedium.TabIndex = 11;
@@ -101,7 +119,7 @@
             // 
             this.rbHard.AutoSize = true;
             this.rbHard.Location = new System.Drawing.Point(13, 74);
-            this.rbHard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbHard.Margin = new System.Windows.Forms.Padding(2);
             this.rbHard.Name = "rbHard";
             this.rbHard.Size = new System.Drawing.Size(48, 17);
             this.rbHard.TabIndex = 10;
@@ -113,7 +131,7 @@
             this.rbEasy.AutoSize = true;
             this.rbEasy.Checked = true;
             this.rbEasy.Location = new System.Drawing.Point(13, 30);
-            this.rbEasy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbEasy.Margin = new System.Windows.Forms.Padding(2);
             this.rbEasy.Name = "rbEasy";
             this.rbEasy.Size = new System.Drawing.Size(48, 17);
             this.rbEasy.TabIndex = 9;
@@ -136,8 +154,8 @@
             // btnQuit
             // 
             this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnQuit.Location = new System.Drawing.Point(185, 362);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQuit.Location = new System.Drawing.Point(317, 363);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(139, 37);
             this.btnQuit.TabIndex = 4;
@@ -148,8 +166,8 @@
             // btnSkins
             // 
             this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSkins.Location = new System.Drawing.Point(185, 319);
-            this.btnSkins.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSkins.Location = new System.Drawing.Point(317, 320);
+            this.btnSkins.Margin = new System.Windows.Forms.Padding(2);
             this.btnSkins.Name = "btnSkins";
             this.btnSkins.Size = new System.Drawing.Size(139, 37);
             this.btnSkins.TabIndex = 3;
@@ -160,8 +178,8 @@
             // btnLeaderboards
             // 
             this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLeaderboards.Location = new System.Drawing.Point(185, 277);
-            this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLeaderboards.Location = new System.Drawing.Point(317, 278);
+            this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(2);
             this.btnLeaderboards.Name = "btnLeaderboards";
             this.btnLeaderboards.Size = new System.Drawing.Size(139, 37);
             this.btnLeaderboards.TabIndex = 2;
@@ -172,8 +190,8 @@
             // btnAchievements
             // 
             this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAchievements.Location = new System.Drawing.Point(185, 235);
-            this.btnAchievements.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAchievements.Location = new System.Drawing.Point(317, 236);
+            this.btnAchievements.Margin = new System.Windows.Forms.Padding(2);
             this.btnAchievements.Name = "btnAchievements";
             this.btnAchievements.Size = new System.Drawing.Size(139, 37);
             this.btnAchievements.TabIndex = 1;
@@ -184,8 +202,8 @@
             // btnPlay
             // 
             this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPlay.Location = new System.Drawing.Point(185, 193);
-            this.btnPlay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPlay.Location = new System.Drawing.Point(317, 194);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(139, 37);
             this.btnPlay.TabIndex = 0;
@@ -193,19 +211,30 @@
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(86, 208);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 531);
             this.Controls.Add(this.menuPanel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(349, 446);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +253,7 @@
         private System.Windows.Forms.Label lblDifficulty;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
