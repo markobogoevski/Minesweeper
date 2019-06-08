@@ -416,7 +416,7 @@ namespace Minesweeper
             {
                 if (grid.getFlagged(i, j))
                     return;
-
+                int tileBefore = Game.openedTiles;
                 grid.tileClicked(i, j);
                 mainScreen.Invalidate();
                 checkWin();
@@ -432,7 +432,7 @@ namespace Minesweeper
                     button1.BackgroundImage = Resources.smileyGlasses;
                 
                 
-                if (!boosted)
+                if (!boosted&&Game.openedTiles>tileBefore)
                 {
                     currentStreak++;
                     if (Game.openedTiles >= 1 && !timer1.Enabled)
