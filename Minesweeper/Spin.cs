@@ -89,13 +89,13 @@ namespace Minesweeper
          sekoja slika ja rotiram i ja stavam vo soodvetniot Picturebox
              */
         private void paintAll(Graphics g){
-            for (int i = 0; i < pictureBoxes.Length; i++){ 
-                PictureBox im = pictureBoxes[i];
-                Size s = new Size(60, 60);
-                Rectangle rec = new Rectangle(new Point(im.Location.X, im.Location.Y), s);
-                Bitmap bmp = new Bitmap(im.Image);
-                bmp = RotateBitmap(bmp, (float)rotateAngles[i]);
-            }
+            //for (int i = 0; i < pictureBoxes.Length; i++){ 
+            //    PictureBox im = pictureBoxes[i];
+            //    Size s = new Size(60, 60);
+            //    Rectangle rec = new Rectangle(new Point(im.Location.X, im.Location.Y), s);
+            //    Bitmap bmp = new Bitmap(im.Image);
+            //    bmp = RotateBitmap(bmp, (float)rotateAngles[i]);
+            //}
         }
         
         private void Spin_Paint(object sender, PaintEventArgs e){
@@ -107,17 +107,13 @@ namespace Minesweeper
             e.Graphics.DrawPie(pen, 100, 100, 250, 300, -360, -60);
             e.Graphics.DrawPie(pen, 100, 100, 250, 300, 0, 60);
             Brush b = new SolidBrush(Color.Black);
-            PointF p1 = new PointF(240, 60);
-            PointF p2 = new PointF(260, 60);
-            PointF p3 = new PointF(250, 75);
             PointF[] triangle = new PointF[3];
-            triangle[0]= new PointF(210, 60);
+            triangle[0]= new PointF(210, 60); // triagolnikot od gore
             triangle[1]= new PointF(230, 60);
             triangle[2]= new PointF(220, 75);
             e.Graphics.FillPolygon(b, triangle);
             b.Dispose();
             pen.Dispose();
-            //paintAll(e.Graphics);
         }
 
         private void Timer1_Tick(object sender, EventArgs e){
@@ -125,7 +121,11 @@ namespace Minesweeper
                 timer1.Stop();
                 Achievement awardWon = returnAward();
                 AwardAccept awardForm = new AwardAccept(awardWon.getName(), awardWon.getImage());
-                awardForm.Show();
+                /*
+                 TODO : If extra life ....., If achievement , achievement.Unlock();
+                 */
+                awardForm.Location = new Point(800, 800);
+                awardForm.Show(); 
                 this.Close();
                 // da se vrati nultiot element 
             }
@@ -136,8 +136,8 @@ namespace Minesweeper
         }
 
         public Achievement returnAward(){
-            this.award = spinImages[1].getImage();
-            return spinImages[1];
+            this.award = spinImages[0].getImage();
+            return spinImages[0];
         }
 
         private void Button1_Click(object sender, EventArgs e){

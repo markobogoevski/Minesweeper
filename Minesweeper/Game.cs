@@ -516,6 +516,10 @@ namespace Minesweeper
             newGame(DIFF);
         }
 
-     
+        private void Game_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.White);
+
+        }
     }
 }

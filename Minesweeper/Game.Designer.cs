@@ -281,6 +281,7 @@
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minesweeper";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
             this.Resize += new System.EventHandler(this.Game_Resize);
             this.miniMenu.ResumeLayout(false);
             this.miniMenu.PerformLayout();
