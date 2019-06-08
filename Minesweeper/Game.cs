@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +42,7 @@ namespace Minesweeper
             DIFF = d;
             InitializeComponent();
             newGame();
+            this.BackgroundImage = Resources.background;
         }
 
         private void newGame()

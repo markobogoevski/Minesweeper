@@ -34,25 +34,19 @@
             this.rbEasy = new System.Windows.Forms.RadioButton();
             this.lblDifficulty = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
-            this.btnSkins = new System.Windows.Forms.Button();
             this.btnLeaderboards = new System.Windows.Forms.Button();
             this.btnAchievements = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPanel
             // 
-            this.menuPanel.Controls.Add(this.lblName);
-            this.menuPanel.Controls.Add(this.tbName);
             this.menuPanel.Controls.Add(this.rbMedium);
             this.menuPanel.Controls.Add(this.rbHard);
             this.menuPanel.Controls.Add(this.rbEasy);
             this.menuPanel.Controls.Add(this.lblDifficulty);
             this.menuPanel.Controls.Add(this.btnQuit);
-            this.menuPanel.Controls.Add(this.btnSkins);
             this.menuPanel.Controls.Add(this.btnLeaderboards);
             this.menuPanel.Controls.Add(this.btnAchievements);
             this.menuPanel.Controls.Add(this.btnPlay);
@@ -108,24 +102,13 @@
             // btnQuit
             // 
             this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnQuit.Location = new System.Drawing.Point(247, 445);
+            this.btnQuit.Location = new System.Drawing.Point(247, 393);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(185, 46);
             this.btnQuit.TabIndex = 4;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
-            // 
-            // btnSkins
-            // 
-            this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSkins.Location = new System.Drawing.Point(247, 393);
-            this.btnSkins.Name = "btnSkins";
-            this.btnSkins.Size = new System.Drawing.Size(185, 46);
-            this.btnSkins.TabIndex = 3;
-            this.btnSkins.Text = "Skins and Backgrounds";
-            this.btnSkins.UseVisualStyleBackColor = true;
-            this.btnSkins.Click += new System.EventHandler(this.btnSkins_Click);
             // 
             // btnLeaderboards
             // 
@@ -145,7 +128,7 @@
             this.btnAchievements.Name = "btnAchievements";
             this.btnAchievements.Size = new System.Drawing.Size(185, 46);
             this.btnAchievements.TabIndex = 1;
-            this.btnAchievements.Text = "Achievements";
+            this.btnAchievements.Text = "Achievements and Skins";
             this.btnAchievements.UseVisualStyleBackColor = true;
             this.btnAchievements.Click += new System.EventHandler(this.btnAchievements_Click);
             // 
@@ -159,27 +142,6 @@
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
-            // 
-            // tbName
-            // 
-            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(485, 37);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(185, 30);
-            this.tbName.TabIndex = 12;
-            // 
-            // lblName
-            // 
-            this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(554, 9);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(116, 25);
-            this.lblName.TabIndex = 13;
-            this.lblName.Text = "Your Name:";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Menu
             // 
@@ -201,7 +163,6 @@
 
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.Button btnSkins;
         private System.Windows.Forms.Button btnLeaderboards;
         private System.Windows.Forms.Button btnAchievements;
         private System.Windows.Forms.Button btnPlay;
@@ -209,7 +170,5 @@
         private System.Windows.Forms.RadioButton rbHard;
         private System.Windows.Forms.RadioButton rbEasy;
         private System.Windows.Forms.Label lblDifficulty;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox tbName;
     }
 }

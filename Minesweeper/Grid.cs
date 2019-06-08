@@ -45,7 +45,7 @@ namespace Minesweeper
             mainImages.Add(new ImageWrapper(6, Resizer.ResizeImage(Resources._6, Game.Width, Game.Height)));
             mainImages.Add(new ImageWrapper(7, Resizer.ResizeImage(Resources._7, Game.Width, Game.Height)));
             mainImages.Add(new ImageWrapper(8, Resizer.ResizeImage(Resources._8, Game.Width, Game.Height)));
-            mainImages.Add(new ImageWrapper(9, Resizer.ResizeImage(Resources._9, Game.Width, Game.Height)));
+            mainImages.Add(new ImageWrapper(9, Resizer.ResizeImage(Resources.mine, Game.Width, Game.Height)));
         }
 
         private void setTileNumber()

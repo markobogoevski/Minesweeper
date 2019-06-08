@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace Minesweeper
         public Menu()
         {
             InitializeComponent();
+            menuPanel.BackgroundImage = Resources.background;
+            DoubleBuffered = true;
         }
 
         private difficulty getChecked()
@@ -45,6 +48,8 @@ namespace Minesweeper
         private void btnAchievements_Click(object sender, EventArgs e)
         {
             // TODO: Implement the achievments form, showing all unlocked and locked achievments and the criteria for unlocking
+            // TODO: Implement the skins form, where you can choose which image to display for mines from the list of unlocked skins
+            // and which backgrounds you can apply to the game form, from the list of unlocked backgrounds.
         }
 
         private void btnLeaderboards_Click(object sender, EventArgs e)
@@ -54,12 +59,6 @@ namespace Minesweeper
             l.FormClosed += new FormClosedEventHandler(window_FormClosed);
             l.Show();
             this.Hide();
-        }
-
-        private void btnSkins_Click(object sender, EventArgs e)
-        {
-            // TODO: Implement the skins form, where you can choose which image to display for mines from the list of unlocked skins
-            // and which backgrounds you can apply to the game form, from the list of unlocked backgrounds.
         }
     }
 }

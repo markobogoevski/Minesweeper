@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,7 @@ namespace Minesweeper
             EasyScores = getList(EasyName);
             MediumScores = getList(MediumName);
             HardScores = getList(HardName);
-
+            this.BackgroundImage = Resources.background;
             //for(int i = 0; i < 100; i++)
             //{
                 
