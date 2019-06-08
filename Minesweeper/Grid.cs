@@ -307,5 +307,10 @@ namespace Minesweeper
                 }
             }
         }
+
+        public bool getBomb(int i, int j)
+        {
+            return mainMatrix[i][j].getBomb();
+        }
     }
 }

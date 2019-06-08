@@ -50,8 +50,10 @@ namespace Minesweeper
         private void btnAchievements_Click(object sender, EventArgs e)
         {
             // TODO: Implement the achievments form, showing all unlocked and locked achievments and the criteria for unlocking
-            AchievementsForm formaa = new AchievementsForm(skin);
-            formaa.Show();
+            AchievementsForm form = new AchievementsForm(skin);
+            form.FormClosed += new FormClosedEventHandler(window_FormClosed);
+            form.Show();
+            this.Hide();
         }
 
         private void btnLeaderboards_Click(object sender, EventArgs e)
