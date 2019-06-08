@@ -20,9 +20,9 @@ namespace Minesweeper
         public static List<Score> EasyScores { get; set; }
         public static List<Score> MediumScores { get; set; }
         public static List<Score> HardScores { get; set; }
-        string EasyName = "easy.lst";
-        string MediumName = "medium.lst";
-        string HardName = "hard.lst";
+        string EasyName = "../../Assets/easy.lst";
+        string MediumName = "../../Assets/medium.lst";
+        string HardName = "../../Assets/hard.lst";
         public Leaderboards()
         {
             InitializeComponent();

@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -413,6 +416,29 @@ namespace Minesweeper
                 {
                     endBoost();
                 }
+                List<Score> highScores = getScores(DIFF);
+                bool f = false;
+                for(int i = 0; i < 10; i++)
+                {
+                    if (highScores.Count <= i || highScores[i].Minutes*60 + highScores[i].Seconds > this.seconds)
+                    {
+                        f = true;
+                        break;
+                    }
+                    
+                }
+                if (f)
+                {
+                    Name form = new Name();
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        string name = form.name;
+                        highScores.Add(new Score(name, this.seconds / 60, this.seconds % 60));
+                    }
+                    while (highScores.Count > 10)
+                        highScores.Remove(highScores.Last());
+                }
+                saveScores(DIFF, highScores);
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
@@ -422,6 +448,90 @@ namespace Minesweeper
                 {
                     this.Close();
                 }
+            }
+        }
+
+        private List<Score> getScores(difficulty d)
+        {
+            List<Score> scores;
+            switch (d)
+            {
+                case difficulty.EASY:
+                    try
+                    {
+                        using (FileStream stream = new FileStream("../../Assets/easy.lst", FileMode.Open))
+                        {
+                            IFormatter formatter = new BinaryFormatter();
+                            scores = (List<Score>)formatter.Deserialize(stream);
+                        }
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        scores = new List<Score>();
+                    }
+                    break;
+                case difficulty.INTERMEDIATE:
+                    try
+                    {
+                        using (FileStream stream = new FileStream("../../Assets/medium.lst", FileMode.Open))
+                        {
+                            IFormatter formatter = new BinaryFormatter();
+                            scores = (List<Score>)formatter.Deserialize(stream);
+                        }
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        scores = new List<Score>();
+                    }
+                    break;
+                case difficulty.HARD:
+                    try
+                    {
+                        using (FileStream stream = new FileStream("../../Assets/hard.lst", FileMode.Open))
+                        {
+                            IFormatter formatter = new BinaryFormatter();
+                            scores = (List<Score>)formatter.Deserialize(stream);
+                        }
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        scores = new List<Score>();
+                    }
+                    break;
+                default:
+                    scores = new List<Score>();
+                    break;
+            }
+            return scores;
+        }
+
+        private void saveScores(difficulty d, List<Score> scores)
+        {
+            switch (d)
+            {
+                case difficulty.EASY:
+                    using (FileStream stream = new FileStream("../../Assets/easy.lst", FileMode.Create))
+                    {
+                        IFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(stream, scores);
+                    }
+                    break;
+                case difficulty.INTERMEDIATE:
+                    using (FileStream stream = new FileStream("../../Assets/medium.lst", FileMode.Create))
+                    {
+                        IFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(stream, scores);
+                    }
+                    break;
+                case difficulty.HARD:
+                    using (FileStream stream = new FileStream("../../Assets/hard.lst", FileMode.Create))
+                    {
+                        IFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(stream, scores);
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 

@@ -77,3 +77,4 @@ C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.Achievements
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.AchievementsForm.resources
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.AwardAccept.resources
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Spin.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Name.resources
