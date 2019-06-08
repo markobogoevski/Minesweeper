@@ -39,7 +39,6 @@
             this.rbEasy = new System.Windows.Forms.RadioButton();
             this.lblDifficulty = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
-            this.btnSkins = new System.Windows.Forms.Button();
             this.btnLeaderboards = new System.Windows.Forms.Button();
             this.btnAchievements = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
@@ -58,7 +57,6 @@
             this.menuPanel.Controls.Add(this.rbEasy);
             this.menuPanel.Controls.Add(this.lblDifficulty);
             this.menuPanel.Controls.Add(this.btnQuit);
-            this.menuPanel.Controls.Add(this.btnSkins);
             this.menuPanel.Controls.Add(this.btnLeaderboards);
             this.menuPanel.Controls.Add(this.btnAchievements);
             this.menuPanel.Controls.Add(this.btnPlay);
@@ -71,7 +69,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(25, 180);
+            this.button1.Location = new System.Drawing.Point(13, 109);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 15;
@@ -172,22 +170,10 @@
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
-            // btnSkins
-            // 
-            this.btnSkins.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSkins.Location = new System.Drawing.Point(105, 257);
-            this.btnSkins.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSkins.Name = "btnSkins";
-            this.btnSkins.Size = new System.Drawing.Size(139, 37);
-            this.btnSkins.TabIndex = 3;
-            this.btnSkins.Text = "Skins and Backgrounds";
-            this.btnSkins.UseVisualStyleBackColor = true;
-            this.btnSkins.Click += new System.EventHandler(this.btnSkins_Click);
-            // 
             // btnLeaderboards
             // 
             this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLeaderboards.Location = new System.Drawing.Point(105, 215);
+            this.btnLeaderboards.Location = new System.Drawing.Point(105, 242);
             this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(2);
             this.btnLeaderboards.Name = "btnLeaderboards";
             this.btnLeaderboards.Size = new System.Drawing.Size(139, 37);
@@ -199,12 +185,12 @@
             // btnAchievements
             // 
             this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAchievements.Location = new System.Drawing.Point(105, 173);
+            this.btnAchievements.Location = new System.Drawing.Point(105, 187);
             this.btnAchievements.Margin = new System.Windows.Forms.Padding(2);
             this.btnAchievements.Name = "btnAchievements";
             this.btnAchievements.Size = new System.Drawing.Size(139, 37);
             this.btnAchievements.TabIndex = 1;
-            this.btnAchievements.Text = "Achievements";
+            this.btnAchievements.Text = "Achievements and Skins";
             this.btnAchievements.UseVisualStyleBackColor = true;
             this.btnAchievements.Click += new System.EventHandler(this.btnAchievements_Click);
             // 
@@ -242,7 +228,6 @@
 
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.Button btnSkins;
         private System.Windows.Forms.Button btnLeaderboards;
         private System.Windows.Forms.Button btnAchievements;
         private System.Windows.Forms.Button btnPlay;

@@ -11,20 +11,19 @@ namespace Minesweeper
         string name;
         bool isLocked;
         Image image;
+        public string Requirements { get; set; }
+        public string Description { get; set; }
 
         public Achievement(string name, Image image){
             this.name = name;
             this.image = image;
             this.isLocked = true;
         }
-
-        public void Unlock(){
-            this.isLocked = false;
-        }
+        
+        public void Unlock(){this.isLocked = false;}
         public bool iSLocked() { return isLocked; }
 
         public string getName() { return name; }
         public Image getImage() { return image; }
-
     }
 }

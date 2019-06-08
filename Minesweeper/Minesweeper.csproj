@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Achievement.cs" />
+    <Compile Include="AchievementsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AchievementsForm.Designer.cs">
+      <DependentUpon>AchievementsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AwardAccept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
       <DependentUpon>Spin.cs</DependentUpon>
     </Compile>
     <Compile Include="Tile.cs" />
+    <EmbeddedResource Include="AchievementsForm.resx">
+      <DependentUpon>AchievementsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AwardAccept.resx">
       <DependentUpon>AwardAccept.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,7 +159,7 @@
     <None Include="Resources\8.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bomb.png" />
+    <None Include="Resources\MineClassic.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\0.png" />
@@ -172,6 +181,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\questionMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuke.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poison.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuriken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baloon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

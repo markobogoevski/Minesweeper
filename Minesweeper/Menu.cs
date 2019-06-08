@@ -12,9 +12,11 @@ namespace Minesweeper
 {
     public partial class Menu : Form
     {
+        public ImageWrapper skin;
         public Menu()
         {
             InitializeComponent();
+            skin = new ImageWrapper(9, Properties.Resources._9);
         }
 
         private difficulty getChecked()
@@ -26,7 +28,7 @@ namespace Minesweeper
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Game g = new Game(getChecked());
+            Game g = new Game(getChecked(),skin);
             g.FormClosed += new FormClosedEventHandler(window_FormClosed);
             g.Show();
             this.Hide();
@@ -45,6 +47,8 @@ namespace Minesweeper
         private void btnAchievements_Click(object sender, EventArgs e)
         {
             // TODO: Implement the achievments form, showing all unlocked and locked achievments and the criteria for unlocking
+            AchievementsForm formaa = new AchievementsForm(skin);
+            formaa.Show();
         }
 
         private void btnLeaderboards_Click(object sender, EventArgs e)
@@ -64,11 +68,7 @@ namespace Minesweeper
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            List<Achievement> lista = new List<Achievement>(); // da se zeme listata so LOCKED achievements
-            lista.Add(new Achievement("Bomba", Image.FromFile("C:\\Users\\viktor\\Desktop\\bomba.jpg")));
-            lista.Add(new Achievement("Strelka", Image.FromFile("C:\\Users\\viktor\\Desktop\\Untitleded.jpg")));
-            lista.Add(new Achievement("Leaderboards", Image.FromFile("C:\\Users\\viktor\\Desktop\\Leaderboards.png")));
-            Spin forma = new Spin(lista);
+            Spin forma = new Spin();
             forma.Show();
         }
     }

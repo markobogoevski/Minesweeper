@@ -13,41 +13,56 @@ namespace Minesweeper
     public partial class Spin : Form
     {
         private static Random rand = new Random();
-        List<Achievement> spinImages;
+        List<Image> spinImages;
+        List<string> spinDescriptions;
         public Image award;
         PictureBox[] pictureBoxes;
         int spins;
         int count;
         int[] rotateAngles;
 
-        public Spin(List<Achievement> listaLockedAchievements){
-            spinImages = new List<Achievement>();
-            if (listaLockedAchievements.Count >= 5) // ako se >=5 zemi gi prvite 5
-                for (int i = 0; i < 5; i++)
-                    spinImages.Add(listaLockedAchievements[i]);
-            else {                                  // ako ne, povtoruvaj gi istit dodeka ne bidat 5
-                while (spinImages.Count != 5) { 
-                    foreach (var item in listaLockedAchievements){
-                        spinImages.Add(item);
-                        if (spinImages.Count == 5) break;
-                    }
-                }
-            }
-            spinImages.Add(new Achievement("EXTRA LIFE", Properties.Resources.smileyHappy)); // posleden achievement e extra life
-            
+        public Spin(){
             InitializeComponent();
             this.DoubleBuffered = true;
-            pictureBoxes = new PictureBox[6];
 
+            spinImages = new List<Image>();
+            //if (listaLockedAchievements.Count >= 5) // ako se >=5 zemi gi prvite 5
+            //    for (int i = 0; i < 5; i++)
+            //        spinImages.Add(listaLockedAchievements[i]);
+            //else {                                  // ako ne, povtoruvaj gi istit dodeka ne bidat 5
+            //    while (spinImages.Count != 5) { 
+            //        foreach (var item in listaLockedAchievements){
+            //            spinImages.Add(item);
+            //            if (spinImages.Count == 5) break;
+            //        }
+            //    }
+            //}
+            spinDescriptions = new List<string>();
+            spinDescriptions.Add("Bomb");
+            spinDescriptions.Add("Nuke");
+            spinDescriptions.Add("Shuriken");
+            spinDescriptions.Add("Trap");
+            spinDescriptions.Add("Poison");
+            spinDescriptions.Add("Heart");
+
+            spinImages.Add(Properties.Resources.bomb);
+            spinImages.Add(Properties.Resources.nuke);
+            spinImages.Add(Properties.Resources.shuriken);
+            spinImages.Add(Properties.Resources.trap);
+            spinImages.Add(Properties.Resources.poison);
+            spinImages.Add(Properties.Resources.heart); // posleden achievement e extra life
+            
+            pictureBoxes = new PictureBox[6];
+            Point[] locations = new Point[6];
             rotateAngles = new int[6];
+
             rotateAngles[0] = 0;
             rotateAngles[1] = 325;
             rotateAngles[2] = 225;
             rotateAngles[3] = 180;
             rotateAngles[4] = 135;
             rotateAngles[5] = 45;
-            Point[] locations = new Point[6];
-            locations[0] = new Point(195, 115);
+            locations[0] = new Point(195, 115); // locations za Pictureboxes
             locations[1] = new Point(117, 185);
             locations[2] = new Point(117, 260);
             locations[3] = new Point(195, 320);
@@ -63,7 +78,7 @@ namespace Minesweeper
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Size = new Size(60, 60);
                 pictureBoxes[i].Location = locations[i];
-                Bitmap bmp = new Bitmap(spinImages[i].getImage());
+                Bitmap bmp = new Bitmap(spinImages[i]);
                 bmp = RotateBitmap(bmp, rotateAngles[i]);
                 pictureBoxes[i].Image = bmp;
             }
@@ -74,29 +89,18 @@ namespace Minesweeper
         private void spin() {
             spinImages.Add(spinImages[0]); // prvata se dodava posledna i se brishe [0]
             spinImages.RemoveAt(0);
+            spinDescriptions.Add(spinDescriptions[0]);
+            spinDescriptions.RemoveAt(0);
 
             //sekoja slika ja rotiram i ja stavam vo soodvetniot Picturebox
             for (int i = 0; i < pictureBoxes.Count(); i++)
             {
-                Bitmap bmp = new Bitmap(spinImages[i].getImage());
+                Bitmap bmp = new Bitmap(spinImages[i]);
                 bmp = RotateBitmap(bmp, rotateAngles[i]);
                 pictureBoxes[i].Image = bmp;
             }
         }
 
-
-        /**
-         sekoja slika ja rotiram i ja stavam vo soodvetniot Picturebox
-             */
-        private void paintAll(Graphics g){
-            //for (int i = 0; i < pictureBoxes.Length; i++){ 
-            //    PictureBox im = pictureBoxes[i];
-            //    Size s = new Size(60, 60);
-            //    Rectangle rec = new Rectangle(new Point(im.Location.X, im.Location.Y), s);
-            //    Bitmap bmp = new Bitmap(im.Image);
-            //    bmp = RotateBitmap(bmp, (float)rotateAngles[i]);
-            //}
-        }
         
         private void Spin_Paint(object sender, PaintEventArgs e){
             Pen pen = new Pen(Color.Black, 3);
@@ -119,8 +123,12 @@ namespace Minesweeper
         private void Timer1_Tick(object sender, EventArgs e){
             if (count == spins+1){
                 timer1.Stop();
-                Achievement awardWon = returnAward();
-                AwardAccept awardForm = new AwardAccept(awardWon.getName(), awardWon.getImage());
+                Image awardWon = returnAward();
+                AwardAccept awardForm;
+                if (awardWon.Equals(Properties.Resources.heart))
+                {
+                     awardForm = new AwardAccept("get another Chance", awardWon);
+                }else awardForm = new AwardAccept("LOSE", awardWon);
                 /*
                  TODO : If extra life ....., If achievement , achievement.Unlock();
                  */
@@ -131,12 +139,12 @@ namespace Minesweeper
             }
             this.count++;
             spin();
-            timer1.Interval = timer1.Interval +30;  // DA SE NAMALUVA INTERVALOT
+            timer1.Interval = timer1.Interval +30;  
             Invalidate();
         }
 
-        public Achievement returnAward(){
-            this.award = spinImages[0].getImage();
+        public Image returnAward(){
+            this.award = spinImages[0];
             return spinImages[0];
         }
 
@@ -219,4 +227,5 @@ namespace Minesweeper
 
         private void Spin_Load(object sender, EventArgs e){}
     }
+    
 }

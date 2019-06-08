@@ -9,20 +9,21 @@ using System.Windows.Forms;
 
 namespace Minesweeper
 {
-    class Grid
+    public class Grid
     {
         //utility
         static Random generator = new Random();
         Dictionary<int, ImageWrapper> imagesByNumber { get; set; }
-        List<ImageWrapper> mainImages { get; set; }
-
+        public List<ImageWrapper> mainImages { get; set; }
+        ImageWrapper skin;
         //main info
         public Tile[][] mainMatrix { get; set; }
         int bombCount { get; set; }
         int tileNumber { get; set; }
 
-        public Grid(int numberOfBombs)
+        public Grid(int numberOfBombs, ImageWrapper skin)
         {
+            this.skin = skin;
             imagesByNumber = new Dictionary<int, ImageWrapper>();
             //add images
             mainImages = new List<ImageWrapper>();
@@ -52,7 +53,7 @@ namespace Minesweeper
             mainImages.Add(new ImageWrapper(6, Resources._6));
             mainImages.Add(new ImageWrapper(7, Resources._7));
             mainImages.Add(new ImageWrapper(8, Resources._8));
-            mainImages.Add(new ImageWrapper(9, Resources._9));
+            mainImages.Add(skin);
             for(int i = 0; i < 9; i++)
             {
                 imagesByNumber.Add(i, mainImages.ElementAt(i));

@@ -26,7 +26,7 @@ namespace Minesweeper
         int numberOfBombs { get; set; }
         int numberOfFlags { get; set; }
         public static int openedTiles { get; set; }
-        Grid grid { get; set; }
+        public Grid grid { get; set; }
         public int currentStreak { get; set; }
         public bool boosted { get; set; }
         public int simulation { get; set; }
@@ -45,10 +45,11 @@ namespace Minesweeper
         public static int WidthOffset = 10;
         public static int HeightOffset = 25;
         public Size initialSize { get; set; }
-
+        ImageWrapper skin;
        
-        public Game(difficulty d)
+        public Game(difficulty d, ImageWrapper skin)
         {
+            this.skin = skin;
             this.DoubleBuffered = true;
             mainScreen = new PictureBox();
             miniMenu = new MenuStrip();
@@ -110,7 +111,7 @@ namespace Minesweeper
             //starting game..
            
 
-            grid = new Grid(numberOfBombs);
+            grid = new Grid(numberOfBombs,skin);
             numberOfFlags = numberOfBombs;
             mainScreen.Show();
             simulationIdleEvent = 0;
