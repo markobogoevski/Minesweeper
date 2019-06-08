@@ -41,9 +41,6 @@
             this.backToMainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.windowSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.x1080ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soundOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.flag = new System.Windows.Forms.Label();
@@ -149,34 +146,11 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.windowSizeToolStripMenuItem,
             this.soundOptionsToolStripMenuItem,
             this.toolStripSeparator2});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
-            // 
-            // windowSizeToolStripMenuItem
-            // 
-            this.windowSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resolutionToolStripMenuItem});
-            this.windowSizeToolStripMenuItem.Name = "windowSizeToolStripMenuItem";
-            this.windowSizeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.windowSizeToolStripMenuItem.Text = "Window size";
-            // 
-            // resolutionToolStripMenuItem
-            // 
-            this.resolutionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.x1080ToolStripMenuItem});
-            this.resolutionToolStripMenuItem.Name = "resolutionToolStripMenuItem";
-            this.resolutionToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.resolutionToolStripMenuItem.Text = "Resolution";
-            // 
-            // x1080ToolStripMenuItem
-            // 
-            this.x1080ToolStripMenuItem.Name = "x1080ToolStripMenuItem";
-            this.x1080ToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.x1080ToolStripMenuItem.Text = "1920x1080";
             // 
             // soundOptionsToolStripMenuItem
             // 
@@ -192,21 +166,19 @@
             // flag
             // 
             this.flag.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.flag.AutoSize = true;
             this.flag.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flag.Location = new System.Drawing.Point(706, 41);
+            this.flag.Location = new System.Drawing.Point(704, 93);
             this.flag.Name = "flag";
-            this.flag.Size = new System.Drawing.Size(127, 33);
+            this.flag.Size = new System.Drawing.Size(110, 33);
             this.flag.TabIndex = 4;
-            this.flag.Text = "Flags: 0";
+            this.flag.Text = "Flags: 00";
             this.flag.Paint += new System.Windows.Forms.PaintEventHandler(this.flag_Paint);
             // 
             // time
             // 
             this.time.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.time.AutoSize = true;
             this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time.Location = new System.Drawing.Point(12, 41);
+            this.time.Location = new System.Drawing.Point(50, 93);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(137, 33);
             this.time.TabIndex = 2;
@@ -238,6 +210,7 @@
             this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button1.BackgroundImage = global::Minesweeper.Properties.Resources.smileyHappy;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(395, 27);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(62, 47);
@@ -248,7 +221,7 @@
             // mainScreen
             // 
             this.mainScreen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mainScreen.Location = new System.Drawing.Point(12, 77);
+            this.mainScreen.Location = new System.Drawing.Point(50, 129);
             this.mainScreen.Name = "mainScreen";
             this.mainScreen.Size = new System.Drawing.Size(830, 562);
             this.mainScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -276,12 +249,17 @@
             this.Controls.Add(this.miniMenu);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.miniMenu;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1600, 1000);
-            this.MinimumSize = new System.Drawing.Size(500, 400);
+            this.MinimumSize = new System.Drawing.Size(468, 506);
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minesweeper";
-            this.Resize += new System.EventHandler(this.Game_Resize);
+            this.ResizeBegin += new System.EventHandler(this.Game_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.Game_ResizeEnd);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Game_MouseMove);
             this.miniMenu.ResumeLayout(false);
             this.miniMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainScreen)).EndInit();
@@ -304,15 +282,12 @@
         private System.Windows.Forms.ToolStripMenuItem backToMainMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem windowSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem soundOptionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Label flag;
         private System.Windows.Forms.Label time;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.PictureBox mainScreen;
-        private System.Windows.Forms.ToolStripMenuItem resolutionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem x1080ToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label boostedLabel;
         private System.Windows.Forms.Button button1;

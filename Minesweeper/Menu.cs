@@ -26,10 +26,13 @@ namespace Minesweeper
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             Game g = new Game(getChecked());
             g.FormClosed += new FormClosedEventHandler(window_FormClosed);
+            this.Cursor = Cursors.Default;
             g.Show();
             this.Hide();
+            
         }
 
         private void window_FormClosed(object sender, FormClosedEventArgs e)

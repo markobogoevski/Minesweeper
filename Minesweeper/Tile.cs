@@ -46,18 +46,14 @@ namespace Minesweeper
         // Images options
         public void setImagesSizeWithoutMain()
         {
-            //questionMark = Resources.questionMark;
-            //flaggedImage = Resources.flagged;
-            //backgroundImage = Resources.back;
-           questionMark = Resizer.ResizeImage(Resources.questionMark, Game.TileWidth, Game.TileHeight);
-            flaggedImage = Resizer.ResizeImage(Resources.flagged, Game.TileWidth, Game.TileHeight);
-            backgroundImage = Resizer.ResizeImage(Resources.back, Game.TileWidth, Game.TileHeight);
+            questionMark = Resources.questionMark;
+            flaggedImage = Resources.flagged;
+            backgroundImage = Resources.back;
         }
 
         public void setMainImage(Image image)
         {
             this.mainImage = image;
-            mainImage = Resizer.ResizeImage(mainImage, Game.TileWidth, Game.TileHeight);
         }
 
         //checks to see if there is a bomb in tile
@@ -118,22 +114,29 @@ namespace Minesweeper
         }
         public void draw(Graphics g)
         {
+            Rectangle rectangle = new Rectangle(location, new Size(Game.TileWidth, Game.TileHeight));
             if (isRevealed)
             {
                 if (hasBomb)
-                    g.FillRectangle(new SolidBrush(Color.IndianRed), new Rectangle(location, new Size(Game.TileWidth, Game.TileHeight)));
-                g.DrawImageUnscaled(mainImage, location);
+                    g.FillRectangle(new SolidBrush(Color.IndianRed), rectangle);
+                g.DrawImage(mainImage, rectangle);
             }
             else
             {
                 if (flagged)
-                    g.DrawImageUnscaled(flaggedImage, location);
+                {
+                    g.DrawImage(flaggedImage, rectangle);
+                }
                 else if (questionMarked)
-                    g.DrawImageUnscaled(questionMark, location);
+                {
+                    g.DrawImage(questionMark, rectangle);
+                }
                 else
-                g.DrawImageUnscaled(backgroundImage, location);
+                {
+                    g.DrawImage(backgroundImage, rectangle);
+                }
             }
-            g.DrawRectangle(new Pen(Color.Black, 2), new Rectangle(location, new Size(Game.TileWidth, Game.TileHeight)));
+            g.DrawRectangle(new Pen(Color.Black, 2), rectangle);
         }
 
         //click function, tries to click the tiled and indicates if success (game.openedTiles)
