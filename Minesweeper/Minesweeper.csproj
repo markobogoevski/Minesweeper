@@ -212,5 +212,29 @@
   <ItemGroup>
     <None Include="Resources\mine.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPlay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPlayDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAchievDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnQuitDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnLeadDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAchiev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnQuit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,35 +34,39 @@
             this.rbHard = new System.Windows.Forms.RadioButton();
             this.rbEasy = new System.Windows.Forms.RadioButton();
             this.lblDifficulty = new System.Windows.Forms.Label();
-            this.btnQuit = new System.Windows.Forms.Button();
-            this.btnLeaderboards = new System.Windows.Forms.Button();
-            this.btnAchievements = new System.Windows.Forms.Button();
-            this.btnPlay = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.PictureBox();
+            this.btnLeaderboards = new System.Windows.Forms.PictureBox();
+            this.btnAchievments = new System.Windows.Forms.PictureBox();
+            this.btnPlay = new System.Windows.Forms.PictureBox();
             this.menuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLeaderboards)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAchievments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPanel
             // 
+            this.menuPanel.Controls.Add(this.btnQuit);
+            this.menuPanel.Controls.Add(this.btnLeaderboards);
+            this.menuPanel.Controls.Add(this.btnAchievments);
+            this.menuPanel.Controls.Add(this.btnPlay);
             this.menuPanel.Controls.Add(this.button1);
             this.menuPanel.Controls.Add(this.rbMedium);
             this.menuPanel.Controls.Add(this.rbHard);
             this.menuPanel.Controls.Add(this.rbEasy);
             this.menuPanel.Controls.Add(this.lblDifficulty);
-            this.menuPanel.Controls.Add(this.btnQuit);
-            this.menuPanel.Controls.Add(this.btnLeaderboards);
-            this.menuPanel.Controls.Add(this.btnAchievements);
-            this.menuPanel.Controls.Add(this.btnPlay);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(469, 501);
+            this.menuPanel.Size = new System.Drawing.Size(612, 596);
             this.menuPanel.TabIndex = 6;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(356, 13);
+            this.button1.Location = new System.Drawing.Point(499, 13);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
@@ -120,56 +124,68 @@
             // btnQuit
             // 
             this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnQuit.Location = new System.Drawing.Point(140, 369);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQuit.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuit.Image = global::Minesweeper.Properties.Resources.btnQuitDark;
+            this.btnQuit.Location = new System.Drawing.Point(183, 407);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(185, 46);
-            this.btnQuit.TabIndex = 4;
-            this.btnQuit.Text = "Quit";
-            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Size = new System.Drawing.Size(246, 73);
+            this.btnQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnQuit.TabIndex = 19;
+            this.btnQuit.TabStop = false;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            this.btnQuit.MouseEnter += new System.EventHandler(this.btnQuit_MouseEnter);
+            this.btnQuit.MouseLeave += new System.EventHandler(this.btnQuit_MouseLeave);
             // 
             // btnLeaderboards
             // 
             this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLeaderboards.Location = new System.Drawing.Point(140, 298);
-            this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLeaderboards.BackColor = System.Drawing.Color.Transparent;
+            this.btnLeaderboards.Image = global::Minesweeper.Properties.Resources.btnLeadDark;
+            this.btnLeaderboards.Location = new System.Drawing.Point(183, 318);
             this.btnLeaderboards.Name = "btnLeaderboards";
-            this.btnLeaderboards.Size = new System.Drawing.Size(185, 46);
-            this.btnLeaderboards.TabIndex = 2;
-            this.btnLeaderboards.Text = "Leaderboards";
-            this.btnLeaderboards.UseVisualStyleBackColor = true;
+            this.btnLeaderboards.Size = new System.Drawing.Size(246, 73);
+            this.btnLeaderboards.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnLeaderboards.TabIndex = 18;
+            this.btnLeaderboards.TabStop = false;
             this.btnLeaderboards.Click += new System.EventHandler(this.btnLeaderboards_Click);
+            this.btnLeaderboards.MouseEnter += new System.EventHandler(this.btnLeaderboards_MouseEnter);
+            this.btnLeaderboards.MouseLeave += new System.EventHandler(this.btnLeaderboards_MouseLeave);
             // 
-            // btnAchievements
+            // btnAchievments
             // 
-            this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAchievements.Location = new System.Drawing.Point(140, 230);
-            this.btnAchievements.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAchievements.Name = "btnAchievements";
-            this.btnAchievements.Size = new System.Drawing.Size(185, 46);
-            this.btnAchievements.TabIndex = 1;
-            this.btnAchievements.Text = "Achievements and Skins";
-            this.btnAchievements.UseVisualStyleBackColor = true;
-            this.btnAchievements.Click += new System.EventHandler(this.btnAchievements_Click);
+            this.btnAchievments.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAchievments.BackColor = System.Drawing.Color.Transparent;
+            this.btnAchievments.Image = global::Minesweeper.Properties.Resources.btnAchievDark;
+            this.btnAchievments.Location = new System.Drawing.Point(183, 226);
+            this.btnAchievments.Name = "btnAchievments";
+            this.btnAchievments.Size = new System.Drawing.Size(246, 73);
+            this.btnAchievments.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnAchievments.TabIndex = 17;
+            this.btnAchievments.TabStop = false;
+            this.btnAchievments.Click += new System.EventHandler(this.btnAchievements_Click);
+            this.btnAchievments.MouseEnter += new System.EventHandler(this.btnAchievments_MouseEnter);
+            this.btnAchievments.MouseLeave += new System.EventHandler(this.btnAchievments_MouseLeave);
             // 
             // btnPlay
             // 
             this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPlay.Location = new System.Drawing.Point(140, 161);
-            this.btnPlay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPlay.BackColor = System.Drawing.Color.Transparent;
+            this.btnPlay.Image = global::Minesweeper.Properties.Resources.btnPlayDark;
+            this.btnPlay.Location = new System.Drawing.Point(183, 135);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(185, 46);
-            this.btnPlay.TabIndex = 0;
-            this.btnPlay.Text = "Play";
-            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Size = new System.Drawing.Size(246, 73);
+            this.btnPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnPlay.TabIndex = 16;
+            this.btnPlay.TabStop = false;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            this.btnPlay.MouseEnter += new System.EventHandler(this.btnPlay_MouseEnter);
+            this.btnPlay.MouseLeave += new System.EventHandler(this.btnPlay_MouseLeave);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 501);
+            this.ClientSize = new System.Drawing.Size(612, 596);
             this.Controls.Add(this.menuPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(459, 538);
@@ -178,6 +194,10 @@
             this.Text = "Menu";
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLeaderboards)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAchievments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPlay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,15 +205,15 @@
         #endregion
 
         private System.Windows.Forms.Panel menuPanel;
-        private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.Button btnLeaderboards;
-        private System.Windows.Forms.Button btnAchievements;
-        private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.RadioButton rbMedium;
         private System.Windows.Forms.RadioButton rbHard;
         private System.Windows.Forms.RadioButton rbEasy;
         private System.Windows.Forms.Label lblDifficulty;
         
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox btnPlay;
+        private System.Windows.Forms.PictureBox btnQuit;
+        private System.Windows.Forms.PictureBox btnLeaderboards;
+        private System.Windows.Forms.PictureBox btnAchievments;
     }
 }

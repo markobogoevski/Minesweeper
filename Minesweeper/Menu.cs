@@ -1,5 +1,4 @@
-﻿using Minesweeper.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +16,7 @@ namespace Minesweeper
         public Menu()
         {
             InitializeComponent();
-            menuPanel.BackgroundImage = Resources.background;
+            menuPanel.BackgroundImage = Properties.Resources.background;
             DoubleBuffered = true;
             skin = new ImageWrapper(9, Properties.Resources.mine);
         }
@@ -71,6 +70,70 @@ namespace Minesweeper
         {
             Spin forma = new Spin();
             forma.Show();
+        }
+
+        private void btnPlay_MouseEnter(object sender, EventArgs e)
+        {
+            btnPlay.Image = Properties.Resources.btnPlay;
+            btnPlay.Width += 20;
+            btnPlay.Height += 10;
+            btnPlay.Location = new Point(btnPlay.Location.X - 10, btnPlay.Location.Y - 5);
+        }
+
+        private void btnPlay_MouseLeave(object sender, EventArgs e)
+        {
+            btnPlay.Image = Properties.Resources.btnPlayDark;
+            btnPlay.Width -= 20;
+            btnPlay.Height -= 10;
+            btnPlay.Location = new Point(btnPlay.Location.X + 10, btnPlay.Location.Y + 5);
+        }
+
+        private void btnAchievments_MouseEnter(object sender, EventArgs e)
+        {
+            btnAchievments.Image = Properties.Resources.btnAchiev;
+            btnAchievments.Width += 20;
+            btnAchievments.Height += 10;
+            btnAchievments.Location = new Point(btnAchievments.Location.X - 10, btnAchievments.Location.Y - 5);
+        }
+
+        private void btnAchievments_MouseLeave(object sender, EventArgs e)
+        {
+            btnAchievments.Image = Properties.Resources.btnAchievDark;
+            btnAchievments.Width -= 20;
+            btnAchievments.Height -= 10;
+            btnAchievments.Location = new Point(btnAchievments.Location.X + 10, btnAchievments.Location.Y + 5);
+        }
+
+        private void btnLeaderboards_MouseEnter(object sender, EventArgs e)
+        {
+            btnLeaderboards.Image = Properties.Resources.btnLead;
+            btnLeaderboards.Width += 20;
+            btnLeaderboards.Height += 10;
+            btnLeaderboards.Location = new Point(btnLeaderboards.Location.X - 10, btnLeaderboards.Location.Y - 5);
+        }
+
+        private void btnLeaderboards_MouseLeave(object sender, EventArgs e)
+        {
+            btnLeaderboards.Image = Properties.Resources.btnLeadDark;
+            btnLeaderboards.Width -= 20;
+            btnLeaderboards.Height -= 10;
+            btnLeaderboards.Location = new Point(btnLeaderboards.Location.X + 10, btnLeaderboards.Location.Y + 5);
+        }
+
+        private void btnQuit_MouseEnter(object sender, EventArgs e)
+        {
+            btnQuit.Image = Properties.Resources.btnQuit;
+            btnQuit.Width += 20;
+            btnQuit.Height += 10;
+            btnQuit.Location = new Point(btnQuit.Location.X - 10, btnQuit.Location.Y - 5);
+        }
+
+        private void btnQuit_MouseLeave(object sender, EventArgs e)
+        {
+            btnQuit.Image = Properties.Resources.btnQuitDark;
+            btnQuit.Width -= 20;
+            btnQuit.Height -= 10;
+            btnQuit.Location = new Point(btnQuit.Location.X + 10, btnQuit.Location.Y + 5);
         }
     }
 }
