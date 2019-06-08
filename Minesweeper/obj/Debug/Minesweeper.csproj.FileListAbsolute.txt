@@ -74,3 +74,6 @@ C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Mines
 C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
 >>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
 C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.AchievementsForm.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.AchievementsForm.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.AwardAccept.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Spin.resources

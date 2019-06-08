@@ -45,6 +45,8 @@ namespace Minesweeper
             spinDescriptions.Add("Poison");
             spinDescriptions.Add("Heart");
 
+            this.BackgroundImage = Properties.Resources.background;
+
             spinImages.Add(Properties.Resources.bomb);
             spinImages.Add(Properties.Resources.nuke);
             spinImages.Add(Properties.Resources.shuriken);

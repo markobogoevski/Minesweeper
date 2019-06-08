@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.menuPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
             this.rbMedium = new System.Windows.Forms.RadioButton();
             this.rbHard = new System.Windows.Forms.RadioButton();
             this.rbEasy = new System.Windows.Forms.RadioButton();
@@ -43,15 +39,11 @@
             this.btnAchievements = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPanel
             // 
             this.menuPanel.Controls.Add(this.button1);
-            this.menuPanel.Controls.Add(this.pictureBox1);
-            this.menuPanel.Controls.Add(this.lblName);
-            this.menuPanel.Controls.Add(this.tbName);
             this.menuPanel.Controls.Add(this.rbMedium);
             this.menuPanel.Controls.Add(this.rbHard);
             this.menuPanel.Controls.Add(this.rbEasy);
@@ -62,62 +54,29 @@
             this.menuPanel.Controls.Add(this.btnPlay);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
-            this.menuPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(352, 407);
+            this.menuPanel.Size = new System.Drawing.Size(469, 501);
             this.menuPanel.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 109);
+            this.button1.Location = new System.Drawing.Point(356, 13);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
+            this.button1.Text = "Spin!";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(86, 414);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 66);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblName
-            // 
-            this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(256, 7);
-            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(93, 20);
-            this.lblName.TabIndex = 13;
-            this.lblName.Text = "Your Name:";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbName
-            // 
-            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbName.Location = new System.Drawing.Point(216, 30);
-            this.tbName.Margin = new System.Windows.Forms.Padding(2);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(128, 26);
-            this.tbName.TabIndex = 12;
             // 
             // rbMedium
             // 
             this.rbMedium.AutoSize = true;
-            this.rbMedium.Location = new System.Drawing.Point(13, 52);
-            this.rbMedium.Margin = new System.Windows.Forms.Padding(2);
+            this.rbMedium.Location = new System.Drawing.Point(17, 64);
+            this.rbMedium.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbMedium.Name = "rbMedium";
-            this.rbMedium.Size = new System.Drawing.Size(62, 17);
+            this.rbMedium.Size = new System.Drawing.Size(78, 21);
             this.rbMedium.TabIndex = 11;
             this.rbMedium.Text = "Medium";
             this.rbMedium.UseVisualStyleBackColor = true;
@@ -125,10 +84,10 @@
             // rbHard
             // 
             this.rbHard.AutoSize = true;
-            this.rbHard.Location = new System.Drawing.Point(13, 74);
-            this.rbHard.Margin = new System.Windows.Forms.Padding(2);
+            this.rbHard.Location = new System.Drawing.Point(17, 91);
+            this.rbHard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbHard.Name = "rbHard";
-            this.rbHard.Size = new System.Drawing.Size(48, 17);
+            this.rbHard.Size = new System.Drawing.Size(60, 21);
             this.rbHard.TabIndex = 10;
             this.rbHard.Text = "Hard";
             this.rbHard.UseVisualStyleBackColor = true;
@@ -137,10 +96,10 @@
             // 
             this.rbEasy.AutoSize = true;
             this.rbEasy.Checked = true;
-            this.rbEasy.Location = new System.Drawing.Point(13, 30);
-            this.rbEasy.Margin = new System.Windows.Forms.Padding(2);
+            this.rbEasy.Location = new System.Drawing.Point(17, 37);
+            this.rbEasy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbEasy.Name = "rbEasy";
-            this.rbEasy.Size = new System.Drawing.Size(48, 17);
+            this.rbEasy.Size = new System.Drawing.Size(60, 21);
             this.rbEasy.TabIndex = 9;
             this.rbEasy.TabStop = true;
             this.rbEasy.Text = "Easy";
@@ -150,10 +109,9 @@
             // 
             this.lblDifficulty.AutoSize = true;
             this.lblDifficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDifficulty.Location = new System.Drawing.Point(9, 7);
-            this.lblDifficulty.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDifficulty.Location = new System.Drawing.Point(12, 9);
             this.lblDifficulty.Name = "lblDifficulty";
-            this.lblDifficulty.Size = new System.Drawing.Size(69, 20);
+            this.lblDifficulty.Size = new System.Drawing.Size(84, 25);
             this.lblDifficulty.TabIndex = 5;
             this.lblDifficulty.Text = "Difficulty";
             this.lblDifficulty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,10 +119,10 @@
             // btnQuit
             // 
             this.btnQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnQuit.Location = new System.Drawing.Point(105, 300);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuit.Location = new System.Drawing.Point(140, 369);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(139, 37);
+            this.btnQuit.Size = new System.Drawing.Size(185, 46);
             this.btnQuit.TabIndex = 4;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -173,10 +131,10 @@
             // btnLeaderboards
             // 
             this.btnLeaderboards.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLeaderboards.Location = new System.Drawing.Point(105, 242);
-            this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLeaderboards.Location = new System.Drawing.Point(140, 298);
+            this.btnLeaderboards.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLeaderboards.Name = "btnLeaderboards";
-            this.btnLeaderboards.Size = new System.Drawing.Size(139, 37);
+            this.btnLeaderboards.Size = new System.Drawing.Size(185, 46);
             this.btnLeaderboards.TabIndex = 2;
             this.btnLeaderboards.Text = "Leaderboards";
             this.btnLeaderboards.UseVisualStyleBackColor = true;
@@ -185,10 +143,10 @@
             // btnAchievements
             // 
             this.btnAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAchievements.Location = new System.Drawing.Point(105, 187);
-            this.btnAchievements.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAchievements.Location = new System.Drawing.Point(140, 230);
+            this.btnAchievements.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAchievements.Name = "btnAchievements";
-            this.btnAchievements.Size = new System.Drawing.Size(139, 37);
+            this.btnAchievements.Size = new System.Drawing.Size(185, 46);
             this.btnAchievements.TabIndex = 1;
             this.btnAchievements.Text = "Achievements and Skins";
             this.btnAchievements.UseVisualStyleBackColor = true;
@@ -197,10 +155,10 @@
             // btnPlay
             // 
             this.btnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPlay.Location = new System.Drawing.Point(105, 131);
-            this.btnPlay.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPlay.Location = new System.Drawing.Point(140, 161);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(139, 37);
+            this.btnPlay.Size = new System.Drawing.Size(185, 46);
             this.btnPlay.TabIndex = 0;
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
@@ -208,18 +166,17 @@
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 407);
+            this.ClientSize = new System.Drawing.Size(469, 501);
             this.Controls.Add(this.menuPanel);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(349, 446);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(459, 538);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,9 +192,7 @@
         private System.Windows.Forms.RadioButton rbHard;
         private System.Windows.Forms.RadioButton rbEasy;
         private System.Windows.Forms.Label lblDifficulty;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        
         private System.Windows.Forms.Button button1;
     }
 }

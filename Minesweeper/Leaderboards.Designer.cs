@@ -73,10 +73,10 @@
             this.tabControl1.Controls.Add(this.tabPageEasy);
             this.tabControl1.Controls.Add(this.tabPageMedium);
             this.tabControl1.Controls.Add(this.tabPageHard);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(28, 37);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(798, 390);
+            this.tabControl1.Size = new System.Drawing.Size(750, 352);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPageEasy
@@ -87,7 +87,7 @@
             this.tabPageEasy.Location = new System.Drawing.Point(4, 25);
             this.tabPageEasy.Name = "tabPageEasy";
             this.tabPageEasy.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEasy.Size = new System.Drawing.Size(790, 361);
+            this.tabPageEasy.Size = new System.Drawing.Size(742, 323);
             this.tabPageEasy.TabIndex = 0;
             this.tabPageEasy.Text = "Easy";
             this.tabPageEasy.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Location = new System.Drawing.Point(695, 408);
             this.btnBack.MaximumSize = new System.Drawing.Size(115, 32);
             this.btnBack.MinimumSize = new System.Drawing.Size(115, 32);

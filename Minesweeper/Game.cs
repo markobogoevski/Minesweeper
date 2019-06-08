@@ -62,6 +62,7 @@ namespace Minesweeper
             initialSize = this.ClientSize;
 
             InitializeComponent();
+            this.BackgroundImage = Resources.background;
             newGame(d);
         }
 
@@ -519,7 +520,7 @@ namespace Minesweeper
 
         private void Game_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.Clear(Color.White);
+            //e.Graphics.Clear(Color.White);
 
         }
     }

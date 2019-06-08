@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,9 @@ namespace Minesweeper
         public Menu()
         {
             InitializeComponent();
-            skin = new ImageWrapper(9, Properties.Resources._9);
+            menuPanel.BackgroundImage = Resources.background;
+            DoubleBuffered = true;
+            skin = new ImageWrapper(9, Properties.Resources.mine);
         }
 
         private difficulty getChecked()
@@ -60,11 +63,7 @@ namespace Minesweeper
             this.Hide();
         }
 
-        private void btnSkins_Click(object sender, EventArgs e)
-        {
-            // TODO: Implement the skins form, where you can choose which image to display for mines from the list of unlocked skins
-            // and which backgrounds you can apply to the game form, from the list of unlocked backgrounds.
-        }
+
 
         private void Button1_Click(object sender, EventArgs e)
         {

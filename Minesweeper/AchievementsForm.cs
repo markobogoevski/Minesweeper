@@ -15,7 +15,8 @@ namespace Minesweeper
         ImageWrapper skin;
         public AchievementsForm(ImageWrapper skin){
             InitializeComponent();
-            this.skin = skin;            
+            this.skin = skin;
+            this.BackgroundImage = Properties.Resources.background;
         }
         Point from;
         Point to;
@@ -83,7 +84,7 @@ namespace Minesweeper
 
         private void button1_Click(object sender, EventArgs e)
         {
-            skin.image = Properties.Resources._9;
+            skin.image = Properties.Resources.mine;
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
