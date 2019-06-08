@@ -46,11 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Achievments.cs">
+    <Compile Include="Achievement.cs" />
+    <Compile Include="AchievementsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Achievments.Designer.cs">
-      <DependentUpon>Achievments.cs</DependentUpon>
+    <Compile Include="AchievementsForm.Designer.cs">
+      <DependentUpon>AchievementsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AwardAccept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AwardAccept.Designer.cs">
+      <DependentUpon>AwardAccept.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
@@ -76,7 +83,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resizer.cs" />
     <Compile Include="Score.cs" />
+    <Compile Include="Spin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Spin.Designer.cs">
+      <DependentUpon>Spin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tile.cs" />
+    <EmbeddedResource Include="AchievementsForm.resx">
+      <DependentUpon>AchievementsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AwardAccept.resx">
+      <DependentUpon>AwardAccept.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +115,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Spin.resx">
+      <DependentUpon>Spin.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -137,7 +159,7 @@
     <None Include="Resources\8.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bomb.png" />
+    <None Include="Resources\MineClassic.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\0.png" />
@@ -146,10 +168,19 @@
     <None Include="Resources\flagged.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mine.png" />
+    <None Include="Resources\smileyDead.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\baloon.png" />
+    <None Include="Resources\smileyHappy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smileyWow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smileyGlasses.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\questionMark.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\heart.png" />
@@ -167,7 +198,19 @@
     <None Include="Resources\trap.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bomb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baloon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mine.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

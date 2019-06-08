@@ -20,3 +20,60 @@ C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweep
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Game.resources
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Menu.resources
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Leaderboards.resources
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe.config
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csprojAssemblyReference.cache
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Game.resources
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Leaderboards.resources
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Menu.resources
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Properties.Resources.resources
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.GenerateResource.cache
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.CoreCompileInputs.cache
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.exe
+C:\Users\Marko\source\repos\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
+C:\Minesweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe.config
+C:\Minesweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
+C:\Minesweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csprojAssemblyReference.cache
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Game.resources
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Leaderboards.resources
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Menu.resources
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Properties.Resources.resources
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.GenerateResource.cache
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.CoreCompileInputs.cache
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.exe
+C:\Minesweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
+<<<<<<< HEAD
+C:\Users\viktor\Desktop\minesweep\Minesweeper\bin\Debug\Minesweeper.exe.config
+C:\Users\viktor\Desktop\minesweep\Minesweeper\bin\Debug\Minesweeper.exe
+C:\Users\viktor\Desktop\minesweep\Minesweeper\bin\Debug\Minesweeper.pdb
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.csprojAssemblyReference.cache
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.Game.resources
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.Leaderboards.resources
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.Menu.resources
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.Properties.Resources.resources
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.csproj.GenerateResource.cache
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.csproj.CoreCompileInputs.cache
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.exe
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.pdb
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.Spin.resources
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.AwardAccept.resources
+=======
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe.config
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csprojAssemblyReference.cache
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Game.resources
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Leaderboards.resources
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Menu.resources
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Properties.Resources.resources
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.GenerateResource.cache
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.CoreCompileInputs.cache
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.exe
+C:\Users\Marko\source\repos\Minesweeper2\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
+>>>>>>> 0e6bcfb121c013fbd796dff8880b060600469092
+C:\Users\viktor\Desktop\minesweep\Minesweeper\obj\Debug\Minesweeper.AchievementsForm.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.AchievementsForm.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.AwardAccept.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Spin.resources

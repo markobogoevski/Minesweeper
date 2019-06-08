@@ -13,11 +13,13 @@ namespace Minesweeper
 {
     public partial class Menu : Form
     {
+        public ImageWrapper skin;
         public Menu()
         {
             InitializeComponent();
             menuPanel.BackgroundImage = Resources.background;
             DoubleBuffered = true;
+            skin = new ImageWrapper(9, Properties.Resources.mine);
         }
 
         private difficulty getChecked()
@@ -29,7 +31,7 @@ namespace Minesweeper
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Game g = new Game(getChecked());
+            Game g = new Game(getChecked(),skin);
             g.FormClosed += new FormClosedEventHandler(window_FormClosed);
             g.Show();
             this.Hide();
@@ -48,8 +50,8 @@ namespace Minesweeper
         private void btnAchievements_Click(object sender, EventArgs e)
         {
             // TODO: Implement the achievments form, showing all unlocked and locked achievments and the criteria for unlocking
-            // TODO: Implement the skins form, where you can choose which image to display for mines from the list of unlocked skins
-            // and which backgrounds you can apply to the game form, from the list of unlocked backgrounds.
+            AchievementsForm formaa = new AchievementsForm(skin);
+            formaa.Show();
         }
 
         private void btnLeaderboards_Click(object sender, EventArgs e)
@@ -59,6 +61,14 @@ namespace Minesweeper
             l.FormClosed += new FormClosedEventHandler(window_FormClosed);
             l.Show();
             this.Hide();
+        }
+
+
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Spin forma = new Spin();
+            forma.Show();
         }
     }
 }
