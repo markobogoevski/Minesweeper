@@ -18,7 +18,8 @@ namespace Minesweeper
     {
         EASY,
         INTERMEDIATE,
-        HARD
+        HARD,
+        NONE
     }
     public partial class Game : Form
     {
@@ -35,6 +36,7 @@ namespace Minesweeper
         public int simulation { get; set; }
         public bool wow { get; set; }
         public int simulationIdleEvent { get; set; }
+        public bool resizeHold { get; set; }
         Tile hintTile { get; set; }
 
         //Drawing
@@ -45,106 +47,121 @@ namespace Minesweeper
         public static int TileHeight { get; set; }
         public static int windowWidth{get;set;}
         public static int windowHeight { get; set; }
-        public static int WidthOffset = 10;
-        public static int HeightOffset = 25;
-        public Size initialSize { get; set; }
-        ImageWrapper skin;
+        public static int WidthOffset = 25;
+        public static int HeightOffset { get; set; }
+        public Size previousSize { get; set; }
+        public static float coefWidth { get; set; }
+        public static float coefHeight { get; set; }
+        public bool outside { get; set; }
+        public FormBorderStyle previousStyle { get; set; }
+        public FormWindowState previousState { get; set; }
+        public Size previousMaxSize { get; set; }
+        public int previousTileSize { get; set; }
+        public bool fullscreen { get; set; }
+        public ImageWrapper skin { get; set; }
        
-        public Game(difficulty d, ImageWrapper skin)
+
+       
+        public Game(difficulty d, ImageWrapper s)
         {
-            this.skin = skin;
+            this.skin = s;
+            DIFF = difficulty.NONE ;
+
             this.DoubleBuffered = true;
-            mainScreen = new PictureBox();
-            miniMenu = new MenuStrip();
-            timer = new Timer();
-            time = new Label();
-            flag = new Label();
-            boostedLabel = new Label();
             this.BackColor = Color.LightGray ;
-            this.ClientSize = new Size(800, 600);
-            initialSize = this.ClientSize;
+
+            //default tile size
+            resizeHold = true;
+            Game.TileWidth = Game.TileHeight = 50;
+
+            resizeHold = false;
 
             InitializeComponent();
-            this.BackgroundImage = Resources.background;
+            HeightOffset = miniMenu.Height + button1.Height + 15;
             newGame(d);
         }
 
         //main func
         private void newGame(difficulty d)
         {
-            hintTile = null;
-
-            if (d == DIFF)
-                this.ClientSize = initialSize;
-
-            wow = false;
-            button1.BackgroundImage = Resources.smileyHappy;
-            grid = null;
-            HeightOffset = miniMenu.Height + button1.Height ;
-            this.Cursor = Cursors.WaitCursor;
-            Invalidate();
+            mainScreen.SuspendLayout();
             mainScreen.Hide();
+           
+           
+
+            
+            button1.BackgroundImage = Resources.smileyHappy;
+           
+            this.Cursor = Cursors.WaitCursor;
+
+
+            //initializing properties
+            outside = false;
+            grid = null;
+            hintTile = null;
+            wow = false;
             boosted = false;
             simulation = 0;
             currentStreak = 0;
-            DIFF = d;
+            simulationIdleEvent = 0;
             gameEnd = false;
             seconds = 0;
             openedTiles = 0;
 
-            //cutting bottom
-            if (DIFF == difficulty.HARD)
-                this.ClientSize = cutBottom();
-            else
-                this.ClientSize = initialSize;
+            if (!fullscreen)
+            {
+                //setting window size based on resolution (default)
+                //setting picture box Size based on window size
 
-            //setting window size based on resolution (default)
-            //setting picture box Size based on window size
-            mainScreen.Size = setScreenOptions(Game.DIFF);
-
-            //cutting bottom
-            if (DIFF == difficulty.HARD)
-                this.ClientSize = cutBottom();
-            else
-                this.ClientSize = initialSize;
+                setScreenOptions(d);
 
 
-            //centering screen 
-            centerTheScreen();
-          
+
+                //centering screen 
+
+                centerTheScreen();
+            }
+            DIFF = d;
+
 
             //starting game..
-           
+
 
             grid = new Grid(numberOfBombs,skin);
             numberOfFlags = numberOfBombs;
-            mainScreen.Show();
-            simulationIdleEvent = 0;
+           
+
             timer.Start();
             idleTimer.Start();
             timer1.Stop();
             timer1.Enabled = false;
             boostedLabel.Hide();
+        
+          
             this.Cursor = Cursors.Default;
+            this.CenterToScreen();
+
+            
+            mainScreen.Show();
+            mainScreen.ResumeLayout();
             Invalidate();
         }
 
-        //some window utilities
-        private Size cutBottom()
-        {
-            return new Size(ClientSize.Width, miniMenu.Height + HeightOffset * 2 + mainScreen.Height);
-        }
 
         private void centerTheScreen()
         {
-            //center picture box
-            mainScreen.Location = new Point((ClientSize.Width - mainScreen.Width) / 2,
-               miniMenu.Height+HeightOffset);
+           
 
+            if(ClientSize.Height-mainScreen.Height >= 300)
+                this.ClientSize = new Size(this.ClientSize.Width, mainScreen.Size.Height + 1 * HeightOffset
+                   + miniMenu.Height+100);
+
+            mainScreen.Location = new Point((ClientSize.Width - mainScreen.Width) / 2,
+               HeightOffset);
             //center labels
             button1.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - button1.Width / 2, mainScreen.Top - button1.Height - 5);
-            time.Location = new Point(mainScreen.Left, mainScreen.Top-(int)(time.Height*1.6));
-            flag.Location = new Point(mainScreen.Right-flag.Width-8, mainScreen.Top-(int)(flag.Height*1.6));
+            time.Location = new Point(mainScreen.Left, mainScreen.Top-time.Height);
+            flag.Location = new Point(mainScreen.Right-flag.Width, mainScreen.Top-flag.Height);
         }
 
         private int getTileSize(int tileRowNumber, int tileColumnNumber)
@@ -154,62 +171,124 @@ namespace Minesweeper
             return Math.Min(size1, size2);
         }
 
-        private Size setScreenOptions(difficulty diff)
+        private void setScreenOptions(difficulty d)
         {
-            int size = 0;
-            switch (diff)
+            if (DIFF != d)
             {
-                case difficulty.EASY:
-                    //setting easy options
-                    numberOfBombs = 10;
-                    tileRowNumber = tileColumnNumber = 9;
-                    //Calculating tileSize
-                    size = getTileSize(tileRowNumber, tileColumnNumber);
-                    TileWidth = TileHeight = size;
-                    //setting font and menu items
-                    easyToolStripMenuItem.Checked = true;
-                    mediumToolStripMenuItem.Checked = false;
-                    hardToolStripMenuItem.Checked = false;
-                    time.Font = new Font(time.Font.FontFamily, 16);
-                    flag.Font = new Font(flag.Font.FontFamily, 16);
-                    break;
-                case difficulty.INTERMEDIATE:
-                    //setting medium options
-                    tileRowNumber = tileColumnNumber = 16;
-                    numberOfBombs = 40;
-                    //Calculating tileSize
-                    size = getTileSize(tileRowNumber, tileColumnNumber);
-                    TileWidth = TileHeight = size;
-                    //setting font and menu items
-                    easyToolStripMenuItem.Checked = false;
-                    mediumToolStripMenuItem.Checked = true;
-                    hardToolStripMenuItem.Checked = false;
-                    time.Font = new Font(time.Font.FontFamily, 14);
-                    flag.Font = new Font(flag.Font.FontFamily, 14);
-                    break;
-                case difficulty.HARD:
-                    //setting medium options
-                    tileRowNumber = 16;
-                    tileColumnNumber = 30;
-                    numberOfBombs = 99;
-                    //Calculating tileSize
-                    size = getTileSize(tileRowNumber, tileColumnNumber);
-                    TileWidth = TileHeight = size;
-                    //setting font and menu items
-                    easyToolStripMenuItem.Checked = false;
-                    mediumToolStripMenuItem.Checked = false;
-                    hardToolStripMenuItem.Checked = true;
-                    time.Font = new Font(time.Font.FontFamily, 12);
-                    flag.Font = new Font(flag.Font.FontFamily, 12);
-                    break;
-            }
+                int size = 0;
+                switch (d)
+                {
+                    case difficulty.EASY:
+                        //setting easy options
+                        numberOfBombs = 10;
+                        tileRowNumber = tileColumnNumber = 9;
+                        this.MinimumSize = new Size(468, 515);
+                        this.MaximumSize = new Size(1200, 915);
+                        //Calculating tileSize
+                        if (Game.TileHeight == 0)
+                        {
+                            size = getTileSize(tileRowNumber, tileColumnNumber);
+                            MessageBox.Show(size.ToString());
+                            TileWidth = TileHeight = size;
+                        }
+                        //setting font and menu items
+                        easyToolStripMenuItem.Checked = true;
+                        mediumToolStripMenuItem.Checked = false;
+                        hardToolStripMenuItem.Checked = false;
+                        time.Font = new Font(time.Font.FontFamily, 16);
+                        flag.Font = new Font(flag.Font.FontFamily, 16);
+                        break;
+                    case difficulty.INTERMEDIATE:
+                        //setting medium options
+                        tileRowNumber = tileColumnNumber = 16;
+                        numberOfBombs = 40;
+                        this.MinimumSize = new Size(520, 585);
+                        this.MaximumSize = new Size(1440, 990);
 
-            mainWindowSize = new Size(tileColumnNumber * TileWidth, tileRowNumber * TileHeight);
-           
-            return mainWindowSize;
+                        //Calculating tileSize
+                        if (Game.TileHeight == 0)
+                        {
+                            size = getTileSize(tileRowNumber, tileColumnNumber);
+                            MessageBox.Show(size.ToString());
+
+                            TileWidth = TileHeight = size;
+                        }
+                        //setting font and menu items
+                        easyToolStripMenuItem.Checked = false;
+                        mediumToolStripMenuItem.Checked = true;
+                        hardToolStripMenuItem.Checked = false;
+                        time.Font = new Font(time.Font.FontFamily, 14);
+                        flag.Font = new Font(flag.Font.FontFamily, 14);
+                        break;
+                    case difficulty.HARD:
+                        //setting medium options
+                        tileRowNumber = 16;
+                        tileColumnNumber = 30;
+                        numberOfBombs = 99;
+                        this.MinimumSize = new Size(950, 600);
+                        this.MaximumSize = new Size(1550, 950);
+
+                        //Calculating tileSize
+                        if (Game.TileHeight == 0)
+                        {
+                            size = getTileSize(tileRowNumber, tileColumnNumber);
+                            MessageBox.Show(size.ToString());
+
+                            TileWidth = TileHeight = size;
+                        }
+                        //setting font and menu items
+                        easyToolStripMenuItem.Checked = false;
+                        mediumToolStripMenuItem.Checked = false;
+                        hardToolStripMenuItem.Checked = true;
+                        time.Font = new Font(time.Font.FontFamily, 12);
+                        flag.Font = new Font(flag.Font.FontFamily, 12);
+                        break;
+                }
+
+                mainScreen.Size = new Size(tileColumnNumber * TileWidth, tileRowNumber * TileHeight);
+                previousSize = this.ClientSize;
+                this.ClientSize = new Size(mainScreen.Size.Width + 2 * WidthOffset, mainScreen.Size.Height + 1 * HeightOffset
+                    + miniMenu.Height);
+
+                
+                    coefWidth = (float)mainScreen.Size.Width / this.ClientSize.Width;
+                    coefHeight = (float)mainScreen.Size.Height / this.ClientSize.Height;
+               
+
+                Invalidate();
+            }
+            else
+            {
+                mainScreen.Size = new Size(tileColumnNumber * TileWidth, tileRowNumber * TileHeight);
+                previousSize = this.ClientSize;
+                this.ClientSize = new Size(mainScreen.Size.Width + 2 * WidthOffset, mainScreen.Size.Height + 1 * HeightOffset
+                    + miniMenu.Height);
+                Invalidate();
+            }
         }
 
-        
+
+        private void Game_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics graphics = e.Graphics;
+            if (fullscreen)
+            {
+                Brush brush = new SolidBrush(Color.DarkGoldenrod);
+                Pen pen = new Pen(Color.DarkKhaki,2);
+
+                Rectangle rectangle1 = new Rectangle(new Point(0,0), new Size(
+                    (int)((ClientSize.Width - mainScreen.Width) / 3.2), ClientSize.Height));
+                Rectangle rectangle2 = new Rectangle(new Point(ClientSize.Width-rectangle1.Width,0), new Size(
+                    (int)((ClientSize.Width - mainScreen.Width) / 3.2), ClientSize.Height));
+                graphics.FillRectangle(brush, rectangle1);
+                graphics.DrawRectangle(pen, rectangle1);
+                graphics.FillRectangle(brush, rectangle2);
+                graphics.DrawRectangle(pen, rectangle2);
+                brush.Dispose();
+                pen.Dispose();
+            }
+        }
+
         public void mainScreen_Paint(object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
@@ -219,6 +298,7 @@ namespace Minesweeper
                 Rectangle rectangle = new Rectangle(hintTile.location, new Size(Game.TileWidth, Game.TileHeight));
                 graphics.FillPolygon(new SolidBrush(Color.Gold), StarPoints(5, rectangle));
             }
+            
         }
 
         //utility for star
@@ -341,7 +421,7 @@ namespace Minesweeper
             {
                 if (grid.getFlagged(i, j))
                     return;
-
+                int tileBefore = Game.openedTiles;
                 grid.tileClicked(i, j);
                 mainScreen.Invalidate();
                 checkWin();
@@ -357,7 +437,7 @@ namespace Minesweeper
                     button1.BackgroundImage = Resources.smileyGlasses;
                 
                 
-                if (!boosted)
+                if (!boosted&&Game.openedTiles>tileBefore)
                 {
                     currentStreak++;
                     if (Game.openedTiles >= 1 && !timer1.Enabled)
@@ -416,11 +496,11 @@ namespace Minesweeper
                 {
                     endBoost();
                 }
-                List<Score> highScores = getScores(DIFF);
+                SortedList<Score, Score> highScores = getScores(DIFF);
                 bool f = false;
                 for(int i = 0; i < 10; i++)
                 {
-                    if (highScores.Count <= i || highScores[i].Minutes*60 + highScores[i].Seconds > this.seconds)
+                    if (highScores.Count <= i || highScores.Keys[i].Minutes*60 + highScores.Keys[i].Seconds > this.seconds)
                     {
                         f = true;
                         break;
@@ -433,10 +513,11 @@ namespace Minesweeper
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         string name = form.name;
-                        highScores.Add(new Score(name, this.seconds / 60, this.seconds % 60));
+                        Score temp = new Score(name, this.seconds / 60, this.seconds % 60);
+                        highScores.Add(temp, temp);
                     }
                     while (highScores.Count > 10)
-                        highScores.Remove(highScores.Last());
+                        highScores.RemoveAt(highScores.Count - 1);
                 }
                 saveScores(DIFF, highScores);
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
@@ -451,9 +532,9 @@ namespace Minesweeper
             }
         }
 
-        private List<Score> getScores(difficulty d)
+        private SortedList<Score,Score> getScores(difficulty d)
         {
-            List<Score> scores;
+            SortedList<Score,Score> scores;
             switch (d)
             {
                 case difficulty.EASY:
@@ -462,12 +543,12 @@ namespace Minesweeper
                         using (FileStream stream = new FileStream("../../Assets/easy.lst", FileMode.Open))
                         {
                             IFormatter formatter = new BinaryFormatter();
-                            scores = (List<Score>)formatter.Deserialize(stream);
+                            scores = (SortedList < Score, Score >)formatter.Deserialize(stream);
                         }
                     }
                     catch (FileNotFoundException)
                     {
-                        scores = new List<Score>();
+                        scores = new SortedList<Score, Score>();
                     }
                     break;
                 case difficulty.INTERMEDIATE:
@@ -476,12 +557,12 @@ namespace Minesweeper
                         using (FileStream stream = new FileStream("../../Assets/medium.lst", FileMode.Open))
                         {
                             IFormatter formatter = new BinaryFormatter();
-                            scores = (List<Score>)formatter.Deserialize(stream);
+                            scores = (SortedList<Score, Score>)formatter.Deserialize(stream);
                         }
                     }
                     catch (FileNotFoundException)
                     {
-                        scores = new List<Score>();
+                        scores = new SortedList<Score, Score>();
                     }
                     break;
                 case difficulty.HARD:
@@ -490,22 +571,22 @@ namespace Minesweeper
                         using (FileStream stream = new FileStream("../../Assets/hard.lst", FileMode.Open))
                         {
                             IFormatter formatter = new BinaryFormatter();
-                            scores = (List<Score>)formatter.Deserialize(stream);
+                            scores = (SortedList<Score, Score>)formatter.Deserialize(stream);
                         }
                     }
                     catch (FileNotFoundException)
                     {
-                        scores = new List<Score>();
+                        scores = new SortedList<Score, Score>();
                     }
                     break;
                 default:
-                    scores = new List<Score>();
+                    scores = new SortedList<Score, Score>();
                     break;
             }
             return scores;
         }
 
-        private void saveScores(difficulty d, List<Score> scores)
+        private void saveScores(difficulty d, SortedList<Score, Score> scores)
         {
             switch (d)
             {
@@ -560,7 +641,7 @@ namespace Minesweeper
             DialogResult result = MessageBox.Show("You lost! Do you want to try again?","Oops!",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
-                initialSize = this.ClientSize;
+                 previousSize = this.ClientSize;
                 newGame(DIFF);
             }
             else this.Close();
@@ -569,22 +650,58 @@ namespace Minesweeper
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Game.TileWidth = Game.TileHeight = 50;
             newGame(DIFF);
-            this.CenterToScreen();
         }
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Game.TileWidth = Game.TileHeight = 50;
+            if (fullscreen&&DIFF!=difficulty.EASY)
+            {
+                fullscreen = false;
+                MaximumSize = previousMaxSize;
+                FormBorderStyle = previousStyle;
+                WindowState = previousState;
+                Game.TileHeight = Game.TileWidth = previousTileSize;
+                setScreenOptions(DIFF);
+                centerTheScreen();
+                grid.changeMatrix();
+            }
             newGame(difficulty.EASY);
         }
 
         private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Game.TileWidth = Game.TileHeight = 50;
+            if (fullscreen && DIFF != difficulty.INTERMEDIATE)
+            {
+                fullscreen = false;
+                MaximumSize = previousMaxSize;
+                FormBorderStyle = previousStyle;
+                WindowState = previousState;
+                Game.TileHeight = Game.TileWidth = previousTileSize;
+                setScreenOptions(DIFF);
+                centerTheScreen();
+                grid.changeMatrix();
+            }
             newGame(difficulty.INTERMEDIATE);
         }
 
         private void hardToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Game.TileWidth = Game.TileHeight = 50;
+            if (fullscreen && DIFF != difficulty.HARD)
+            {
+                fullscreen = false;
+                MaximumSize = previousMaxSize;
+                FormBorderStyle = previousStyle;
+                WindowState = previousState;
+                Game.TileHeight = Game.TileWidth = previousTileSize;
+                setScreenOptions(DIFF);
+                centerTheScreen();
+                grid.changeMatrix();
+            }
             newGame(difficulty.HARD);
 
         }
@@ -607,34 +724,105 @@ namespace Minesweeper
             flag.Text = "Flags: " + numberOfFlags.ToString();
         }
 
-        //when resizing
-        private void Game_Resize(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-            this.SuspendLayout();
-            mainScreen.Hide();
-            if (grid != null)
-            {
-                mainScreen.Size = setScreenOptions(DIFF);
-                centerTheScreen();
-                grid.changeMatrix();
-            }
-            Invalidate();
-            mainScreen.Show();
-            this.Cursor = Cursors.Default;
-            this.ResumeLayout();
 
-        }
-
+        //restarting via button
         private void button1_Click(object sender, EventArgs e)
         {
             newGame(DIFF);
         }
 
-        private void Game_Paint(object sender, PaintEventArgs e)
+        private void Game_ResizeBegin(object sender, EventArgs e)
         {
-            //e.Graphics.Clear(Color.White);
+            if(!resizeHold)
+            previousSize = this.ClientSize;
+        }
 
+        private void Game_ResizeEnd(object sender, EventArgs e)
+        {
+            if (previousSize != this.ClientSize&&!resizeHold)
+            {
+                mainScreen.Hide();
+                int widthOffset = this.ClientSize.Width - previousSize.Width;
+                int heightOffset = this.ClientSize.Height - previousSize.Height;
+                int offset = 0;
+                if (widthOffset > 0 || heightOffset > 0)
+                    offset = Math.Max(widthOffset, heightOffset);
+                else
+                    offset = Math.Min(widthOffset, heightOffset);
+
+                widthOffset = offset;
+                heightOffset = (int)(((float)Game.tileRowNumber / Game.tileColumnNumber) * offset);
+
+                //chaning client size
+                if (offset < 0)
+                {
+                    this.ClientSize = new Size(Math.Max(this.MinimumSize.Width, previousSize.Width + widthOffset),
+                        Math.Max(this.MinimumSize.Height, this.ClientSize.Height + heightOffset));
+                }
+                else
+                {
+                    this.ClientSize = new Size(Math.Min(this.MaximumSize.Width, previousSize.Width + widthOffset),
+                        Math.Min(this.MaximumSize.Height, this.ClientSize.Height + heightOffset));
+                }
+                int newMainScreenWidth = (int)(coefWidth * this.ClientSize.Width);
+                int newMainScreenHeight = (int)(coefHeight * this.ClientSize.Height);
+
+                //changing tile size
+                Game.TileWidth = newMainScreenWidth / Game.tileColumnNumber;
+                Game.TileHeight = newMainScreenHeight / Game.tileRowNumber;
+                Game.TileHeight = Game.TileWidth = Math.Min(Game.TileWidth, Game.TileHeight);
+                mainScreen.Size = new Size(Game.TileWidth * Game.tileColumnNumber, Game.TileHeight * Game.tileRowNumber);
+
+
+                //grid.changeMatrix();
+                grid.changeMatrix();
+                centerTheScreen();
+                mainScreen.Show();
+                this.Cursor = Cursors.Default;
+                previousSize = this.ClientSize;
+                Invalidate();
+            }
+                
+        }
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F&&!fullscreen)
+            {
+                previousTileSize = Game.TileHeight;
+                previousMaxSize = this.MaximumSize;
+                MaximumSize = new Size(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height);
+                previousState = this.WindowState;
+                previousStyle = this.FormBorderStyle;
+                FormBorderStyle = FormBorderStyle.None;
+                WindowState = FormWindowState.Maximized;
+                Game_ResizeEnd(null, null);
+                fullscreen = true;
+            }
+            else if (e.KeyCode == Keys.Escape&&fullscreen)
+            {
+                fullscreen = false;
+                MaximumSize = previousMaxSize;
+                FormBorderStyle = previousStyle;
+                WindowState = previousState;
+                Game.TileHeight=Game.TileWidth = previousTileSize;
+                setScreenOptions(DIFF);
+                centerTheScreen();
+                grid.changeMatrix();
+            }
+        }
+
+        private void Game_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point location = e.Location;
+            Rectangle buttonRectangle =new  Rectangle(button1.Location, new Size(button1.Width, button1.Height));
+            if (location.X >= buttonRectangle.Left && location.X <= buttonRectangle.Right
+                && location.Y >= buttonRectangle.Top && location.Y <= buttonRectangle.Bottom)
+            {
+                button1.Enabled = true;
+            }
+            else
+                button1.Enabled = false;
         }
     }
 }

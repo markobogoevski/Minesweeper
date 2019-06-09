@@ -73,8 +73,8 @@ namespace Minesweeper
                 for (int j = 0; j < Game.tileColumnNumber; j++)
                 {
                     mainMatrix[i][j].location = new Point(j * Game.TileWidth, i * Game.TileHeight);
-                    mainMatrix[i][j].setImagesSizeWithoutMain();
-                    mainMatrix[i][j].setMainImage(mainMatrix[i][j].mainImage);
+                    //mainMatrix[i][j].setImagesSizeWithoutMain();
+                    //mainMatrix[i][j].setMainImage(mainMatrix[i][j].mainImage);
                 }
             }
 
