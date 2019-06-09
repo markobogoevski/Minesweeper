@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace Minesweeper
 {
+    
     public partial class Spin : Form
     {
+        bool alternate;
         private static Random rand = new Random();
         List<Image> spinImages;
         List<string> spinDescriptions;
+        Point[] locations;
         public Image award;
         PictureBox[] pictureBoxes;
         int spins;
@@ -24,58 +27,29 @@ namespace Minesweeper
         public Spin(){
             InitializeComponent();
             this.DoubleBuffered = true;
-
             spinImages = new List<Image>();
-            //if (listaLockedAchievements.Count >= 5) // ako se >=5 zemi gi prvite 5
-            //    for (int i = 0; i < 5; i++)
-            //        spinImages.Add(listaLockedAchievements[i]);
-            //else {                                  // ako ne, povtoruvaj gi istit dodeka ne bidat 5
-            //    while (spinImages.Count != 5) { 
-            //        foreach (var item in listaLockedAchievements){
-            //            spinImages.Add(item);
-            //            if (spinImages.Count == 5) break;
-            //        }
-            //    }
-            //}
-            spinDescriptions = new List<string>();
-            spinDescriptions.Add("Bomb");
-            spinDescriptions.Add("Nuke");
-            spinDescriptions.Add("Shuriken");
-            spinDescriptions.Add("Trap");
-            spinDescriptions.Add("Poison");
-            spinDescriptions.Add("Heart");
-
-            this.BackgroundImage = Properties.Resources.background;
+            alternate = false;
+            
+            //this.BackgroundImage = Properties.Resources.background;
 
             spinImages.Add(Properties.Resources.bomb);
+            spinImages[0].Tag = "Bomb";
             spinImages.Add(Properties.Resources.nuke);
-            spinImages.Add(Properties.Resources.shuriken);
-            spinImages.Add(Properties.Resources.trap);
-            spinImages.Add(Properties.Resources.poison);
+            spinImages[1].Tag = "Nuke";
             spinImages.Add(Properties.Resources.heart); // posleden achievement e extra life
-            
+            spinImages[2].Tag = "Heart";
+            spinImages.Add(Properties.Resources.shuriken);
+            spinImages[3].Tag = "Shuriken";
+            spinImages.Add(Properties.Resources.poison);
+            spinImages[4].Tag = "Poison";
+            spinImages.Add(Properties.Resources.heart); // posleden achievement e extra life
+            spinImages[5].Tag = "Heart";
+
             pictureBoxes = new PictureBox[6];
-            Point[] locations = new Point[6];
+            locations = new Point[6];
             rotateAngles = new int[6];
 
-            rotateAngles[0] = 0;
-            rotateAngles[1] = 325;
-            rotateAngles[2] = 225;
-            rotateAngles[3] = 180;
-            rotateAngles[4] = 135;
-            rotateAngles[5] = 45;
-            locations[0] = new Point(195, 115); // locations za Pictureboxes
-            locations[1] = new Point(117, 185);
-            locations[2] = new Point(117, 260);
-            locations[3] = new Point(195, 320);
-            locations[4] = new Point(270, 260);
-            locations[5] = new Point(270, 185);
-            pictureBoxes[0] = pictureBox1;
-            pictureBoxes[1] = pictureBox2;
-            pictureBoxes[2] = pictureBox3;
-            pictureBoxes[3] = pictureBox4;
-            pictureBoxes[4] = pictureBox5;
-            pictureBoxes[5] = pictureBox6;
+            hardCodedSetup();
             for (int i = 0; i < pictureBoxes.Count(); i++){
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Size = new Size(60, 60);
@@ -91,8 +65,6 @@ namespace Minesweeper
         private void spin() {
             spinImages.Add(spinImages[0]); // prvata se dodava posledna i se brishe [0]
             spinImages.RemoveAt(0);
-            spinDescriptions.Add(spinDescriptions[0]);
-            spinDescriptions.RemoveAt(0);
 
             //sekoja slika ja rotiram i ja stavam vo soodvetniot Picturebox
             for (int i = 0; i < pictureBoxes.Count(); i++)
@@ -105,21 +77,45 @@ namespace Minesweeper
 
         
         private void Spin_Paint(object sender, PaintEventArgs e){
-            Pen pen = new Pen(Color.Black, 3);
-            e.Graphics.DrawPie(pen, 100, 100, 250, 300, -60, -60);
-            e.Graphics.DrawPie(pen, 100, 100, 250, 300, -120, -60);
-            e.Graphics.DrawPie(pen, 100, 100, 250, 300, -180, -60);
-            e.Graphics.DrawPie(pen, 100, 100, 250, 300, -240, -60);
-            e.Graphics.DrawPie(pen, 100, 100, 250, 300, -360, -60);
-            e.Graphics.DrawPie(pen, 100, 100, 250, 300, 0, 60);
+            Brush brown= new SolidBrush(Color.Brown);
+            Brush lightBrown = new SolidBrush(Color.RosyBrown);
+            for (int i = 0; i < spinImages.Count; i++){
+                if (alternate)              
+                if (i%2==1)
+                    pictureBoxes[i].BackColor = Color.RosyBrown;
+                else pictureBoxes[i].BackColor = Color.Brown;
+                else
+                    if (i % 2 == 0)
+                    pictureBoxes[i].BackColor = Color.RosyBrown;
+                else pictureBoxes[i].BackColor = Color.Brown;
+
+            }
+            if (alternate)
+            {
+                e.Graphics.FillPie(brown, 100, 100, 250, 300, -60, -60);
+                e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -120, -60);
+                e.Graphics.FillPie(brown, 100, 100, 250, 300, -180, -60);
+                e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -240, -60);
+                e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -360, -60);
+                e.Graphics.FillPie(brown, 100, 100, 250, 300, 0, 60);
+            }
+            else{
+                e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -60, -60);
+                e.Graphics.FillPie(brown, 100, 100, 250, 300, -120, -60);
+                e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -180, -60);
+                e.Graphics.FillPie(brown, 100, 100, 250, 300, -240, -60);
+                e.Graphics.FillPie(brown, 100, 100, 250, 300, -360, -60);
+                e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, 0, 60);
+            }
             Brush b = new SolidBrush(Color.Black);
             PointF[] triangle = new PointF[3];
-            triangle[0]= new PointF(210, 60); // triagolnikot od gore
-            triangle[1]= new PointF(230, 60);
-            triangle[2]= new PointF(220, 75);
+            triangle[0]= new PointF(210, 65); // triagolnikot od gore
+            triangle[1]= new PointF(230, 65);
+            triangle[2]= new PointF(220, 80);
             e.Graphics.FillPolygon(b, triangle);
             b.Dispose();
-            pen.Dispose();
+            brown.Dispose();
+            lightBrown.Dispose();
         }
 
         private void Timer1_Tick(object sender, EventArgs e){
@@ -127,18 +123,25 @@ namespace Minesweeper
                 timer1.Stop();
                 Image awardWon = returnAward();
                 AwardAccept awardForm;
-                if (awardWon.Equals(Properties.Resources.heart))
-                {
-                     awardForm = new AwardAccept("get another Chance", awardWon);
-                }else awardForm = new AwardAccept("LOSE", awardWon);
+                if (awardWon.Tag == "Heart")
+                    awardForm = new AwardAccept("get another Chance", awardWon);
+                else
+                    awardForm = new AwardAccept("LOSE", awardWon);
+                
                 /*
                  TODO : If extra life ....., If achievement , achievement.Unlock();
                  */
                 awardForm.Location = new Point(800, 800);
-                awardForm.Show(); 
+                if (awardForm.ShowDialog() == DialogResult.OK)
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                else DialogResult = DialogResult.Cancel;
+                
                 this.Close();
                 // da se vrati nultiot element 
             }
+            alternate = !alternate;
             this.count++;
             spin();
             timer1.Interval = timer1.Interval +30;  
@@ -228,6 +231,33 @@ namespace Minesweeper
         }
 
         private void Spin_Load(object sender, EventArgs e){}
+
+        private void button2_Click(object sender, EventArgs e){
+            this.spins = 4;
+            timer1.Start();
+            // da se vrati nultiot element 
+        }
+        private void hardCodedSetup()
+        {
+            rotateAngles[0] = 0;
+            rotateAngles[1] = 325;
+            rotateAngles[2] = 225;
+            rotateAngles[3] = 180;
+            rotateAngles[4] = 135;
+            rotateAngles[5] = 45;
+            locations[0] = new Point(195, 115); // locations za Pictureboxes
+            locations[1] = new Point(117, 185);
+            locations[2] = new Point(117, 260);
+            locations[3] = new Point(195, 320);
+            locations[4] = new Point(270, 260);
+            locations[5] = new Point(270, 185);
+            pictureBoxes[0] = pictureBox1;
+            pictureBoxes[1] = pictureBox2;
+            pictureBoxes[2] = pictureBox3;
+            pictureBoxes[3] = pictureBox4;
+            pictureBoxes[4] = pictureBox5;
+            pictureBoxes[5] = pictureBox6;
+        }
     }
     
 }

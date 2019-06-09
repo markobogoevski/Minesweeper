@@ -24,6 +24,7 @@ namespace Minesweeper
     public partial class Game : Form
     {
         //Logic
+        static Random rand = new Random();
         public static difficulty DIFF { get; set; }
         int seconds { get; set; }
         public static bool gameEnd = false;
@@ -37,6 +38,7 @@ namespace Minesweeper
         public bool wow { get; set; }
         public int simulationIdleEvent { get; set; }
         public bool resizeHold { get; set; }
+        bool secondChance;
         Tile hintTile { get; set; }
 
         //Drawing
@@ -78,6 +80,7 @@ namespace Minesweeper
 
             InitializeComponent();
             HeightOffset = miniMenu.Height + button1.Height + 15;
+            
             newGame(d);
         }
 
@@ -86,10 +89,10 @@ namespace Minesweeper
         {
             mainScreen.SuspendLayout();
             mainScreen.Hide();
-           
-           
+            secondChance = false;
 
-            
+
+
             button1.BackgroundImage = Resources.smileyHappy;
            
             this.Cursor = Cursors.WaitCursor;
@@ -621,31 +624,44 @@ namespace Minesweeper
         {
             //this.Hide();
             //new form
-
-
-
             //
             if (boosted)
             {
                 endBoost();
-            }
+            }          
 
+            timer1.Stop();
+            timer.Stop();
+            idleTimer.Stop();
+            Spin spinForm = new Spin();
+            int chance = rand.Next(1, 7);
+            if (secondChance || chance >= 3 || spinForm.ShowDialog() != DialogResult.OK) // if NOT OK, you got bomb and you lose
+            {
+                Lost();
+            }
+            else
+            {
+                timer1.Start();
+                timer.Start();
+                idleTimer.Start();
+                gameEnd = false;
+                secondChance = true; 
+            }
+        }
+        private void Lost()
+        {
             for (int i = 0; i < tileRowNumber; i++)
                 for (int j = 0; j < tileColumnNumber; j++)
                     if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())
                         grid.mainMatrix[i][j].click();
-            button1.BackgroundImage = Resources.smileyDead;
-            timer1.Stop();
-            timer.Stop();
-            idleTimer.Stop();
-            DialogResult result = MessageBox.Show("You lost! Do you want to try again?","Oops!",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+            DialogResult result = MessageBox.Show("You lost! Do you want to try again?", "Oops!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
-                 previousSize = this.ClientSize;
+                button1.BackgroundImage = Resources.smileyDead;
+                previousSize = this.ClientSize;
                 newGame(DIFF);
             }
             else this.Close();
-            
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
