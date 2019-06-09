@@ -24,36 +24,23 @@ namespace Minesweeper
         public Spin(){
             InitializeComponent();
             this.DoubleBuffered = true;
-
             spinImages = new List<Image>();
-            //if (listaLockedAchievements.Count >= 5) // ako se >=5 zemi gi prvite 5
-            //    for (int i = 0; i < 5; i++)
-            //        spinImages.Add(listaLockedAchievements[i]);
-            //else {                                  // ako ne, povtoruvaj gi istit dodeka ne bidat 5
-            //    while (spinImages.Count != 5) { 
-            //        foreach (var item in listaLockedAchievements){
-            //            spinImages.Add(item);
-            //            if (spinImages.Count == 5) break;
-            //        }
-            //    }
-            //}
-            spinDescriptions = new List<string>();
-            spinDescriptions.Add("Bomb");
-            spinDescriptions.Add("Nuke");
-            spinDescriptions.Add("Shuriken");
-            spinDescriptions.Add("Trap");
-            spinDescriptions.Add("Poison");
-            spinDescriptions.Add("Heart");
-
+            
             this.BackgroundImage = Properties.Resources.background;
 
             spinImages.Add(Properties.Resources.bomb);
+            spinImages[0].Tag = "Bomb";
             spinImages.Add(Properties.Resources.nuke);
+            spinImages[1].Tag = "Nuke";
             spinImages.Add(Properties.Resources.shuriken);
+            spinImages[2].Tag = "Shuriken";
             spinImages.Add(Properties.Resources.trap);
+            spinImages[3].Tag = "Trap";
             spinImages.Add(Properties.Resources.poison);
+            spinImages[4].Tag = "Poison";
             spinImages.Add(Properties.Resources.heart); // posleden achievement e extra life
-            
+            spinImages[5].Tag = "Heart";
+
             pictureBoxes = new PictureBox[6];
             Point[] locations = new Point[6];
             rotateAngles = new int[6];
@@ -91,8 +78,6 @@ namespace Minesweeper
         private void spin() {
             spinImages.Add(spinImages[0]); // prvata se dodava posledna i se brishe [0]
             spinImages.RemoveAt(0);
-            spinDescriptions.Add(spinDescriptions[0]);
-            spinDescriptions.RemoveAt(0);
 
             //sekoja slika ja rotiram i ja stavam vo soodvetniot Picturebox
             for (int i = 0; i < pictureBoxes.Count(); i++)
@@ -127,10 +112,11 @@ namespace Minesweeper
                 timer1.Stop();
                 Image awardWon = returnAward();
                 AwardAccept awardForm;
-                if (awardWon.Equals(Properties.Resources.heart))
-                {
-                     awardForm = new AwardAccept("get another Chance", awardWon);
-                }else awardForm = new AwardAccept("LOSE", awardWon);
+                if (awardWon.Tag == "Heart")
+                    awardForm = new AwardAccept("get another Chance", awardWon);
+                else
+                    awardForm = new AwardAccept("LOSE", awardWon);
+
                 /*
                  TODO : If extra life ....., If achievement , achievement.Unlock();
                  */
@@ -228,6 +214,12 @@ namespace Minesweeper
         }
 
         private void Spin_Load(object sender, EventArgs e){}
+
+        private void button2_Click(object sender, EventArgs e){
+            this.spins = 4;
+            timer1.Start();
+            // da se vrati nultiot element 
+        }
     }
     
 }
