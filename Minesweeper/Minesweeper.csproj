@@ -59,6 +59,7 @@
     <Compile Include="AwardAccept.Designer.cs">
       <DependentUpon>AwardAccept.cs</DependentUpon>
     </Compile>
+    <Compile Include="Button.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +245,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnQuit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasyDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHardDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMedium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMediumDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baloonLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bombLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nukeLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poisonLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shurikenLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trapLocked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

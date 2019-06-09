@@ -30,6 +30,11 @@ namespace Minesweeper
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (img.Tag == "Heart")
+            {
+                DialogResult = DialogResult.OK;
+            }
+            else DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }
