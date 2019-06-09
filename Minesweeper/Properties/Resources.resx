@@ -253,4 +253,28 @@
   <data name="trapLocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trapLocked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnBackDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnBackDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnBackLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnBackLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnEasyDarkLead" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnEasyDarkLead.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnEasyLeaderboards" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnEasyLeaderboards.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnHardDarkLead" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnHardDarkLead.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnHardLeaderboards" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnHardLeaderboards.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnMediumDarkLead" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnMediumDarkLead.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnMediumLeaderboards" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnMediumLeaderboards.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

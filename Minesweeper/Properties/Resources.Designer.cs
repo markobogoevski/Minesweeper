@@ -233,6 +233,26 @@ namespace Minesweeper.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnBackDark {
+            get {
+                object obj = ResourceManager.GetObject("btnBackDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnBackLight {
+            get {
+                object obj = ResourceManager.GetObject("btnBackLight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnEasy {
             get {
                 object obj = ResourceManager.GetObject("btnEasy", resourceCulture);
@@ -253,6 +273,26 @@ namespace Minesweeper.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnEasyDarkLead {
+            get {
+                object obj = ResourceManager.GetObject("btnEasyDarkLead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnEasyLeaderboards {
+            get {
+                object obj = ResourceManager.GetObject("btnEasyLeaderboards", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnHard {
             get {
                 object obj = ResourceManager.GetObject("btnHard", resourceCulture);
@@ -266,6 +306,26 @@ namespace Minesweeper.Properties {
         internal static System.Drawing.Bitmap btnHardDark {
             get {
                 object obj = ResourceManager.GetObject("btnHardDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnHardDarkLead {
+            get {
+                object obj = ResourceManager.GetObject("btnHardDarkLead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnHardLeaderboards {
+            get {
+                object obj = ResourceManager.GetObject("btnHardLeaderboards", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +366,26 @@ namespace Minesweeper.Properties {
         internal static System.Drawing.Bitmap btnMediumDark {
             get {
                 object obj = ResourceManager.GetObject("btnMediumDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnMediumDarkLead {
+            get {
+                object obj = ResourceManager.GetObject("btnMediumDarkLead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnMediumLeaderboards {
+            get {
+                object obj = ResourceManager.GetObject("btnMediumLeaderboards", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
