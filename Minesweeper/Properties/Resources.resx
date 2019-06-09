@@ -175,9 +175,6 @@
   <data name="_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bomb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bomb1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -216,5 +213,44 @@
   </data>
   <data name="btnQuit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnQuit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnEasy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnEasy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnEasyDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnEasyDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnHard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnHard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnHardDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnHardDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnMedium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnMedium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnMediumDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnMediumDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="baloonLocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\baloonLocked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bomb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bomb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bombLocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bombLocked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nukeLocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nukeLocked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="poisonLocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\poisonLocked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shurikenLocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shurikenLocked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trapLocked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trapLocked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,26 +13,31 @@ namespace Minesweeper
 {
     public partial class Menu : Form
     {
-        public ImageWrapper skin;
+        public ImageWrapper skin { get; set; }
+        private Button Play, Achiev, Leaderboards, Quit, Easy, Medium, Hard;
+        private difficulty Diff;
+
         public Menu()
         {
+            Play = new Button(new Point(185, 100), Resources.btnPlayDark, Resources.btnPlay, 245, 75);
+            Achiev = new Button(new Point(185, 200), Resources.btnAchievDark, Resources.btnAchiev, 245, 75);
+            Leaderboards = new Button(new Point(185, 300), Resources.btnLeadDark, Resources.btnLead, 245, 75);
+            Quit = new Button(new Point(185, 400), Resources.btnQuitDark, Resources.btnQuit, 245, 75);
+            Easy = new Button(new Point(135, 535), Resources.btnEasyDark, Resources.btnEasy, 100, 100);
+            Medium = new Button(new Point(257, 535), Resources.btnMediumDark, Resources.btnMedium, 100, 100);
+            Hard = new Button(new Point(380, 535), Resources.btnHardDark, Resources.btnHard, 100, 100);
+            Diff = difficulty.EASY;
+            Easy.Clicked = true;
             InitializeComponent();
-            menuPanel.BackgroundImage = Properties.Resources.background;
+            this.BackgroundImage = Resources.background;
             DoubleBuffered = true;
-            skin = new ImageWrapper(9, Properties.Resources.mine);
-        }
-
-        private difficulty getChecked()
-        {
-            if (rbEasy.Checked) return difficulty.EASY;
-            else if (rbMedium.Checked) return difficulty.INTERMEDIATE;
-            else return difficulty.HARD;
+            skin = new ImageWrapper(9, Resources.mine);
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            Game g = new Game(getChecked(), skin);
+            Game g = new Game(Diff, skin);
             g.FormClosed += new FormClosedEventHandler(window_FormClosed);
             this.Cursor = Cursors.Default;
             g.Show();
@@ -42,11 +48,6 @@ namespace Minesweeper
         private void window_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
-        }
-
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void btnAchievements_Click(object sender, EventArgs e)
@@ -67,76 +68,67 @@ namespace Minesweeper
             this.Hide();
         }
 
-
-
-        private void Button1_Click(object sender, EventArgs e)
+        private void Menu_Paint(object sender, PaintEventArgs e)
         {
-            Spin forma = new Spin();
-            forma.Show();
+            Play.Draw(e.Graphics);
+            Achiev.Draw(e.Graphics);
+            Quit.Draw(e.Graphics);
+            Leaderboards.Draw(e.Graphics);
+            Easy.Draw(e.Graphics);
+            Medium.Draw(e.Graphics);
+            Hard.Draw(e.Graphics);
         }
 
-        private void btnPlay_MouseEnter(object sender, EventArgs e)
+        private void Menu_MouseClick(object sender, MouseEventArgs e)
         {
-            btnPlay.Image = Properties.Resources.btnPlay;
-            btnPlay.Width += 20;
-            btnPlay.Height += 10;
-            btnPlay.Location = new Point(btnPlay.Location.X - 10, btnPlay.Location.Y - 5);
+            if (Play.Hit) btnPlay_Click(null, null);
+            else if (Quit.Hit) Application.Exit();
+            else if (Leaderboards.Hit) btnLeaderboards_Click(null, null);
+            else if (Achiev.Hit) btnAchievements_Click(null, null);
         }
 
-        private void btnPlay_MouseLeave(object sender, EventArgs e)
+        private void Menu_MouseMove(object sender, MouseEventArgs e)
         {
-            btnPlay.Image = Properties.Resources.btnPlayDark;
-            btnPlay.Width -= 20;
-            btnPlay.Height -= 10;
-            btnPlay.Location = new Point(btnPlay.Location.X + 10, btnPlay.Location.Y + 5);
+            Play.isHit(e.X, e.Y);
+            Achiev.isHit(e.X, e.Y);
+            Leaderboards.isHit(e.X, e.Y);
+            Quit.isHit(e.X, e.Y);
+            Easy.isHit(e.X, e.Y);
+            Medium.isHit(e.X, e.Y);
+            Hard.isHit(e.X, e.Y);
+            Invalidate();
         }
 
-        private void btnAchievments_MouseEnter(object sender, EventArgs e)
+        private void Menu_MouseDown(object sender, MouseEventArgs e)
         {
-            btnAchievments.Image = Properties.Resources.btnAchiev;
-            btnAchievments.Width += 20;
-            btnAchievments.Height += 10;
-            btnAchievments.Location = new Point(btnAchievments.Location.X - 10, btnAchievments.Location.Y - 5);
+            if (Play.Hit) Play.Clicked = true;
+            if (Quit.Hit) Quit.Clicked = true;
+            if (Achiev.Hit) Achiev.Clicked = true;
+            if (Leaderboards.Hit) Leaderboards.Clicked = true;
+            if (Easy.Hit)
+            {
+                Easy.Clicked = true;
+                Medium.Clicked = Hard.Clicked = false;
+                Diff = difficulty.EASY;
+            }
+            else if (Medium.Hit)
+            {
+                Medium.Clicked = true;
+                Easy.Clicked = Hard.Clicked = false;
+                Diff = difficulty.INTERMEDIATE;
+            }
+            else if (Hard.Hit)
+            {
+                Hard.Clicked = true;
+                Medium.Clicked = Easy.Clicked = false;
+                Diff = difficulty.HARD;
+            }
+            Invalidate();
         }
 
-        private void btnAchievments_MouseLeave(object sender, EventArgs e)
+        private void Menu_MouseUp(object sender, MouseEventArgs e)
         {
-            btnAchievments.Image = Properties.Resources.btnAchievDark;
-            btnAchievments.Width -= 20;
-            btnAchievments.Height -= 10;
-            btnAchievments.Location = new Point(btnAchievments.Location.X + 10, btnAchievments.Location.Y + 5);
-        }
-
-        private void btnLeaderboards_MouseEnter(object sender, EventArgs e)
-        {
-            btnLeaderboards.Image = Properties.Resources.btnLead;
-            btnLeaderboards.Width += 20;
-            btnLeaderboards.Height += 10;
-            btnLeaderboards.Location = new Point(btnLeaderboards.Location.X - 10, btnLeaderboards.Location.Y - 5);
-        }
-
-        private void btnLeaderboards_MouseLeave(object sender, EventArgs e)
-        {
-            btnLeaderboards.Image = Properties.Resources.btnLeadDark;
-            btnLeaderboards.Width -= 20;
-            btnLeaderboards.Height -= 10;
-            btnLeaderboards.Location = new Point(btnLeaderboards.Location.X + 10, btnLeaderboards.Location.Y + 5);
-        }
-
-        private void btnQuit_MouseEnter(object sender, EventArgs e)
-        {
-            btnQuit.Image = Properties.Resources.btnQuit;
-            btnQuit.Width += 20;
-            btnQuit.Height += 10;
-            btnQuit.Location = new Point(btnQuit.Location.X - 10, btnQuit.Location.Y - 5);
-        }
-
-        private void btnQuit_MouseLeave(object sender, EventArgs e)
-        {
-            btnQuit.Image = Properties.Resources.btnQuitDark;
-            btnQuit.Width -= 20;
-            btnQuit.Height -= 10;
-            btnQuit.Location = new Point(btnQuit.Location.X + 10, btnQuit.Location.Y + 5);
+            Play.Clicked = Leaderboards.Clicked = Achiev.Clicked = Quit.Clicked = false;
         }
     }
 }
