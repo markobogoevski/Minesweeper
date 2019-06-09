@@ -282,5 +282,29 @@
   <ItemGroup>
     <None Include="Resources\trapLocked.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBackDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBackLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasyDarkLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasyLeaderboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHardDarkLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHardLeaderboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMediumDarkLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMediumLeaderboards.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

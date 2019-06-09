@@ -58,6 +58,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(109, 111);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -75,6 +76,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::Minesweeper.Properties.Resources.nuke;
             this.pictureBox2.Location = new System.Drawing.Point(355, 111);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
@@ -91,6 +93,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::Minesweeper.Properties.Resources.poison;
             this.pictureBox3.Location = new System.Drawing.Point(607, 111);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
@@ -107,6 +110,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::Minesweeper.Properties.Resources.bomb;
             this.pictureBox4.Location = new System.Drawing.Point(607, 374);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
@@ -123,6 +127,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::Minesweeper.Properties.Resources.trap;
             this.pictureBox5.Location = new System.Drawing.Point(355, 374);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
@@ -139,6 +144,7 @@
             // 
             // pictureBox6
             // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::Minesweeper.Properties.Resources.shuriken;
             this.pictureBox6.Location = new System.Drawing.Point(109, 374);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
