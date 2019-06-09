@@ -169,9 +169,6 @@
     <None Include="Resources\8.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MineClassic.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\0.png" />
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bomb.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bomb1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\baloon.png" />

@@ -19,10 +19,10 @@ namespace Minesweeper
 
         public Menu()
         {
-            Play = new Button(new Point(185, 100), Resources.btnPlayDark, Resources.btnPlay, 245, 75);
-            Achiev = new Button(new Point(185, 200), Resources.btnAchievDark, Resources.btnAchiev, 245, 75);
-            Leaderboards = new Button(new Point(185, 300), Resources.btnLeadDark, Resources.btnLead, 245, 75);
-            Quit = new Button(new Point(185, 400), Resources.btnQuitDark, Resources.btnQuit, 245, 75);
+            Play = new Button(new Point(218, 100), Resources.btnPlayDark, Resources.btnPlay, 178, 84);
+            Achiev = new Button(new Point(218, 205), Resources.btnAchievDark, Resources.btnAchiev, 178, 84);
+            Leaderboards = new Button(new Point(218, 310), Resources.btnLeadDark, Resources.btnLead, 178, 84);
+            Quit = new Button(new Point(218, 415), Resources.btnQuitDark, Resources.btnQuit, 178, 84);
             Easy = new Button(new Point(135, 535), Resources.btnEasyDark, Resources.btnEasy, 100, 100);
             Medium = new Button(new Point(257, 535), Resources.btnMediumDark, Resources.btnMedium, 100, 100);
             Hard = new Button(new Point(380, 535), Resources.btnHardDark, Resources.btnHard, 100, 100);
