@@ -17,7 +17,6 @@ namespace Minesweeper
         private static Random rand = new Random();
         Button btnSpin, btnCheat, btnAccept;
         List<Image> spinImages;
-        // List<string> spinDescriptions;
         Point[] locations;
         public Image award;
         PictureBox[] pictureBoxes;
@@ -145,19 +144,6 @@ namespace Minesweeper
             {
                 timer1.Stop();
                 Image awardWon = returnAward();
-                //AwardAccept awardForm;
-                //if (awardWon.Tag == "Heart")   // if tag == heart, another chance 
-                //    awardForm = new AwardAccept("get another Chance", awardWon);
-                //else
-                //    awardForm = new AwardAccept("LOSE", awardWon);
-
-                //if (awardForm.ShowDialog() == DialogResult.OK)
-                //{
-                //    DialogResult = DialogResult.OK;
-                //}
-                //else DialogResult = DialogResult.Cancel;
-
-                //this.Close();
                 showAccept = true;
                 this.MouseMove += new MouseEventHandler(Spin_MouseMove);
                 if (awardWon.Tag.ToString() == "Heart")

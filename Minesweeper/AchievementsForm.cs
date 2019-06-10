@@ -32,7 +32,7 @@ namespace Minesweeper
             boxes[3] = pictureBox6;
             boxes[4] = pictureBox5;
             boxes[5] = pictureBox4;
-            //asd
+            
             for (int i = 0; i < 6; i++) { 
                 boxes[i].Image = achievements[i].getImage(); // se zima lock ili unlock image
             }
@@ -104,7 +104,7 @@ namespace Minesweeper
 
         private void pictureBox5_MouseEnter(object sender, EventArgs e)
         {
-            label11.Text = "7 minutes on Hard";
+            label11.Text = "10 minutes on Hard";
         }
 
         private void pictureBox5_MouseLeave(object sender, EventArgs e)
@@ -114,7 +114,7 @@ namespace Minesweeper
 
         private void pictureBox4_MouseEnter(object sender, EventArgs e)
         {
-            label12.Text = "4 minutes on Hard";
+            label12.Text = "6 minutes on Hard";
         }
 
         private void pictureBox4_MouseLeave(object sender, EventArgs e)
