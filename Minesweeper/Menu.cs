@@ -44,12 +44,12 @@ namespace Minesweeper
             }
             else {
                 achievements = new List<Achievement>();
-                achievements.Add(new Achievement("Baloon", Resources.baloon, 45, difficulty.EASY));
-                achievements.Add(new Achievement("Nuke", Resources.nuke, 15, difficulty.EASY));
-                achievements.Add(new Achievement("Poison", Resources.poison, 210, difficulty.INTERMEDIATE));
-                achievements.Add(new Achievement("Shuriken", Resources.shuriken, 90, difficulty.INTERMEDIATE));
-                achievements.Add(new Achievement("Trap", Resources.trap, 480, difficulty.HARD));
-                achievements.Add(new Achievement("Bomb", Resources.bomb, 240, difficulty.HARD));
+                achievements.Add(new Achievement("Baloon", Resources.baloon, Resources.baloonLocked, 45, difficulty.EASY));
+                achievements.Add(new Achievement("Nuke", Resources.nuke, Resources.nukeLocked, 15, difficulty.EASY));
+                achievements.Add(new Achievement("Poison", Resources.poison, Resources.poisonLocked, 210, difficulty.INTERMEDIATE));
+                achievements.Add(new Achievement("Shuriken", Resources.shuriken, Resources.shurikenLocked, 90, difficulty.INTERMEDIATE));
+                achievements.Add(new Achievement("Trap", Resources.trap, Resources.trapLocked, 480, difficulty.HARD));
+                achievements.Add(new Achievement("Bomb", Resources.bomb, Resources.bombLocked, 240, difficulty.HARD));
             }
             
         }
@@ -59,6 +59,7 @@ namespace Minesweeper
             {
                 IFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, achievements);
+                stream.Close();
             }
         }
         private List<Achievement> LoadAchievements()
@@ -70,6 +71,7 @@ namespace Minesweeper
                 {
                     IFormatter formatter = new BinaryFormatter();
                     achievements = (List<Achievement>)formatter.Deserialize(stream);
+                    stream.Close();
                 }
             }
             return achievements;
@@ -102,7 +104,6 @@ namespace Minesweeper
 
         private void btnLeaderboards_Click(object sender, EventArgs e)
         {
-            // TODO: Implement the leaderboards form, showing best scores sorted by time descending, for each difficulty.
             Leaderboards l = new Leaderboards();
             l.FormClosed += new FormClosedEventHandler(window_FormClosed);
             l.Show();

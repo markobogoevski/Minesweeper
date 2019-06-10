@@ -128,7 +128,6 @@ namespace Minesweeper
                 else
                     awardForm = new AwardAccept("LOSE", awardWon);
                 
-                awardForm.Location = new Point(800, 800);
                 if (awardForm.ShowDialog() == DialogResult.OK)
                 {
                     DialogResult = DialogResult.OK;

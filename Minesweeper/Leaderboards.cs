@@ -56,6 +56,7 @@ namespace Minesweeper
                 {
                     IFormatter formatter = new BinaryFormatter();
                     scores = (SortedList<Score,Score>)formatter.Deserialize(stream);
+                    stream.Close();
                 }
             }
             catch (FileNotFoundException)

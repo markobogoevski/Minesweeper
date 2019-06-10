@@ -499,52 +499,10 @@ namespace Minesweeper
                 {
                     endBoost();
                 }
-                SortedList<Score, Score> highScores = getScores(DIFF);
-                bool f = false;
-                for(int i = 0; i < 10; i++)
-                {
-                    if (highScores.Count <= i || highScores.Keys[i].Minutes*60 + highScores.Keys[i].Seconds > this.seconds)
-                    {
-                        f = true;
-                        break;
-                    }
-                    
-                }
-                if (f)
-                {
-                    Name form = new Name();
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        string name = form.name;
-                        Score temp = new Score(name, this.seconds / 60, this.seconds % 60);
-                        highScores.Add(temp, temp);
-                    }
-                    while (highScores.Count > 10)
-                        highScores.RemoveAt(highScores.Count - 1);
-                }
-                saveScores(DIFF, highScores);
-                bool changes = false;
-                foreach (var item in achievements)
-                {
-                    if (item.diffRequired == DIFF && item.secondsRequired >= seconds && !item.iSUnlocked())
-                    {
-                        item.Unlock();
-                        MessageBox.Show("Congratulations, you unlocked " + item.getName());
-                        changes = true;
-                    }
-                }
-                if (changes) // if achievements unlocked, save the changes
-                {
-                    using (FileStream stream = new FileStream("../../Assets/achievements.lst", FileMode.Create))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, achievements);
-                    }
-                }
+
+                SerializeScores.checkScoresAchievs(DIFF, seconds, achievements);
 
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
-                
-
                 if (result == DialogResult.Yes)
                 {
                     newGame(DIFF);
@@ -559,91 +517,7 @@ namespace Minesweeper
                 }
             }
         }
-
-        private SortedList<Score,Score> getScores(difficulty d)
-        {
-            SortedList<Score,Score> scores;
-            switch (d)
-            {
-                case difficulty.EASY:
-                    try
-                    {
-                        using (FileStream stream = new FileStream("../../Assets/easy.lst", FileMode.Open))
-                        {
-                            IFormatter formatter = new BinaryFormatter();
-                            scores = (SortedList < Score, Score >)formatter.Deserialize(stream);
-                        }
-                    }
-                    catch (FileNotFoundException)
-                    {
-                        scores = new SortedList<Score, Score>();
-                    }
-                    break;
-                case difficulty.INTERMEDIATE:
-                    try
-                    {
-                        using (FileStream stream = new FileStream("../../Assets/medium.lst", FileMode.Open))
-                        {
-                            IFormatter formatter = new BinaryFormatter();
-                            scores = (SortedList<Score, Score>)formatter.Deserialize(stream);
-                        }
-                    }
-                    catch (FileNotFoundException)
-                    {
-                        scores = new SortedList<Score, Score>();
-                    }
-                    break;
-                case difficulty.HARD:
-                    try
-                    {
-                        using (FileStream stream = new FileStream("../../Assets/hard.lst", FileMode.Open))
-                        {
-                            IFormatter formatter = new BinaryFormatter();
-                            scores = (SortedList<Score, Score>)formatter.Deserialize(stream);
-                        }
-                    }
-                    catch (FileNotFoundException)
-                    {
-                        scores = new SortedList<Score, Score>();
-                    }
-                    break;
-                default:
-                    scores = new SortedList<Score, Score>();
-                    break;
-            }
-            return scores;
-        }
-
-        private void saveScores(difficulty d, SortedList<Score, Score> scores)
-        {
-            switch (d)
-            {
-                case difficulty.EASY:
-                    using (FileStream stream = new FileStream("../../Assets/easy.lst", FileMode.Create))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, scores);
-                    }
-                    break;
-                case difficulty.INTERMEDIATE:
-                    using (FileStream stream = new FileStream("../../Assets/medium.lst", FileMode.Create))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, scores);
-                    }
-                    break;
-                case difficulty.HARD:
-                    using (FileStream stream = new FileStream("../../Assets/hard.lst", FileMode.Create))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, scores);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
+        
         //end the game or run mini game
         private void endGame()
         {
