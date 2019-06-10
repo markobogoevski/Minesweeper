@@ -31,7 +31,7 @@ namespace Minesweeper
             boxes[3] = pictureBox6;
             boxes[4] = pictureBox5;
             boxes[5] = pictureBox4;
-
+            
             for (int i = 0; i < 6; i++)
                 boxes[i].Image = achievements[i].getImage(); // se zima lock ili unlock image
 
