@@ -48,10 +48,10 @@ namespace Minesweeper
                 achievements = new List<Achievement>();
                 achievements.Add(new Achievement("Baloon", Resources.baloon, Resources.baloonLocked, 45, difficulty.EASY));
                 achievements.Add(new Achievement("Nuke", Resources.nuke, Resources.nukeLocked, 15, difficulty.EASY));
-                achievements.Add(new Achievement("Poison", Resources.poison, Resources.poisonLocked, 210, difficulty.INTERMEDIATE));
-                achievements.Add(new Achievement("Shuriken", Resources.shuriken, Resources.shurikenLocked, 90, difficulty.INTERMEDIATE));
+                achievements.Add(new Achievement("Poison", Resources.poison, Resources.poisonLocked, 240, difficulty.INTERMEDIATE));
+                achievements.Add(new Achievement("Shuriken", Resources.shuriken, Resources.shurikenLocked, 120, difficulty.INTERMEDIATE));
                 achievements.Add(new Achievement("Trap", Resources.trap, Resources.trapLocked, 600, difficulty.HARD));
-                achievements.Add(new Achievement("Bomb", Resources.bomb, Resources.bombLocked, 360, difficulty.HARD));
+                achievements.Add(new Achievement("Bomb", Resources.bomb, Resources.bombLocked, 480, difficulty.HARD));
             }
             
         }

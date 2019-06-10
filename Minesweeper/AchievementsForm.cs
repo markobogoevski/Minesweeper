@@ -14,6 +14,7 @@ namespace Minesweeper
         ImageWrapper skin;
         List<Achievement> achievements;
         PictureBox[] boxes;
+        Button Back;
         bool click;
         Rectangle selected;
         public AchievementsForm(ImageWrapper skin, List<Achievement>achievements){
@@ -24,6 +25,7 @@ namespace Minesweeper
             this.achievements = achievements;
             this.BackgroundImage = Properties.Resources.background;
             pictureBox7.Image = Properties.Resources.mine;
+            Back = new Button(new Point(500, 500), Properties.Resources.btnBackDark, Properties.Resources.btnBackLight, 125, 59);
 
             boxes = new PictureBox[6];
             boxes[0] = pictureBox1;
@@ -84,7 +86,7 @@ namespace Minesweeper
 
         private void pictureBox3_MouseEnter(object sender, EventArgs e)
         {
-            label9.Text = "3:30 on Medium mode";
+            label9.Text = "4 minutes on Medium mode";
         }
 
         private void pictureBox3_MouseLeave(object sender, EventArgs e)
@@ -94,7 +96,7 @@ namespace Minesweeper
 
         private void pictureBox6_MouseEnter(object sender, EventArgs e)
         {
-            label10.Text = "1:30 on Medium";
+            label10.Text = "2 minutes on Medium";
         }
 
         private void pictureBox6_MouseLeave(object sender, EventArgs e)
@@ -114,7 +116,7 @@ namespace Minesweeper
 
         private void pictureBox4_MouseEnter(object sender, EventArgs e)
         {
-            label12.Text = "6 minutes on Hard";
+            label12.Text = "8 minutes on Hard";
         }
 
         private void pictureBox4_MouseLeave(object sender, EventArgs e)
@@ -354,6 +356,7 @@ namespace Minesweeper
         }
         private void AchievementsForm_Paint(object sender, PaintEventArgs e)
         {
+            Back.Draw(e.Graphics);
             Pen pen = new Pen(Color.PeachPuff, 3);
             Rectangle rect = new Rectangle(from.X, from.Y, to.X, to.Y);
             Pen markedPen = new Pen(Color.Peru, 4);
@@ -367,6 +370,27 @@ namespace Minesweeper
             e.Graphics.DrawPath(markedPen, path);
             pen.Dispose();
             markedPen.Dispose();
+        }
+
+        private void AchievementsForm_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (Back.Hit) this.Close();
+        }
+
+        private void AchievementsForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (Back.Hit) Back.Clicked = true;
+        }
+
+        private void AchievementsForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            Back.Clicked = false;
+        }
+
+        private void AchievementsForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            Back.isHit(e.X, e.Y);
+            Invalidate();
         }
     }
 }
