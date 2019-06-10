@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Minesweeper
 {
+    [Serializable]
     public partial class Menu : Form
     {
         public ImageWrapper skin { get; set; }
@@ -32,15 +36,45 @@ namespace Minesweeper
             this.BackgroundImage = Resources.background;
             DoubleBuffered = true;
             skin = new ImageWrapper(9, Resources.mine);
-            achievements = new List<Achievement>();
-            achievements.Add(new Achievement("Baloon", Resources.baloon, 45, difficulty.EASY));
-            achievements.Add(new Achievement("Nuke", Resources.nuke, 15, difficulty.EASY));
-            achievements.Add(new Achievement("Poison", Resources.poison, 210, difficulty.INTERMEDIATE));
-            achievements.Add(new Achievement("Shuriken", Resources.shuriken, 90, difficulty.INTERMEDIATE));
-            achievements.Add(new Achievement("Trap", Resources.trap, 480, difficulty.HARD));
-            achievements.Add(new Achievement("Bomb", Resources.bomb, 240, difficulty.HARD));
+            
+            //TODO: try read from file, if can -> overwrite this ^ list
+            if (LoadAchievements()!=null)
+            {
+                achievements = LoadAchievements();
+            }
+            else {
+                achievements = new List<Achievement>();
+                achievements.Add(new Achievement("Baloon", Resources.baloon, 45, difficulty.EASY));
+                achievements.Add(new Achievement("Nuke", Resources.nuke, 15, difficulty.EASY));
+                achievements.Add(new Achievement("Poison", Resources.poison, 210, difficulty.INTERMEDIATE));
+                achievements.Add(new Achievement("Shuriken", Resources.shuriken, 90, difficulty.INTERMEDIATE));
+                achievements.Add(new Achievement("Trap", Resources.trap, 480, difficulty.HARD));
+                achievements.Add(new Achievement("Bomb", Resources.bomb, 240, difficulty.HARD));
+            }
+            
         }
+        private void SaveAchievements(List<Achievement>achievements)
+        {
+            using (FileStream stream = new FileStream("../../Assets/achievements.lst", FileMode.Create))
+            {
+                IFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, achievements);
+            }
+        }
+        private List<Achievement> LoadAchievements()
+        {
+            List<Achievement> achievements = null;
+            if (File.Exists("../../Assets/achievements.lst"))
+            {
+                using (FileStream stream = new FileStream("../../Assets/achievements.lst", FileMode.Open))
+                {
+                    IFormatter formatter = new BinaryFormatter();
+                    achievements = (List<Achievement>)formatter.Deserialize(stream);
+                }
+            }
+            return achievements;
 
+        }
         private void btnPlay_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -60,7 +94,7 @@ namespace Minesweeper
         private void btnAchievements_Click(object sender, EventArgs e)
         {
             // TODO: Implement the achievments form, showing all unlocked and locked achievments and the criteria for unlocking
-            AchievementsForm form = new AchievementsForm(skin);
+            AchievementsForm form = new AchievementsForm(skin,achievements);
             form.FormClosed += new FormClosedEventHandler(window_FormClosed);
             form.Show();
             this.Hide();

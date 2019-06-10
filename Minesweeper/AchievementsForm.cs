@@ -13,9 +13,11 @@ namespace Minesweeper
     public partial class AchievementsForm : Form
     {
         ImageWrapper skin;
-        public AchievementsForm(ImageWrapper skin){
+        List<Achievement> achievements;
+        public AchievementsForm(ImageWrapper skin, List<Achievement>achievements){
             InitializeComponent();
             this.skin = skin;
+            this.achievements = achievements;
             this.BackgroundImage = Properties.Resources.background;
         }
         Point from;
@@ -87,52 +89,60 @@ namespace Minesweeper
             skin.image = Properties.Resources.mine;
         }
 
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            skin.image= Properties.Resources.baloon;
-        }
-
-        private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
-        {
-            Image img = Properties.Resources.nuke;
-            skin.image= img;
-        }
-
-        private void pictureBox3_MouseClick(object sender, MouseEventArgs e)
-        {
-            skin.image=Properties.Resources.poison;
-
-        }
-
-        private void pictureBox6_MouseClick(object sender, MouseEventArgs e)
-        {
-            skin.image=Properties.Resources.shuriken;
-
-        }
-
-        private void pictureBox5_MouseClick(object sender, MouseEventArgs e)
-        {
-            skin.image = Properties.Resources.trap;
-
-        }
-
-        private void pictureBox4_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-        }
 
         private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
         {
-            skin.image = Properties.Resources.bomb;
+            if (achievements[5].iSUnlocked())
+                skin.image = Properties.Resources.bomb;
+
             from = new Point(pictureBox4.Location.X - 3, pictureBox4.Location.Y - 3);
             to = new Point(125, 105);
             Invalidate();
-
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            if (achievements[0].iSUnlocked())
+                skin.image = Properties.Resources.baloon;
+
             from = new Point(pictureBox1.Location.X - 3, pictureBox1.Location.Y - 3);
+            to = new Point(125, 105);
+            Invalidate();
+        }
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (achievements[1].iSUnlocked())
+                skin.image = Properties.Resources.nuke;
+
+            from = new Point(pictureBox2.Location.X - 3, pictureBox2.Location.Y - 3);
+            to = new Point(125, 105);
+            Invalidate();
+        }
+
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (achievements[2].iSUnlocked())
+                skin.image = Properties.Resources.poison;
+
+            from = new Point(pictureBox3.Location.X - 3, pictureBox3.Location.Y - 3);
+            to = new Point(125, 105);
+            Invalidate();
+        }
+
+        private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (achievements[5].iSUnlocked())
+                skin.image = Properties.Resources.bomb;
+            from = new Point(pictureBox6.Location.X - 3, pictureBox6.Location.Y - 3);
+            to = new Point(125, 105);
+            Invalidate();
+        }
+
+        private void pictureBox5_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (achievements[4].iSUnlocked())
+                skin.image = Properties.Resources.trap;
+            from = new Point(pictureBox5.Location.X - 3, pictureBox5.Location.Y - 3);
             to = new Point(125, 105);
             Invalidate();
         }
@@ -143,38 +153,14 @@ namespace Minesweeper
             e.Graphics.DrawRectangle(pen, from.X, from.Y, to.X,to.Y);
         }
 
+        
+
+        
+
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             from = new Point(0, 0);
             to = new Point(0, 0);
-            Invalidate();
-        }
-
-        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
-        {
-            from = new Point(pictureBox2.Location.X - 3, pictureBox2.Location.Y - 3);
-            to = new Point(125, 105);
-            Invalidate();
-        }
-
-        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
-        {
-            from = new Point(pictureBox3.Location.X - 3, pictureBox3.Location.Y - 3);
-            to = new Point(125, 105);
-            Invalidate();
-        }
-
-        private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
-        {
-            from = new Point(pictureBox6.Location.X - 3, pictureBox6.Location.Y - 3);
-            to = new Point(125, 105);
-            Invalidate();
-        }
-
-        private void pictureBox5_MouseDown(object sender, MouseEventArgs e)
-        {
-            from = new Point(pictureBox5.Location.X - 3, pictureBox5.Location.Y - 3);
-            to = new Point(125, 105);
             Invalidate();
         }
 

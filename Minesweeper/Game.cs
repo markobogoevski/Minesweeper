@@ -523,12 +523,22 @@ namespace Minesweeper
                         highScores.RemoveAt(highScores.Count - 1);
                 }
                 saveScores(DIFF, highScores);
+                bool changes = false;
                 foreach (var item in achievements)
                 {
                     if (item.diffRequired == DIFF && item.secondsRequired >= seconds && !item.iSUnlocked())
                     {
                         item.Unlock();
                         MessageBox.Show("Congratulations, you unlocked " + item.getName());
+                        changes = true;
+                    }
+                }
+                if (changes) // if achievements unlocked, save the changes
+                {
+                    using (FileStream stream = new FileStream("../../Assets/achievements.lst", FileMode.Create))
+                    {
+                        IFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(stream, achievements);
                     }
                 }
 
@@ -541,6 +551,10 @@ namespace Minesweeper
                 }
                 else
                 {
+                    timer.Stop();
+                    idleTimer.Stop();
+                    timer1.Stop();
+
                     this.Close();
                 }
             }
@@ -646,7 +660,7 @@ namespace Minesweeper
             idleTimer.Stop();
             Spin spinForm = new Spin();
             int chance = rand.Next(1, 7);
-            if (secondChance || chance >= 3 || spinForm.ShowDialog() != DialogResult.OK) // if NOT OK, you got bomb and you lose
+            if (secondChance || chance >= 4F || spinForm.ShowDialog() != DialogResult.OK) // if NOT OK, you got bomb and you lose
             {
                 Lost();
             }

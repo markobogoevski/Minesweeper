@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Minesweeper
 {
+    [Serializable]
     public class Achievement{
         string name;
         bool isUnlocked;

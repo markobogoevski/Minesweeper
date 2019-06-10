@@ -30,7 +30,7 @@ namespace Minesweeper
             spinImages = new List<Image>();
             alternate = false;
             
-            //this.BackgroundImage = Properties.Resources.background;
+            this.BackgroundImage = Properties.Resources.background;
 
             spinImages.Add(Properties.Resources.bomb);
             spinImages[0].Tag = "Bomb";
@@ -77,20 +77,20 @@ namespace Minesweeper
 
         
         private void Spin_Paint(object sender, PaintEventArgs e){
-            Brush brown= new SolidBrush(Color.Brown);
-            Brush lightBrown = new SolidBrush(Color.RosyBrown);
+            Brush brown= new SolidBrush(Color.FromArgb(202,202,202));
+            Brush lightBrown = new SolidBrush(Color.DarkGoldenrod);
             for (int i = 0; i < spinImages.Count; i++){
                 if (alternate)              
                 if (i%2==1)
-                    pictureBoxes[i].BackColor = Color.RosyBrown;
+                    pictureBoxes[i].BackColor = Color.DarkGoldenrod;
                 else pictureBoxes[i].BackColor = Color.Brown;
                 else
                     if (i % 2 == 0)
-                    pictureBoxes[i].BackColor = Color.RosyBrown;
+                    pictureBoxes[i].BackColor = Color.DarkGoldenrod;
                 else pictureBoxes[i].BackColor = Color.Brown;
 
             }
-            if (alternate)
+            if (alternate)//za boenje na trkaloto naizmenicno
             {
                 e.Graphics.FillPie(brown, 100, 100, 250, 300, -60, -60);
                 e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -120, -60);
@@ -123,14 +123,11 @@ namespace Minesweeper
                 timer1.Stop();
                 Image awardWon = returnAward();
                 AwardAccept awardForm;
-                if (awardWon.Tag == "Heart")
+                if (awardWon.Tag == "Heart")   // if tag == heart, another chance 
                     awardForm = new AwardAccept("get another Chance", awardWon);
                 else
                     awardForm = new AwardAccept("LOSE", awardWon);
                 
-                /*
-                 TODO : If extra life ....., If achievement , achievement.Unlock();
-                 */
                 awardForm.Location = new Point(800, 800);
                 if (awardForm.ShowDialog() == DialogResult.OK)
                 {
@@ -139,7 +136,6 @@ namespace Minesweeper
                 else DialogResult = DialogResult.Cancel;
                 
                 this.Close();
-                // da se vrati nultiot element 
             }
             alternate = !alternate;
             this.count++;
