@@ -67,9 +67,9 @@ namespace Minesweeper
         private List<Achievement> LoadAchievements()
         {
             List<Achievement> achievements = null;
-            if (File.Exists("../../Assets/achievements.lst"))
+            if (File.Exists("Assets/achievements.lst"))
             {
-                using (FileStream stream = new FileStream("../../Assets/achievements.lst", FileMode.Open))
+                using (FileStream stream = new FileStream("Assets/achievements.lst", FileMode.Open))
                 {
                     IFormatter formatter = new BinaryFormatter();
                     achievements = (List<Achievement>)formatter.Deserialize(stream);

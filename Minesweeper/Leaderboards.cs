@@ -21,9 +21,9 @@ namespace Minesweeper
         public static SortedList<Score,Score> MediumScores { get; set; }
         public static SortedList<Score,Score> HardScores { get; set; }
         private Button Easy, Medium, Hard, Back;
-        string EasyName = "../../Assets/easy.lst";
-        string MediumName = "../../Assets/medium.lst";
-        string HardName = "../../Assets/hard.lst";
+        string EasyName = "Assets/easy.lst";
+        string MediumName = "Assets/medium.lst";
+        string HardName = "Assets/hard.lst";
         public Leaderboards()
         {
             InitializeComponent();

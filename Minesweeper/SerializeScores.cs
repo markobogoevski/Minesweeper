@@ -50,7 +50,7 @@ namespace Minesweeper
             }
             if (changes) // if achievements unlocked, save the changes
             {
-                using (FileStream stream = new FileStream("../../Assets/achievements.lst", FileMode.Create))
+                using (FileStream stream = new FileStream("Assets/achievements.lst", FileMode.Create))
                 {
                     IFormatter formatter = new BinaryFormatter();
                     formatter.Serialize(stream, achievements);
@@ -67,7 +67,7 @@ namespace Minesweeper
                 case difficulty.EASY:
                     try
                     {
-                        using (FileStream stream = new FileStream("../../Assets/easy.lst", FileMode.Open))
+                        using (FileStream stream = new FileStream("Assets/easy.lst", FileMode.Open))
                         {
                             IFormatter formatter = new BinaryFormatter();
                             scores = (SortedList<Score, Score>)formatter.Deserialize(stream);
@@ -82,7 +82,7 @@ namespace Minesweeper
                 case difficulty.INTERMEDIATE:
                     try
                     {
-                        using (FileStream stream = new FileStream("../../Assets/medium.lst", FileMode.Open))
+                        using (FileStream stream = new FileStream("Assets/medium.lst", FileMode.Open))
                         {
                             IFormatter formatter = new BinaryFormatter();
                             scores = (SortedList<Score, Score>)formatter.Deserialize(stream);
@@ -97,7 +97,7 @@ namespace Minesweeper
                 case difficulty.HARD:
                     try
                     {
-                        using (FileStream stream = new FileStream("../../Assets/hard.lst", FileMode.Open))
+                        using (FileStream stream = new FileStream("Assets/hard.lst", FileMode.Open))
                         {
                             IFormatter formatter = new BinaryFormatter();
                             scores = (SortedList<Score, Score>)formatter.Deserialize(stream);
@@ -121,7 +121,7 @@ namespace Minesweeper
             switch (d)
             {
                 case difficulty.EASY:
-                    using (FileStream stream = new FileStream("../../Assets/easy.lst", FileMode.Create))
+                    using (FileStream stream = new FileStream("Assets/easy.lst", FileMode.Create))
                     {
                         IFormatter formatter = new BinaryFormatter();
                         formatter.Serialize(stream, scores);
@@ -129,7 +129,7 @@ namespace Minesweeper
                     }
                     break;
                 case difficulty.INTERMEDIATE:
-                    using (FileStream stream = new FileStream("../../Assets/medium.lst", FileMode.Create))
+                    using (FileStream stream = new FileStream("Assets/medium.lst", FileMode.Create))
                     {
                         IFormatter formatter = new BinaryFormatter();
                         formatter.Serialize(stream, scores);
@@ -137,7 +137,7 @@ namespace Minesweeper
                     }
                     break;
                 case difficulty.HARD:
-                    using (FileStream stream = new FileStream("../../Assets/hard.lst", FileMode.Create))
+                    using (FileStream stream = new FileStream("Assets/hard.lst", FileMode.Create))
                     {
                         IFormatter formatter = new BinaryFormatter();
                         formatter.Serialize(stream, scores);
