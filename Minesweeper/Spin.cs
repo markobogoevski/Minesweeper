@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Minesweeper
 {
-    
+
     public partial class Spin : Form
     {
         bool alternate;
@@ -24,12 +24,13 @@ namespace Minesweeper
         int count;
         int[] rotateAngles;
 
-        public Spin(){
+        public Spin()
+        {
             InitializeComponent();
             this.DoubleBuffered = true;
             spinImages = new List<Image>();
             alternate = false;
-            
+
             this.BackgroundImage = Properties.Resources.background;
 
             spinImages.Add(Properties.Resources.bomb);
@@ -50,7 +51,8 @@ namespace Minesweeper
             rotateAngles = new int[6];
 
             hardCodedSetup();
-            for (int i = 0; i < pictureBoxes.Count(); i++){
+            for (int i = 0; i < pictureBoxes.Count(); i++)
+            {
                 pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxes[i].Size = new Size(60, 60);
                 pictureBoxes[i].Location = locations[i];
@@ -60,9 +62,10 @@ namespace Minesweeper
             }
             Invalidate();
         }
-        
 
-        private void spin() {
+
+        private void spin()
+        {
             spinImages.Add(spinImages[0]); // prvata se dodava posledna i se brishe [0]
             spinImages.RemoveAt(0);
 
@@ -75,15 +78,17 @@ namespace Minesweeper
             }
         }
 
-        
-        private void Spin_Paint(object sender, PaintEventArgs e){
-            Brush brown= new SolidBrush(Color.FromArgb(202,202,202));
+
+        private void Spin_Paint(object sender, PaintEventArgs e)
+        {
+            Brush brown = new SolidBrush(Color.FromArgb(202, 202, 202));
             Brush lightBrown = new SolidBrush(Color.DarkGoldenrod);
-            for (int i = 0; i < spinImages.Count; i++){
-                if (alternate)              
-                if (i%2==1)
-                    pictureBoxes[i].BackColor = Color.DarkGoldenrod;
-                else pictureBoxes[i].BackColor = Color.Brown;
+            for (int i = 0; i < spinImages.Count; i++)
+            {
+                if (alternate)
+                    if (i % 2 == 1)
+                        pictureBoxes[i].BackColor = Color.DarkGoldenrod;
+                    else pictureBoxes[i].BackColor = Color.Brown;
                 else
                     if (i % 2 == 0)
                     pictureBoxes[i].BackColor = Color.DarkGoldenrod;
@@ -99,7 +104,8 @@ namespace Minesweeper
                 e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -360, -60);
                 e.Graphics.FillPie(brown, 100, 100, 250, 300, 0, 60);
             }
-            else{
+            else
+            {
                 e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -60, -60);
                 e.Graphics.FillPie(brown, 100, 100, 250, 300, -120, -60);
                 e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, -180, -60);
@@ -109,17 +115,19 @@ namespace Minesweeper
             }
             Brush b = new SolidBrush(Color.Black);
             PointF[] triangle = new PointF[3];
-            triangle[0]= new PointF(210, 65); // triagolnikot od gore
-            triangle[1]= new PointF(230, 65);
-            triangle[2]= new PointF(220, 80);
+            triangle[0] = new PointF(210, 65); // triagolnikot od gore
+            triangle[1] = new PointF(230, 65);
+            triangle[2] = new PointF(220, 80);
             e.Graphics.FillPolygon(b, triangle);
             b.Dispose();
             brown.Dispose();
             lightBrown.Dispose();
         }
 
-        private void Timer1_Tick(object sender, EventArgs e){
-            if (count == spins+1){
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            if (count == spins + 1)
+            {
                 timer1.Stop();
                 Image awardWon = returnAward();
                 AwardAccept awardForm;
@@ -127,29 +135,31 @@ namespace Minesweeper
                     awardForm = new AwardAccept("get another Chance", awardWon);
                 else
                     awardForm = new AwardAccept("LOSE", awardWon);
-                
+
                 if (awardForm.ShowDialog() == DialogResult.OK)
                 {
                     DialogResult = DialogResult.OK;
                 }
                 else DialogResult = DialogResult.Cancel;
-                
+
                 this.Close();
             }
             alternate = !alternate;
             this.count++;
             spin();
-            timer1.Interval = timer1.Interval +30;  
+            timer1.Interval = timer1.Interval + 30;
             Invalidate();
         }
 
-        public Image returnAward(){
+        public Image returnAward()
+        {
             this.award = spinImages[0];
             return spinImages[0];
         }
 
-        private void Button1_Click(object sender, EventArgs e){
-            this.spins = rand.Next(4,25);
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.spins = rand.Next(4, 15);
             this.count = 0;
             timer1.Start();
             button1.Enabled = false;
@@ -225,9 +235,10 @@ namespace Minesweeper
             }
         }
 
-        private void Spin_Load(object sender, EventArgs e){}
+        private void Spin_Load(object sender, EventArgs e) { }
 
-        private void button2_Click(object sender, EventArgs e){
+        private void button2_Click(object sender, EventArgs e)
+        {
             this.spins = 4;
             timer1.Start();
             // da se vrati nultiot element 
@@ -254,5 +265,5 @@ namespace Minesweeper
             pictureBoxes[5] = pictureBox6;
         }
     }
-    
+
 }
