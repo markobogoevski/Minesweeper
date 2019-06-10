@@ -35,9 +35,11 @@ namespace Minesweeper
             InitializeComponent();
             this.BackgroundImage = Resources.background;
             DoubleBuffered = true;
-            skin = new ImageWrapper(9, Resources.mine);
+            Image mine = Resources.mine;
+            mine.Tag = "Mine";
+            skin = new ImageWrapper(9, mine);
             
-            //TODO: try read from file, if can -> overwrite this ^ list
+            // try read from file, if can -> overwrite this ^ list
             if (LoadAchievements()!=null)
             {
                 achievements = LoadAchievements();

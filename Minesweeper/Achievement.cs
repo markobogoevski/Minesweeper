@@ -11,7 +11,7 @@ namespace Minesweeper
     public class Achievement{
         string name;
         bool isUnlocked;
-        Image image;
+        public Image image;
         Image locked;
         public string Requirements { get; set; }
         public string Description { get; set; }
@@ -21,7 +21,9 @@ namespace Minesweeper
         {
             this.name = name;
             this.image = image;
+            this.image.Tag = name;
             this.locked = locked;
+            this.locked.Tag = "Locked" + name;
             this.isUnlocked = false;
             this.secondsRequired = secondsRequired;
             this.diffRequired = diffRequired;
@@ -31,9 +33,9 @@ namespace Minesweeper
         public bool iSUnlocked() { return isUnlocked; }
 
         public string getName() { return name; }
-        public Image getImage()
-        {
-            return isUnlocked ? image : locked;
+
+        public Image getImage(){
+            return isUnlocked ? image : locked;            
         }
     }
 }
