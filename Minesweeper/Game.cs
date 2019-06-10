@@ -280,9 +280,9 @@ namespace Minesweeper
                 Pen pen = new Pen(Color.DarkKhaki,2);
 
                 Rectangle rectangle1 = new Rectangle(new Point(0,0), new Size(
-                    (int)((ClientSize.Width - mainScreen.Width) / 3.2), ClientSize.Height));
+                    (int)((ClientSize.Width - mainScreen.Width) / 4), ClientSize.Height));
                 Rectangle rectangle2 = new Rectangle(new Point(ClientSize.Width-rectangle1.Width,0), new Size(
-                    (int)((ClientSize.Width - mainScreen.Width) / 3.2), ClientSize.Height));
+                    (int)((ClientSize.Width - mainScreen.Width) / 4), ClientSize.Height));
                 graphics.FillRectangle(brush, rectangle1);
                 graphics.DrawRectangle(pen, rectangle1);
                 graphics.FillRectangle(brush, rectangle2);
@@ -650,31 +650,44 @@ namespace Minesweeper
             //this.Hide();
             //new form
             //
-            if (boosted)
-            {
-                endBoost();
-            }          
-
+            
             timer1.Stop();
             timer.Stop();
             idleTimer.Stop();
-            Spin spinForm = new Spin();
+           
             int chance = rand.Next(1, 7);
-            if (secondChance || chance >= 4F || spinForm.ShowDialog() != DialogResult.OK) // if NOT OK, you got bomb and you lose
+            if (secondChance || chance >= 4F) // if NOT OK, you got bomb and you lose
             {
                 Lost();
             }
             else
             {
-                timer1.Start();
-                timer.Start();
-                idleTimer.Start();
-                gameEnd = false;
-                secondChance = true; 
+                MessageBox.Show("Oops, seems like you stepped on a bomb. But...");
+                Spin spinForm = new Spin();
+                if (spinForm.ShowDialog() == DialogResult.OK)
+                {
+                    gameEnd = false;
+                    secondChance = true;
+                    timer1.Start();
+                    timer.Start();
+                    idleTimer.Start();
+                }
+                else
+                {
+                    gameEnd = true;
+                    secondChance = false;
+                    Lost();
+                }
             }
         }
+
         private void Lost()
         {
+            if (boosted)
+            {
+                endBoost();
+            }
+
             for (int i = 0; i < tileRowNumber; i++)
                 for (int j = 0; j < tileColumnNumber; j++)
                     if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())

@@ -150,7 +150,7 @@ namespace Minesweeper
         }
 
         private void Button1_Click(object sender, EventArgs e){
-            this.spins = rand.Next(4,25);
+            this.spins = rand.Next(4,15);
             this.count = 0;
             timer1.Start();
             button1.Enabled = false;
