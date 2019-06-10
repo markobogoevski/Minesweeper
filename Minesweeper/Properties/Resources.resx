@@ -280,4 +280,22 @@
   <data name="back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnAccept" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnAccept.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnAcceptDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnAcceptDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnCheat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnCheat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnCheatDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnCheatDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSpin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSpin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSpinDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSpinDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

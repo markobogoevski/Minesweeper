@@ -13,10 +13,11 @@ namespace Minesweeper
 
     public partial class Spin : Form
     {
-        bool alternate;
+        bool alternate, spinned, showAccept;
         private static Random rand = new Random();
+        Button btnSpin, btnCheat, btnAccept;
         List<Image> spinImages;
-        List<string> spinDescriptions;
+        // List<string> spinDescriptions;
         Point[] locations;
         public Image award;
         PictureBox[] pictureBoxes;
@@ -30,6 +31,8 @@ namespace Minesweeper
             this.DoubleBuffered = true;
             spinImages = new List<Image>();
             alternate = false;
+            spinned = false;
+            showAccept = false;
 
             this.BackgroundImage = Properties.Resources.background;
 
@@ -45,6 +48,11 @@ namespace Minesweeper
             spinImages[4].Tag = "Poison";
             spinImages.Add(Properties.Resources.heart); // posleden achievement e extra life
             spinImages[5].Tag = "Heart";
+
+            btnSpin = new Button(new Point(400, 60), Properties.Resources.btnSpinDark, Properties.Resources.btnSpin, 125, 59);
+            btnCheat = new Button(new Point(400, 130), Properties.Resources.btnCheatDark, Properties.Resources.btnCheat, 125, 59);
+            btnAccept = new Button(new Point(400, 400), Properties.Resources.btnAcceptDark, Properties.Resources.btnAccept, 125, 59);
+            lblResult.Location = new Point(350, 350);
 
             pictureBoxes = new PictureBox[6];
             locations = new Point[6];
@@ -83,16 +91,23 @@ namespace Minesweeper
         {
             Brush brown = new SolidBrush(Color.FromArgb(202, 202, 202));
             Brush lightBrown = new SolidBrush(Color.DarkGoldenrod);
+            if (spinned && showAccept)
+                btnAccept.Draw(e.Graphics);
+            else if (!spinned)
+            {
+                btnSpin.Draw(e.Graphics);
+                btnCheat.Draw(e.Graphics);
+            }
             for (int i = 0; i < spinImages.Count; i++)
             {
                 if (alternate)
                     if (i % 2 == 1)
                         pictureBoxes[i].BackColor = Color.DarkGoldenrod;
-                    else pictureBoxes[i].BackColor = Color.Brown;
+                    else pictureBoxes[i].BackColor = Color.FromArgb(202, 202, 202);
                 else
                     if (i % 2 == 0)
                     pictureBoxes[i].BackColor = Color.DarkGoldenrod;
-                else pictureBoxes[i].BackColor = Color.Brown;
+                else pictureBoxes[i].BackColor = Color.FromArgb(202, 202, 202);
 
             }
             if (alternate)//za boenje na trkaloto naizmenicno
@@ -113,7 +128,7 @@ namespace Minesweeper
                 e.Graphics.FillPie(brown, 100, 100, 250, 300, -360, -60);
                 e.Graphics.FillPie(lightBrown, 100, 100, 250, 300, 0, 60);
             }
-            Brush b = new SolidBrush(Color.Black);
+            Brush b = new SolidBrush(Color.DarkGoldenrod);
             PointF[] triangle = new PointF[3];
             triangle[0] = new PointF(210, 65); // triagolnikot od gore
             triangle[1] = new PointF(230, 65);
@@ -130,25 +145,41 @@ namespace Minesweeper
             {
                 timer1.Stop();
                 Image awardWon = returnAward();
-                AwardAccept awardForm;
-                if (awardWon.Tag == "Heart")   // if tag == heart, another chance 
-                    awardForm = new AwardAccept("get another Chance", awardWon);
-                else
-                    awardForm = new AwardAccept("LOSE", awardWon);
+                //AwardAccept awardForm;
+                //if (awardWon.Tag == "Heart")   // if tag == heart, another chance 
+                //    awardForm = new AwardAccept("get another Chance", awardWon);
+                //else
+                //    awardForm = new AwardAccept("LOSE", awardWon);
 
-                if (awardForm.ShowDialog() == DialogResult.OK)
+                //if (awardForm.ShowDialog() == DialogResult.OK)
+                //{
+                //    DialogResult = DialogResult.OK;
+                //}
+                //else DialogResult = DialogResult.Cancel;
+
+                //this.Close();
+                showAccept = true;
+                this.MouseMove += new MouseEventHandler(Spin_MouseMove);
+                if (awardWon.Tag.ToString() == "Heart")
                 {
-                    DialogResult = DialogResult.OK;
+                    lblResult.Text = "Congratulations!\nYou win a second chance.";
                 }
-                else DialogResult = DialogResult.Cancel;
-
-                this.Close();
+                else
+                {
+                    lblResult.Location = new Point(375, 375);
+                    lblResult.Text = "You are out of luck...";
+                }
+                lblResult.Visible = true;
+                Invalidate();
             }
-            alternate = !alternate;
-            this.count++;
-            spin();
-            timer1.Interval = timer1.Interval + 30;
-            Invalidate();
+            else
+            {
+                alternate = !alternate;
+                this.count++;
+                spin();
+                timer1.Interval = timer1.Interval + 30;
+                Invalidate();
+            }
         }
 
         public Image returnAward()
@@ -159,12 +190,21 @@ namespace Minesweeper
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            this.spins = rand.Next(4, 15);
+            this.spins = rand.Next(4, 16);
             this.count = 0;
             timer1.Start();
-            button1.Enabled = false;
+            spinned = true;
+            this.MouseMove -= new MouseEventHandler(Spin_MouseMove);
         }
-
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.spins = 10;
+            timer1.Start();
+            spinned = true;
+            this.MouseMove -= new MouseEventHandler(Spin_MouseMove);
+            // da se vrati nultiot element 
+        }
 
         private Bitmap RotateBitmap(Bitmap bm, float angle)
         {
@@ -237,12 +277,44 @@ namespace Minesweeper
 
         private void Spin_Load(object sender, EventArgs e) { }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Spin_MouseMove(object sender, MouseEventArgs e)
         {
-            this.spins = 4;
-            timer1.Start();
-            // da se vrati nultiot element 
+            btnSpin.isHit(e.X, e.Y);
+            btnCheat.isHit(e.X, e.Y);
+            btnAccept.isHit(e.X, e.Y);
+            Invalidate();
         }
+
+        private void Spin_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (btnSpin.Hit) btnSpin.Clicked = true;
+            if (btnCheat.Hit) btnCheat.Clicked = true;
+            if (btnAccept.Hit) btnAccept.Clicked = true;
+            Invalidate();
+        }
+
+        private void Spin_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnSpin.Clicked = btnCheat.Clicked = btnAccept.Clicked = false;
+        }
+
+        private void Spin_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (btnSpin.Hit && !spinned) Button1_Click(null, null);
+            else if (btnCheat.Hit && !spinned) button2_Click(null, null);
+            else if (btnAccept.Hit && showAccept)
+            {
+                if(lblResult.Text == "Congratulations!\nYou win a second chance.")
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                else if (lblResult.Text == "You are out of luck...")
+                {
+                    DialogResult = DialogResult.Cancel;
+                }
+            }
+        }
+
         private void hardCodedSetup()
         {
             rotateAngles[0] = 0;

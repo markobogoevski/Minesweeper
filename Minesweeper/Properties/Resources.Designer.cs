@@ -223,6 +223,26 @@ namespace Minesweeper.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnAccept {
+            get {
+                object obj = ResourceManager.GetObject("btnAccept", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnAcceptDark {
+            get {
+                object obj = ResourceManager.GetObject("btnAcceptDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnAchiev {
             get {
                 object obj = ResourceManager.GetObject("btnAchiev", resourceCulture);
@@ -256,6 +276,26 @@ namespace Minesweeper.Properties {
         internal static System.Drawing.Bitmap btnBackLight {
             get {
                 object obj = ResourceManager.GetObject("btnBackLight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnCheat {
+            get {
+                object obj = ResourceManager.GetObject("btnCheat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnCheatDark {
+            get {
+                object obj = ResourceManager.GetObject("btnCheatDark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -436,6 +476,26 @@ namespace Minesweeper.Properties {
         internal static System.Drawing.Bitmap btnQuitDark {
             get {
                 object obj = ResourceManager.GetObject("btnQuitDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnSpin {
+            get {
+                object obj = ResourceManager.GetObject("btnSpin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnSpinDark {
+            get {
+                object obj = ResourceManager.GetObject("btnSpinDark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
