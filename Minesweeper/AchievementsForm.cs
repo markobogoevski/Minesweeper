@@ -18,6 +18,7 @@ namespace Minesweeper
         Rectangle selected;
         public AchievementsForm(ImageWrapper skin, List<Achievement>achievements){
             InitializeComponent();
+            this.DoubleBuffered = true;
             click = false;
             this.skin = skin;
             this.achievements = achievements;
@@ -31,9 +32,18 @@ namespace Minesweeper
             boxes[3] = pictureBox6;
             boxes[4] = pictureBox5;
             boxes[5] = pictureBox4;
-            
-            for (int i = 0; i < 6; i++)
+            //asd
+            for (int i = 0; i < 6; i++) { 
                 boxes[i].Image = achievements[i].getImage(); // se zima lock ili unlock image
+            }
+
+            //mora hard-kodirano
+            pictureBox1.Image.Tag = "Baloon";
+            pictureBox2.Image.Tag = "Nuke";
+            pictureBox3.Image.Tag = "Poison";
+            pictureBox6.Image.Tag = "Bomb";
+            pictureBox5.Image.Tag = "Trap";
+            pictureBox4.Image.Tag = "Shuriken";
 
             Point a = new Point(pictureBox7.Location.X - 5, pictureBox7.Location.Y - 3);
             Size b = new Size(125, 125);
@@ -114,49 +124,67 @@ namespace Minesweeper
               
         private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
         {
-            click = true;
-            from = new Point(pictureBox4.Location.X - 5, pictureBox4.Location.Y - 3);
-            to = new Point(125, 125);
-            Invalidate();
+            if (achievements[5].iSUnlocked())
+            {
+                click = true;
+                from = new Point(pictureBox4.Location.X - 5, pictureBox4.Location.Y - 3);
+                to = new Point(125, 125);
+                Invalidate();
+            }
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            click = true;
-            from = new Point(pictureBox1.Location.X - 5, pictureBox1.Location.Y - 3);
-            to = new Point(125, 125);
-            Invalidate();
+            if (achievements[0].iSUnlocked())
+            {
+                click = true;
+                from = new Point(pictureBox1.Location.X - 5, pictureBox1.Location.Y - 3);
+                to = new Point(125, 125);
+                Invalidate();
+            }
         }
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            click = true;
-            from = new Point(pictureBox2.Location.X - 5, pictureBox2.Location.Y - 3);
-            to = new Point(125, 127);
-            Invalidate();
+            if (achievements[1].iSUnlocked())
+            {
+                click = true;
+                from = new Point(pictureBox2.Location.X - 5, pictureBox2.Location.Y - 3);
+                to = new Point(125, 127);
+                Invalidate();
+            }
         }
 
         private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
         {
-            click = true;
-            from = new Point(pictureBox3.Location.X - 5, pictureBox3.Location.Y - 3);
-            to = new Point(125, 125);
-            Invalidate();
+            if (achievements[2].iSUnlocked())
+            {
+                click = true;
+                from = new Point(pictureBox3.Location.X - 5, pictureBox3.Location.Y - 3);
+                to = new Point(125, 125);
+                Invalidate();
+            }
         }
 
         private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
         {
-            click = true;
-            from = new Point(pictureBox6.Location.X - 5, pictureBox6.Location.Y - 3);
-            to = new Point(125, 125);
-            Invalidate();
+            if (achievements[3].iSUnlocked())
+            {
+                click = true;
+                from = new Point(pictureBox6.Location.X - 5, pictureBox6.Location.Y - 3);
+                to = new Point(125, 125);
+                Invalidate();
+            }
         }
 
         private void pictureBox5_MouseDown(object sender, MouseEventArgs e)
         {
-            click = true;
-            from = new Point(pictureBox5.Location.X - 5, pictureBox5.Location.Y - 3);
-            to = new Point(125, 125);
-            Invalidate();
+            if (achievements[4].iSUnlocked())
+            {
+                click = true;
+                from = new Point(pictureBox5.Location.X - 5, pictureBox5.Location.Y - 3);
+                to = new Point(125, 125);
+                Invalidate();
+            }
         }
   
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
