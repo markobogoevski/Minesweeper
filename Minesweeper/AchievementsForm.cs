@@ -29,7 +29,7 @@ namespace Minesweeper
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            label7.Text = " ";
+            label7.Text = "";
         }
 
         private void pictureBox2_MouseEnter(object sender, EventArgs e)
@@ -211,6 +211,11 @@ namespace Minesweeper
             from = new Point(0, 0);
             to = new Point(0, 0);
             Invalidate();
+        }
+
+        private void AchievementsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

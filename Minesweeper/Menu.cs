@@ -16,7 +16,7 @@ namespace Minesweeper
         public ImageWrapper skin { get; set; }
         private Button Play, Achiev, Leaderboards, Quit, Easy, Medium, Hard;
         private difficulty Diff;
-
+        public List<Achievement> achievements;
         public Menu()
         {
             Play = new Button(new Point(218, 100), Resources.btnPlayDark, Resources.btnPlay, 178, 84);
@@ -32,12 +32,19 @@ namespace Minesweeper
             this.BackgroundImage = Resources.background;
             DoubleBuffered = true;
             skin = new ImageWrapper(9, Resources.mine);
+            achievements = new List<Achievement>();
+            achievements.Add(new Achievement("Baloon", Resources.baloon, 45, difficulty.EASY));
+            achievements.Add(new Achievement("Nuke", Resources.nuke, 15, difficulty.EASY));
+            achievements.Add(new Achievement("Poison", Resources.poison, 210, difficulty.INTERMEDIATE));
+            achievements.Add(new Achievement("Shuriken", Resources.shuriken, 90, difficulty.INTERMEDIATE));
+            achievements.Add(new Achievement("Trap", Resources.trap, 480, difficulty.HARD));
+            achievements.Add(new Achievement("Bomb", Resources.bomb, 240, difficulty.HARD));
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            Game g = new Game(Diff, skin);
+            Game g = new Game(Diff, skin,achievements);
             g.FormClosed += new FormClosedEventHandler(window_FormClosed);
             this.Cursor = Cursors.Default;
             g.Show();

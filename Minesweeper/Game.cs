@@ -40,7 +40,7 @@ namespace Minesweeper
         public bool resizeHold { get; set; }
         bool secondChance;
         Tile hintTile { get; set; }
-
+        List<Achievement> achievements;
         //Drawing
         public static Size mainWindowSize { get; set; }
         public static int tileRowNumber { get; set; }
@@ -64,7 +64,7 @@ namespace Minesweeper
        
 
        
-        public Game(difficulty d, ImageWrapper s)
+        public Game(difficulty d, ImageWrapper s, List<Achievement>achievements)
         {
             this.skin = s;
             DIFF = difficulty.NONE ;
@@ -80,7 +80,7 @@ namespace Minesweeper
 
             InitializeComponent();
             HeightOffset = miniMenu.Height + button1.Height + 15;
-            
+            this.achievements = achievements;
             newGame(d);
         }
 
@@ -523,7 +523,18 @@ namespace Minesweeper
                         highScores.RemoveAt(highScores.Count - 1);
                 }
                 saveScores(DIFF, highScores);
+                foreach (var item in achievements)
+                {
+                    if (item.diffRequired == DIFF && item.secondsRequired >= seconds && !item.iSUnlocked())
+                    {
+                        item.Unlock();
+                        MessageBox.Show("Congratulations, you unlocked " + item.getName());
+                    }
+                }
+
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
+                
+
                 if (result == DialogResult.Yes)
                 {
                     newGame(DIFF);
