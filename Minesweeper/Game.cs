@@ -137,7 +137,6 @@ namespace Minesweeper
             timer.Start();
             idleTimer.Start();
             timer1.Stop();
-            timer1.Enabled = false;
             boostedLabel.Hide();
         
           
@@ -392,7 +391,7 @@ namespace Minesweeper
             boosted = false;
             this.BackColor = Color.LightGray;
             grid.revertAll();
-            timer1.Enabled = false;
+            if(timer1.Enabled)
             timer1.Stop();
             boostedLabel.Hide();
             Invalidate();
@@ -414,9 +413,6 @@ namespace Minesweeper
         //everything on click..
         private void mainScreen_MouseClick(object sender, MouseEventArgs e)
         {
-            simulationIdleEvent = 0;
-            idleTimer.Start();
-            hintTile = null;
             Point clickLocation = e.Location;
             int j = (clickLocation.X) / TileWidth;
             int i = (clickLocation.Y) / TileHeight;
@@ -426,6 +422,10 @@ namespace Minesweeper
                     return;
                 int tileBefore = Game.openedTiles;
                 grid.tileClicked(i, j);
+
+                simulationIdleEvent = 0;
+                hintTile = null;
+
                 mainScreen.Invalidate();
                 checkWin();
                 if (gameEnd)
@@ -483,7 +483,6 @@ namespace Minesweeper
             }
 
             Invalidate(true);
-            idleTimer.Start();
         }
 
         //check to see if you've won
@@ -509,10 +508,6 @@ namespace Minesweeper
                 }
                 else
                 {
-                    timer.Stop();
-                    idleTimer.Stop();
-                    timer1.Stop();
-
                     this.Close();
                 }
             }
@@ -542,7 +537,6 @@ namespace Minesweeper
                 {
                     gameEnd = false;
                     secondChance = true;
-                    timer1.Start();
                     timer.Start();
                     idleTimer.Start();
                 }
