@@ -42,6 +42,9 @@ namespace Minesweeper
         Tile hintTile { get; set; }
         List<Achievement> achievements;
         //Drawing
+        public static Screen windowConfiguration = Screen.PrimaryScreen;
+        public static Size windowSizeConf = windowConfiguration.WorkingArea.Size;
+
         public static Size mainWindowSize { get; set; }
         public static int tileRowNumber { get; set; }
         public static int tileColumnNumber { get; set; }
@@ -66,6 +69,7 @@ namespace Minesweeper
        
         public Game(difficulty d, ImageWrapper s, List<Achievement>achievements)
         {
+
             this.skin = s;
             DIFF = difficulty.NONE ;
 
@@ -74,7 +78,6 @@ namespace Minesweeper
 
             //default tile size
             resizeHold = true;
-            Game.TileWidth = Game.TileHeight = 50;
 
             resizeHold = false;
 
@@ -87,6 +90,7 @@ namespace Minesweeper
         //main func
         private void newGame(difficulty d)
         {
+            Game.TileWidth = Game.TileHeight = windowSizeConf.Height / 20;
             mainScreen.SuspendLayout();
             mainScreen.Hide();
             secondChance = false;
@@ -183,7 +187,7 @@ namespace Minesweeper
                     case difficulty.EASY:
                         //setting easy options
                         numberOfBombs = 10;
-                        tileRowNumber = tileColumnNumber = 9;
+                        tileRowNumber = tileColumnNumber = 11;
                         this.MinimumSize = new Size(468, 515);
                         this.MaximumSize = new Size(1200, 915);
                         //Calculating tileSize

@@ -34,6 +34,7 @@ namespace Minesweeper
             Easy.Clicked = true;
             InitializeComponent();
             this.BackgroundImage = Resources.background;
+            this.ClientSize = new Size(this.Width, Game.windowSizeConf.Height - 80);
             DoubleBuffered = true;
             Image mine = Resources.mine;
             mine.Tag = "Mine";
