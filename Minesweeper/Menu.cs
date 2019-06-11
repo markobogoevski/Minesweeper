@@ -16,7 +16,7 @@ namespace Minesweeper
 {
     [Serializable]
     public partial class Menu : Form
-    {
+    { 
         public ImageWrapper skin { get; set; }
         private Button Play, Achiev, Leaderboards, Quit, Easy, Medium, Hard;
         private difficulty Diff;

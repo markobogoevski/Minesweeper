@@ -91,12 +91,12 @@ namespace Minesweeper
         //main func
         private void newGame(difficulty d)
         {
-            Game.TileWidth = Game.TileHeight = windowSizeConf.Height / 20;
+            if (!fullscreen)
+                Game.TileWidth = Game.TileHeight = windowSizeConf.Height / 20;
+
             mainScreen.SuspendLayout();
             mainScreen.Hide();
             secondChance = false;
-
-
 
             button1.BackgroundImage = Resources.smileyHappy;
            
@@ -122,8 +122,6 @@ namespace Minesweeper
                 //setting picture box Size based on window size
 
                 setScreenOptions(d);
-
-
 
                 //centering screen 
 
@@ -578,13 +576,11 @@ namespace Minesweeper
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Game.TileWidth = Game.TileHeight = 50;
             newGame(DIFF);
         }
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Game.TileWidth = Game.TileHeight = 50;
             if (fullscreen&&DIFF!=difficulty.EASY)
             {
                 fullscreen = false;
@@ -601,7 +597,6 @@ namespace Minesweeper
 
         private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Game.TileWidth = Game.TileHeight = 50;
             if (fullscreen && DIFF != difficulty.INTERMEDIATE)
             {
                 fullscreen = false;
@@ -618,7 +613,6 @@ namespace Minesweeper
 
         private void hardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Game.TileWidth = Game.TileHeight = 50;
             if (fullscreen && DIFF != difficulty.HARD)
             {
                 fullscreen = false;

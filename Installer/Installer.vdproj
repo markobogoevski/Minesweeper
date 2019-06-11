@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_458EE667544646E6BAEB16482C0C24A0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_56EEBD2713A347A7B07E07026722857F"
+        "MsmKey" = "8:_02DDBBCC3C164ED8AA22DD752603532B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6F0282BDECDEB921EA6B69063D905DB9"
-        "OwnerKey" = "8:_56EEBD2713A347A7B07E07026722857F"
+        "OwnerKey" = "8:_02DDBBCC3C164ED8AA22DD752603532B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FDF8CB77904D4EDB8E49F18411CC9153"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_56EEBD2713A347A7B07E07026722857F"
+        "OwnerKey" = "8:_02DDBBCC3C164ED8AA22DD752603532B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -61,6 +61,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -77,6 +93,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -106,26 +130,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_458EE667544646E6BAEB16482C0C24A0"
-            {
-            "SourcePath" = "8:..\\..\\..\\Downloads\\WooIcon-Bnb-Minesweeper.ico"
-            "TargetName" = "8:WooIcon-Bnb-Minesweeper.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_713198AC41AB46869F4FC0CFA282BC95"
-            "Condition" = "8:"
-            "Transitive" = "11:TRUE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6F0282BDECDEB921EA6B69063D905DB9"
             {
             "AssemblyRegister" = "3:1"
@@ -155,6 +159,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FDF8CB77904D4EDB8E49F18411CC9153"
+            {
+            "SourcePath" = "8:..\\Minesweeper\\MinesweeperIcon.ico"
+            "TargetName" = "8:MinesweeperIcon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_713198AC41AB46869F4FC0CFA282BC95"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -208,7 +232,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_CC62E60D6CA24D2DB94953206B551E15"
                     {
-                    "Name" = "8:AMV-MBA"
+                    "Name" = "8:Skopskey Inc"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -235,25 +259,25 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Minesweeper"
-        "ProductCode" = "8:{25471608-87A8-4305-BD0F-5BD93633366A}"
-        "PackageCode" = "8:{86EAC1D0-649F-4AE3-A259-D0D1DF878312}"
+        "ProductCode" = "8:{C8CCE274-52F3-4D40-8838-E6B0CE05F92B}"
+        "PackageCode" = "8:{A4C5CF24-3DED-4A67-BDF9-DB4522703FB0}"
         "UpgradeCode" = "8:{7C98387D-CD51-47C0-A7F3-C9C557F18D33}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.4"
-        "Manufacturer" = "8:AMV-MBA"
+        "ProductVersion" = "8:1.0.8"
+        "Manufacturer" = "8:Skopskey Inc"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Minesweeper"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:AMV-MBA"
+        "ARPCONTACT" = "8:Skopskey Inc"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:https://github.com/markobogoevski/Minesweeper"
-        "ARPPRODUCTICON" = "8:_458EE667544646E6BAEB16482C0C24A0"
+        "ARPPRODUCTICON" = "8:_FDF8CB77904D4EDB8E49F18411CC9153"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -356,7 +380,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_85D2DEBED3244BE9BDC64D0E78247270"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FCAAA47B572B426E968C383D244B1EBF"
             {
             "Name" = "8:Minesweeper"
             "Arguments" = "8:"
@@ -364,13 +388,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_56EEBD2713A347A7B07E07026722857F"
+            "Target" = "8:_02DDBBCC3C164ED8AA22DD752603532B"
             "Folder" = "8:_05BBF286256E409EAC9FD6723F404B40"
             "WorkingFolder" = "8:_713198AC41AB46869F4FC0CFA282BC95"
-            "Icon" = "8:_458EE667544646E6BAEB16482C0C24A0"
+            "Icon" = "8:_FDF8CB77904D4EDB8E49F18411CC9153"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BDE7D23C82F040C882358B3EDC0604D0"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FF6A9FD6DD204C25B8D07F34D81A1896"
             {
             "Name" = "8:Minesweeper"
             "Arguments" = "8:"
@@ -378,10 +402,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_56EEBD2713A347A7B07E07026722857F"
+            "Target" = "8:_02DDBBCC3C164ED8AA22DD752603532B"
             "Folder" = "8:_CC62E60D6CA24D2DB94953206B551E15"
             "WorkingFolder" = "8:_713198AC41AB46869F4FC0CFA282BC95"
-            "Icon" = "8:_458EE667544646E6BAEB16482C0C24A0"
+            "Icon" = "8:_FDF8CB77904D4EDB8E49F18411CC9153"
             "Feature" = "8:"
             }
         }
@@ -783,7 +807,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_56EEBD2713A347A7B07E07026722857F"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_02DDBBCC3C164ED8AA22DD752603532B"
             {
             "SourcePath" = "8:..\\Minesweeper\\obj\\Debug\\Minesweeper.exe"
             "TargetName" = "8:"
