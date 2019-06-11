@@ -96,8 +96,9 @@
             // leaderboardsToolStripMenuItem
             // 
             this.leaderboardsToolStripMenuItem.Name = "leaderboardsToolStripMenuItem";
-            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.leaderboardsToolStripMenuItem.Text = "Leaderboards";
+            this.leaderboardsToolStripMenuItem.Click += new System.EventHandler(this.leaderboardsToolStripMenuItem_Click);
             // 
             // chooseDifficultyToolStripMenuItem
             // 
@@ -222,7 +223,7 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(527, 33);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 58);
             this.button1.TabIndex = 6;
@@ -233,7 +234,7 @@
             // 
             this.mainScreen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mainScreen.Location = new System.Drawing.Point(67, 159);
-            this.mainScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainScreen.Margin = new System.Windows.Forms.Padding(4);
             this.mainScreen.Name = "mainScreen";
             this.mainScreen.Size = new System.Drawing.Size(830, 562);
             this.mainScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -263,7 +264,7 @@
             this.Controls.Add(this.miniMenu);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.miniMenu;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(2127, 1220);
             this.MinimumSize = new System.Drawing.Size(618, 612);

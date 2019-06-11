@@ -11,6 +11,7 @@ namespace Minesweeper
 {
     public class Grid
     {
+
         //utility
         static Random generator = new Random();
         Dictionary<int, ImageWrapper> imagesByNumber { get; set; }

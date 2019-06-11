@@ -43,6 +43,7 @@ namespace Minesweeper
         List<Achievement> achievements;
         //Drawing
         public static Screen windowConfiguration = Screen.PrimaryScreen;
+
         public static Size windowSizeConf = windowConfiguration.WorkingArea.Size;
 
         public static Size mainWindowSize { get; set; }
@@ -564,6 +565,7 @@ namespace Minesweeper
                 for (int j = 0; j < tileColumnNumber; j++)
                     if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())
                         grid.mainMatrix[i][j].click();
+            Invalidate(true);
             DialogResult result = MessageBox.Show("You lost! Do you want to try again?", "Oops!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
@@ -749,6 +751,19 @@ namespace Minesweeper
             }
             else
                 button1.Enabled = false;
+        }
+
+        private void leaderboardsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Leaderboards l = new Leaderboards();
+            l.FormClosed += new FormClosedEventHandler(leaderboards_FormClosed);
+            l.Show();
+            this.Hide();
+        }
+
+        private void leaderboards_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
