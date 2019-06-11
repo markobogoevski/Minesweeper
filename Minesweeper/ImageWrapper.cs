@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Minesweeper
 {
-    class ImageWrapper
+    public class ImageWrapper
     {
         int number { get; set; }
-        Image image { get; set; }
+        public Image image { get; set; }
 
         public ImageWrapper(int number, Image image)
         {

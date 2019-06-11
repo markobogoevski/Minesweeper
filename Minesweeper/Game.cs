@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,22 +24,28 @@ namespace Minesweeper
     public partial class Game : Form
     {
         //Logic
+        static Random rand = new Random();
         public static difficulty DIFF { get; set; }
         int seconds { get; set; }
         public static bool gameEnd = false;
         int numberOfBombs { get; set; }
         int numberOfFlags { get; set; }
         public static int openedTiles { get; set; }
-        Grid grid { get; set; }
+        public Grid grid { get; set; }
         public int currentStreak { get; set; }
         public bool boosted { get; set; }
         public int simulation { get; set; }
         public bool wow { get; set; }
         public int simulationIdleEvent { get; set; }
         public bool resizeHold { get; set; }
+        bool secondChance;
         Tile hintTile { get; set; }
-
+        List<Achievement> achievements;
         //Drawing
+        public static Screen windowConfiguration = Screen.PrimaryScreen;
+
+        public static Size windowSizeConf = windowConfiguration.WorkingArea.Size;
+
         public static Size mainWindowSize { get; set; }
         public static int tileRowNumber { get; set; }
         public static int tileColumnNumber { get; set; }
@@ -55,11 +64,14 @@ namespace Minesweeper
         public Size previousMaxSize { get; set; }
         public int previousTileSize { get; set; }
         public bool fullscreen { get; set; }
+        public ImageWrapper skin { get; set; }
        
 
        
-        public Game(difficulty d)
+        public Game(difficulty d, ImageWrapper s, List<Achievement>achievements)
         {
+
+            this.skin = s;
             DIFF = difficulty.NONE ;
 
             this.DoubleBuffered = true;
@@ -67,24 +79,25 @@ namespace Minesweeper
 
             //default tile size
             resizeHold = true;
-            Game.TileWidth = Game.TileHeight = 50;
 
             resizeHold = false;
 
             InitializeComponent();
             HeightOffset = miniMenu.Height + button1.Height + 15;
+            this.achievements = achievements;
             newGame(d);
         }
 
         //main func
         private void newGame(difficulty d)
         {
+            Game.TileWidth = Game.TileHeight = windowSizeConf.Height / 20;
             mainScreen.SuspendLayout();
             mainScreen.Hide();
-           
-           
+            secondChance = false;
 
-            
+
+
             button1.BackgroundImage = Resources.smileyHappy;
            
             this.Cursor = Cursors.WaitCursor;
@@ -122,14 +135,13 @@ namespace Minesweeper
             //starting game..
 
 
-            grid = new Grid(numberOfBombs);
+            grid = new Grid(numberOfBombs,skin);
             numberOfFlags = numberOfBombs;
            
 
             timer.Start();
             idleTimer.Start();
             timer1.Stop();
-            timer1.Enabled = false;
             boostedLabel.Hide();
         
           
@@ -176,7 +188,7 @@ namespace Minesweeper
                     case difficulty.EASY:
                         //setting easy options
                         numberOfBombs = 10;
-                        tileRowNumber = tileColumnNumber = 9;
+                        tileRowNumber = tileColumnNumber = 11;
                         this.MinimumSize = new Size(468, 515);
                         this.MaximumSize = new Size(1200, 915);
                         //Calculating tileSize
@@ -272,9 +284,9 @@ namespace Minesweeper
                 Pen pen = new Pen(Color.DarkKhaki,2);
 
                 Rectangle rectangle1 = new Rectangle(new Point(0,0), new Size(
-                    (int)((ClientSize.Width - mainScreen.Width) / 3.2), ClientSize.Height));
+                    (int)((ClientSize.Width - mainScreen.Width) / 4), ClientSize.Height));
                 Rectangle rectangle2 = new Rectangle(new Point(ClientSize.Width-rectangle1.Width,0), new Size(
-                    (int)((ClientSize.Width - mainScreen.Width) / 3.2), ClientSize.Height));
+                    (int)((ClientSize.Width - mainScreen.Width) / 4), ClientSize.Height));
                 graphics.FillRectangle(brush, rectangle1);
                 graphics.DrawRectangle(pen, rectangle1);
                 graphics.FillRectangle(brush, rectangle2);
@@ -384,7 +396,7 @@ namespace Minesweeper
             boosted = false;
             this.BackColor = Color.LightGray;
             grid.revertAll();
-            timer1.Enabled = false;
+            if(timer1.Enabled)
             timer1.Stop();
             boostedLabel.Hide();
             Invalidate();
@@ -406,9 +418,6 @@ namespace Minesweeper
         //everything on click..
         private void mainScreen_MouseClick(object sender, MouseEventArgs e)
         {
-            simulationIdleEvent = 0;
-            idleTimer.Start();
-            hintTile = null;
             Point clickLocation = e.Location;
             int j = (clickLocation.X) / TileWidth;
             int i = (clickLocation.Y) / TileHeight;
@@ -418,6 +427,10 @@ namespace Minesweeper
                     return;
                 int tileBefore = Game.openedTiles;
                 grid.tileClicked(i, j);
+
+                simulationIdleEvent = 0;
+                hintTile = null;
+
                 mainScreen.Invalidate();
                 checkWin();
                 if (gameEnd)
@@ -475,7 +488,6 @@ namespace Minesweeper
             }
 
             Invalidate(true);
-            idleTimer.Start();
         }
 
         //check to see if you've won
@@ -491,6 +503,9 @@ namespace Minesweeper
                 {
                     endBoost();
                 }
+
+                SerializeScores.checkScoresAchievs(DIFF, seconds, achievements);
+
                 DialogResult result = MessageBox.Show("You win! Do you want to play again?", "Congratulations!", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
@@ -502,16 +517,45 @@ namespace Minesweeper
                 }
             }
         }
-
+        
         //end the game or run mini game
         private void endGame()
         {
             //this.Hide();
             //new form
-
-
-
             //
+            
+            timer1.Stop();
+            timer.Stop();
+            idleTimer.Stop();
+           
+            int chance = rand.Next(1, 7);
+            if (secondChance || chance >= 4F) // if NOT OK, you got bomb and you lose
+            {
+                Lost();
+            }
+            else
+            {
+                MessageBox.Show("Oops, seems like you stepped on a bomb. But...");
+                Spin spinForm = new Spin();
+                if (spinForm.ShowDialog() == DialogResult.OK)
+                {
+                    gameEnd = false;
+                    secondChance = true;
+                    timer.Start();
+                    idleTimer.Start();
+                }
+                else
+                {
+                    gameEnd = true;
+                    secondChance = false;
+                    Lost();
+                }
+            }
+        }
+
+        private void Lost()
+        {
             if (boosted)
             {
                 endBoost();
@@ -521,18 +565,15 @@ namespace Minesweeper
                 for (int j = 0; j < tileColumnNumber; j++)
                     if (grid.mainMatrix[i][j].getBomb() && !grid.mainMatrix[i][j].getFlag())
                         grid.mainMatrix[i][j].click();
-            button1.BackgroundImage = Resources.smileyDead;
-            timer1.Stop();
-            timer.Stop();
-            idleTimer.Stop();
-            DialogResult result = MessageBox.Show("You lost! Do you want to try again?","Oops!",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+            Invalidate(true);
+            DialogResult result = MessageBox.Show("You lost! Do you want to try again?", "Oops!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
-                 previousSize = this.ClientSize;
+                button1.BackgroundImage = Resources.smileyDead;
+                previousSize = this.ClientSize;
                 newGame(DIFF);
             }
             else this.Close();
-            
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -710,6 +751,19 @@ namespace Minesweeper
             }
             else
                 button1.Enabled = false;
+        }
+
+        private void leaderboardsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Leaderboards l = new Leaderboards();
+            l.FormClosed += new FormClosedEventHandler(leaderboards_FormClosed);
+            l.Show();
+            this.Hide();
+        }
+
+        private void leaderboards_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

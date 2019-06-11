@@ -29,8 +29,16 @@ namespace Minesweeper
 
         public int CompareTo(Score other)
         {
+            if (this.Minutes == other.Minutes && this.Seconds == other.Seconds) return this.Date.Millisecond - other.Date.Millisecond;
             if (this.Minutes == other.Minutes) return this.Seconds - other.Seconds;
             return this.Minutes - other.Minutes;
+        }
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || ! this.GetType().Equals(obj.GetType()))
+                return false;
+            Score s = (Score)obj;
+            return this.Date == s.Date && this.Minutes == s.Minutes && this.Seconds == s.Seconds && this.Name == s.Name;
         }
     }
 }

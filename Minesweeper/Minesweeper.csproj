@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Achievement.cs" />
+    <Compile Include="AchievementsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AchievementsForm.Designer.cs">
+      <DependentUpon>AchievementsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Button.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,11 +74,27 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Name.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Name.Designer.cs">
+      <DependentUpon>Name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resizer.cs" />
     <Compile Include="Score.cs" />
+    <Compile Include="SerializeScores.cs" />
+    <Compile Include="Spin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Spin.Designer.cs">
+      <DependentUpon>Spin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tile.cs" />
+    <EmbeddedResource Include="AchievementsForm.resx">
+      <DependentUpon>AchievementsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Name.resx">
+      <DependentUpon>Name.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,6 +117,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Spin.resx">
+      <DependentUpon>Spin.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,9 +161,6 @@
     <None Include="Resources\8.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bomb.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\0.png" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +180,141 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\questionMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuke.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poison.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuriken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baloon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPlay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPlayDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAchievDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnQuitDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnLeadDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAchiev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnQuit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasyDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHardDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMedium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMediumDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baloonLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bombLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nukeLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poisonLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shurikenLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trapLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBackDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBackLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasyDarkLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEasyLeaderboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHardDarkLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHardLeaderboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMediumDarkLead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnMediumLeaderboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAccept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAcceptDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCheat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCheatDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSpin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSpinDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixelBackground.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

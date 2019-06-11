@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Minesweeper
 {
-    class Tile : IEquatable<Tile>
+    public class Tile : IEquatable<Tile>
     {
         //Position info
         int XCoord { get; set; }
