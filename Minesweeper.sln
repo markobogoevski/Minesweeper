@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Minesweeper\Minesweeper.csproj", "{041C041F-D9BE-49AE-B5C4-BC606397A7E8}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{1447DCB3-890D-4B50-8AF5-D0F81EEAE704}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{041C041F-D9BE-49AE-B5C4-BC606397A7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{041C041F-D9BE-49AE-B5C4-BC606397A7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{041C041F-D9BE-49AE-B5C4-BC606397A7E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1447DCB3-890D-4B50-8AF5-D0F81EEAE704}.Debug|Any CPU.ActiveCfg = Debug
+		{1447DCB3-890D-4B50-8AF5-D0F81EEAE704}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

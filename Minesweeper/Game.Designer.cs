@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.miniMenu = new System.Windows.Forms.MenuStrip();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +97,7 @@
             // leaderboardsToolStripMenuItem
             // 
             this.leaderboardsToolStripMenuItem.Name = "leaderboardsToolStripMenuItem";
-            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.leaderboardsToolStripMenuItem.Text = "Leaderboards";
             this.leaderboardsToolStripMenuItem.Click += new System.EventHandler(this.leaderboardsToolStripMenuItem_Click);
             // 
@@ -263,6 +264,7 @@
             this.Controls.Add(this.mainScreen);
             this.Controls.Add(this.miniMenu);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.miniMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
