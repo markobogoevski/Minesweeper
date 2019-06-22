@@ -16,8 +16,8 @@ namespace Minesweeper
 {
     [Serializable]
     public partial class Menu : Form
-    { 
-        public ImageWrapper skin { get; set; }
+    {
+        public ImageWrapper skinImage { get; set; }
         private Button Play, Achiev, Leaderboards, Quit, Easy, Medium, Hard;
         private difficulty Diff;
         public List<Achievement> achievements;
@@ -34,11 +34,10 @@ namespace Minesweeper
             Easy.Clicked = true;
             InitializeComponent();
             this.BackgroundImage = Resources.background;
-            this.ClientSize = new Size(this.Width, Game.windowSizeConf.Height - 80);
+            this.ClientSize = new Size(this.Width, Game.windowSizeConf.Height - 250);
             DoubleBuffered = true;
-            Image mine = Resources.mine;
-            mine.Tag = "Mine";
-            skin = new ImageWrapper(9, mine);
+            skinImage = new ImageWrapper(Resources.mine);
+            skinImage.getImage().Tag = "Mine";
             
             // try read from file, if can -> overwrite this ^ list
             if (LoadAchievements()!=null)
@@ -83,7 +82,7 @@ namespace Minesweeper
         private void btnPlay_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            Game g = new Game(Diff, skin,achievements);
+            Game g = new Game(Diff, skinImage, achievements);
             g.FormClosed += new FormClosedEventHandler(window_FormClosed);
             this.Cursor = Cursors.Default;
             g.Show();
@@ -99,7 +98,7 @@ namespace Minesweeper
         private void btnAchievements_Click(object sender, EventArgs e)
         {
             // TODO: Implement the achievments form, showing all unlocked and locked achievments and the criteria for unlocking
-            AchievementsForm form = new AchievementsForm(skin,achievements);
+            AchievementsForm form = new AchievementsForm(skinImage, achievements);
             form.FormClosed += new FormClosedEventHandler(window_FormClosed);
             form.Show();
             this.Hide();

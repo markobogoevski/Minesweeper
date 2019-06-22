@@ -40,5 +40,6 @@ namespace Minesweeper
             Score s = (Score)obj;
             return this.Date == s.Date && this.Minutes == s.Minutes && this.Seconds == s.Seconds && this.Name == s.Name;
         }
+
     }
 }

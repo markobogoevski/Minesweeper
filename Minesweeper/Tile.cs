@@ -12,8 +12,6 @@ namespace Minesweeper
     public class Tile : IEquatable<Tile>
     {
         //Position info
-        int XCoord { get; set; }
-        int YCoord { get; set; }
         public Point location { get; set; }
 
         //Size info 
@@ -21,9 +19,9 @@ namespace Minesweeper
         public static int Height = Game.TileHeight;
 
         //Images
-        public static Image backgroundImage { get; set; }
-        public static Image flaggedImage { get; set; }
-        public static Image questionMark { get; set; }
+        public static Image backgroundImage = Resources.back;
+        public static Image flaggedImage = Resources.flagged;
+        public static Image questionMark = Resources.questionMark;
         public Image mainImage { get; set; }
         
         //Logic
@@ -36,19 +34,7 @@ namespace Minesweeper
 
         public Tile(int xCoord, int yCoord)
         {
-            XCoord = xCoord;
-            YCoord = yCoord;
-            setImagesSizeWithoutMain();
-            setLocation();
-        }
-
-
-        // Images options
-        public void setImagesSizeWithoutMain()
-        {
-            questionMark = Resources.questionMark;
-            flaggedImage = Resources.flagged;
-            backgroundImage = Resources.back;
+            setLocation(xCoord,yCoord);
         }
 
         public void setMainImage(Image image)
@@ -108,7 +94,7 @@ namespace Minesweeper
 
         //draws tile (3 images - background, flagged and main image)
 
-        private void setLocation()
+        private void setLocation(int XCoord, int YCoord)
         {
             location = new Point(XCoord, YCoord);
         }
@@ -162,15 +148,15 @@ namespace Minesweeper
         public bool Equals(Tile other)
         {
             return other != null &&
-                   XCoord == other.XCoord &&
-                   YCoord == other.YCoord;
+                    location.X == other.location.X &&
+                   location.Y == other.location.Y;
         }
 
         public override int GetHashCode()
         {
             var hashCode = 269724561;
-            hashCode = hashCode * -1521134295 + XCoord.GetHashCode();
-            hashCode = hashCode * -1521134295 + YCoord.GetHashCode();
+            hashCode = hashCode * -1521134295 + location.X.GetHashCode();
+            hashCode = hashCode * -1521134295 + location.Y.GetHashCode();
             return hashCode;
         }
     }

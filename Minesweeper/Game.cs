@@ -64,26 +64,21 @@ namespace Minesweeper
         public Size previousMaxSize { get; set; }
         public int previousTileSize { get; set; }
         public bool fullscreen { get; set; }
-        public ImageWrapper skin { get; set; }
+        public Image skin { get; set; }
        
 
        
         public Game(difficulty d, ImageWrapper s, List<Achievement>achievements)
         {
 
-            this.skin = s;
+            this.skin = s.getImage();
             DIFF = difficulty.NONE ;
 
             this.DoubleBuffered = true;
-            this.BackColor = Color.LightGray ;
 
             //default tile size
-            resizeHold = true;
-
-            resizeHold = false;
 
             InitializeComponent();
-            HeightOffset = miniMenu.Height + button1.Height + 15;
             this.achievements = achievements;
             newGame(d);
         }
@@ -91,8 +86,9 @@ namespace Minesweeper
         //main func
         private void newGame(difficulty d)
         {
+
             if (!fullscreen)
-                Game.TileWidth = Game.TileHeight = windowSizeConf.Height / 20;
+                Game.TileWidth = Game.TileHeight = windowSizeConf.Height / 22;
 
             mainScreen.SuspendLayout();
             mainScreen.Hide();
@@ -154,9 +150,7 @@ namespace Minesweeper
 
 
         private void centerTheScreen()
-        {
-           
-
+        { 
             if(ClientSize.Height-mainScreen.Height >= 300)
                 this.ClientSize = new Size(this.ClientSize.Width, mainScreen.Size.Height + 1 * HeightOffset
                    + miniMenu.Height+100);
@@ -169,33 +163,22 @@ namespace Minesweeper
             flag.Location = new Point(mainScreen.Right-flag.Width, mainScreen.Top-flag.Height);
         }
 
-        private int getTileSize(int tileRowNumber, int tileColumnNumber)
-        {
-            int size1= (ClientSize.Width - 2 * WidthOffset) / tileColumnNumber;
-            int size2= (ClientSize.Height - 2 * HeightOffset - miniMenu.Height) / tileRowNumber;
-            return Math.Min(size1, size2);
-        }
 
         private void setScreenOptions(difficulty d)
         {
+            HeightOffset = miniMenu.Height + button1.Height + 15;
+
             if (DIFF != d)
             {
-                int size = 0;
                 switch (d)
                 {
                     case difficulty.EASY:
                         //setting easy options
                         numberOfBombs = 10;
-                        tileRowNumber = tileColumnNumber = 11;
+                        tileRowNumber = tileColumnNumber = 10;
                         this.MinimumSize = new Size(468, 515);
                         this.MaximumSize = new Size(1200, 915);
-                        //Calculating tileSize
-                        if (Game.TileHeight == 0)
-                        {
-                            size = getTileSize(tileRowNumber, tileColumnNumber);
-                            MessageBox.Show(size.ToString());
-                            TileWidth = TileHeight = size;
-                        }
+                       
                         //setting font and menu items
                         easyToolStripMenuItem.Checked = true;
                         mediumToolStripMenuItem.Checked = false;
@@ -210,14 +193,6 @@ namespace Minesweeper
                         this.MinimumSize = new Size(520, 585);
                         this.MaximumSize = new Size(1440, 990);
 
-                        //Calculating tileSize
-                        if (Game.TileHeight == 0)
-                        {
-                            size = getTileSize(tileRowNumber, tileColumnNumber);
-                            MessageBox.Show(size.ToString());
-
-                            TileWidth = TileHeight = size;
-                        }
                         //setting font and menu items
                         easyToolStripMenuItem.Checked = false;
                         mediumToolStripMenuItem.Checked = true;
@@ -233,14 +208,6 @@ namespace Minesweeper
                         this.MinimumSize = new Size(950, 600);
                         this.MaximumSize = new Size(1550, 950);
 
-                        //Calculating tileSize
-                        if (Game.TileHeight == 0)
-                        {
-                            size = getTileSize(tileRowNumber, tileColumnNumber);
-                            MessageBox.Show(size.ToString());
-
-                            TileWidth = TileHeight = size;
-                        }
                         //setting font and menu items
                         easyToolStripMenuItem.Checked = false;
                         mediumToolStripMenuItem.Checked = false;
@@ -252,7 +219,7 @@ namespace Minesweeper
 
                 mainScreen.Size = new Size(tileColumnNumber * TileWidth, tileRowNumber * TileHeight);
                 previousSize = this.ClientSize;
-                this.ClientSize = new Size(mainScreen.Size.Width + 2 * WidthOffset, mainScreen.Size.Height + 1 * HeightOffset
+                this.ClientSize = new Size(mainScreen.Size.Width + 2 * WidthOffset, mainScreen.Size.Height + HeightOffset
                     + miniMenu.Height);
 
                 
@@ -266,7 +233,7 @@ namespace Minesweeper
             {
                 mainScreen.Size = new Size(tileColumnNumber * TileWidth, tileRowNumber * TileHeight);
                 previousSize = this.ClientSize;
-                this.ClientSize = new Size(mainScreen.Size.Width + 2 * WidthOffset, mainScreen.Size.Height + 1 * HeightOffset
+                this.ClientSize = new Size(mainScreen.Size.Width + 2 * WidthOffset, mainScreen.Size.Height + HeightOffset
                     + miniMenu.Height);
                 Invalidate();
             }
@@ -534,14 +501,23 @@ namespace Minesweeper
             }
             else
             {
-                MessageBox.Show("Oops, seems like you stepped on a bomb. But...");
-                Spin spinForm = new Spin();
-                if (spinForm.ShowDialog() == DialogResult.OK)
+                DialogResult result=MessageBox.Show("Oops, seems like you stepped on a bomb. But...");
+                if (result == DialogResult.OK)
                 {
-                    gameEnd = false;
-                    secondChance = true;
-                    timer.Start();
-                    idleTimer.Start();
+                    Spin spinForm = new Spin();
+                    if (spinForm.ShowDialog() == DialogResult.OK)
+                    {
+                        gameEnd = false;
+                        secondChance = true;
+                        timer.Start();
+                        idleTimer.Start();
+                    }
+                    else
+                    {
+                        gameEnd = true;
+                        secondChance = false;
+                        Lost();
+                    }
                 }
                 else
                 {

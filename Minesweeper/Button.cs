@@ -32,14 +32,16 @@ namespace Minesweeper
         {
             if (Clicked)
             {
-                g.DrawImage(Resizer.ResizeImage(ImageHover, Width, Height), Location);
+                g.DrawImage(ImageHover, new Rectangle(Location, new Size(Width, Height)));
             }
-            else if (Hit) {
-                g.DrawImage(Resizer.ResizeImage(ImageHover, (int)(Width * 1.1), (int)(Height * 1.1)), new Point(Location.X - (int)(Width * 0.05), Location.Y - (int)(Height * 0.05)));
+            else if (Hit)
+            {
+                g.DrawImage(ImageHover, new Rectangle(new Point(Location.X - (int)(Width * 0.05), Location.Y - (int)(Height * 0.05)),
+                    new Size((int)(Width * 1.1), (int)(Height * 1.1))));
             }
             else
             {
-                g.DrawImage(Resizer.ResizeImage(Image, Width, Height), Location);
+                g.DrawImage(Image, new Rectangle(Location, new Size(Width, Height)));
             }
         }
 

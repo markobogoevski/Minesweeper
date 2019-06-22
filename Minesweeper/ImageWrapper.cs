@@ -9,16 +9,14 @@ namespace Minesweeper
 {
     public class ImageWrapper
     {
-        int number { get; set; }
         public Image image { get; set; }
 
-        public ImageWrapper(int number, Image image)
+        public ImageWrapper(Image image)
         {
-            this.number = number;
             this.image = image;
         }
 
         public Image getImage() { return image; }
-        public int getNumber() { return number; }
+        public void setImage(Image image) { this.image = image; }
     }
 }
