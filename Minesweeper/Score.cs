@@ -41,5 +41,14 @@ namespace Minesweeper
             return this.Date == s.Date && this.Minutes == s.Minutes && this.Seconds == s.Seconds && this.Name == s.Name;
         }
 
+        public override int GetHashCode()
+        {
+            var hashCode = -1260144041;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + Minutes.GetHashCode();
+            hashCode = hashCode * -1521134295 + Seconds.GetHashCode();
+            hashCode = hashCode * -1521134295 + Date.GetHashCode();
+            return hashCode;
+        }
     }
 }
