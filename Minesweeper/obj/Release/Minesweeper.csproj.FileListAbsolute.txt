@@ -1,0 +1,14 @@
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\bin\Release\Minesweeper.exe.config
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\bin\Release\Minesweeper.exe
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\bin\Release\Minesweeper.pdb
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.AchievementsForm.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.Game.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.Leaderboards.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.Menu.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.Name.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.Properties.Resources.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.Spin.resources
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.csproj.GenerateResource.cache
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.csproj.CoreCompileInputs.cache
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.exe
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Release\Minesweeper.pdb
