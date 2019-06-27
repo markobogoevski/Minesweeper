@@ -23,18 +23,18 @@ namespace Minesweeper
         public List<Achievement> achievements;
         public Menu()
         {
-            Play = new Button(new Point(218, 100), Resources.btnPlayDark, Resources.btnPlay, 178, 84);
-            Achiev = new Button(new Point(218, 205), Resources.btnAchievDark, Resources.btnAchiev, 178, 84);
-            Leaderboards = new Button(new Point(218, 310), Resources.btnLeadDark, Resources.btnLead, 178, 84);
-            Quit = new Button(new Point(218, 415), Resources.btnQuitDark, Resources.btnQuit, 178, 84);
-            Easy = new Button(new Point(135, 535), Resources.btnEasyDark, Resources.btnEasy, 100, 100);
-            Medium = new Button(new Point(257, 535), Resources.btnMediumDark, Resources.btnMedium, 100, 100);
-            Hard = new Button(new Point(380, 535), Resources.btnHardDark, Resources.btnHard, 100, 100);
+
+            Play = new Button(new Point(140, 50), Resources.btnPlayDark, Resources.btnPlay, 150, 70);
+            Achiev = new Button(new Point(140, 130), Resources.btnAchievDark, Resources.btnAchiev, 150, 70);
+            Leaderboards = new Button(new Point(140, 210), Resources.btnLeadDark, Resources.btnLead, 150, 70);
+            Quit = new Button(new Point(140, 290), Resources.btnQuitDark, Resources.btnQuit, 150, 70);
+            Easy = new Button(new Point(55, 375), Resources.btnEasyDark, Resources.btnEasy, 90, 90);
+            Medium = new Button(new Point(175, 375), Resources.btnMediumDark, Resources.btnMedium, 90, 90);
+            Hard = new Button(new Point(295, 375), Resources.btnHardDark, Resources.btnHard, 90, 90);
             Diff = difficulty.EASY;
             Easy.Clicked = true;
             InitializeComponent();
             this.BackgroundImage = Resources.background;
-            this.ClientSize = new Size(this.Width, Game.windowSizeConf.Height - 250);
             DoubleBuffered = true;
             skinImage = new ImageWrapper(Resources.mine);
             skinImage.getImage().Tag = "Mine";
@@ -97,7 +97,6 @@ namespace Minesweeper
 
         private void btnAchievements_Click(object sender, EventArgs e)
         {
-            // TODO: Implement the achievments form, showing all unlocked and locked achievments and the criteria for unlocking
             AchievementsForm form = new AchievementsForm(skinImage, achievements);
             form.FormClosed += new FormClosedEventHandler(window_FormClosed);
             form.Show();

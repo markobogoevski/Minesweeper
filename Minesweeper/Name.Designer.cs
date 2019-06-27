@@ -43,6 +43,7 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(310, 30);
             this.tbName.TabIndex = 0;
+            this.tbName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbName_KeyDown);
             // 
             // lblName
             // 

@@ -31,5 +31,13 @@ namespace Minesweeper
                 DialogResult = DialogResult.OK;
             }
         }
+
+        private void tbName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSubmit_Click(null, null);
+            }
+        }
     }
 }
