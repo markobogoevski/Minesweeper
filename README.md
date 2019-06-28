@@ -83,4 +83,4 @@ In-game buttons are implemented as drawn rectangles through a special class "But
 
 Heavy optimizing is not implemented since the game runs very fast on its own. There is a dictionary implemented in the Grid class in order to get the correct number picture based on the number of adjacent bombs a tile has. A seperate class is used to represent the scores in the _Leaderboards_ menu, the achievements in the _Achievements_ menu and another one for serializing the best scores and unlocked achievements.
 
-All of this is grouped inside the Game class, which is the simulation of the actual game. The game class calls the new game function which reinstantiates everything. The Game class also implements window sizing logic, which is done relative to the screen size. 
+All of this is grouped inside the Game class, which is the simulation of the actual game. The game class calls the new game function which reinstantiates everything. The Game class also implements window sizing logic, which is done relative to the screen size.
