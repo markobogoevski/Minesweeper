@@ -25,7 +25,7 @@ namespace Minesweeper
             this.achievements = achievements;
             this.BackgroundImage = Properties.Resources.background;
             pictureBox7.Image = Properties.Resources.mine;
-            Back = new Button(new Point(500, 500), Properties.Resources.btnBackDark, Properties.Resources.btnBackLight, 125, 59);
+            Back = new Button(new Point(450, 480), Properties.Resources.btnBackDark, Properties.Resources.btnBackLight, 125, 59);
 
             boxes = new PictureBox[6];
             boxes[0] = pictureBox1;
