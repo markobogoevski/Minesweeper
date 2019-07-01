@@ -338,7 +338,7 @@ namespace Minesweeper
             from = new Point(pictureBox7.Location.X - 10, pictureBox7.Location.Y - 7);
             selected.Location = from;
         }
-
+    
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
             click = true;

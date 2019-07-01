@@ -135,7 +135,7 @@ namespace Minesweeper
 
             timer.Start();
             idleTimer.Start();
-            timer1.Stop();
+            timer1.Start();
             boostedLabel.Hide();
         
           
@@ -337,15 +337,15 @@ namespace Minesweeper
             {
                 if(simulation%2==0)
                 {
-                    this.BackColor = Color.Orange;
+                    boostedLabel.ForeColor = Color.Orange;
                 }
                 else
                 {
-                    this.BackColor = Color.YellowGreen;
+                    boostedLabel.ForeColor = Color.YellowGreen;
                 }
 
                 simulation++;
-                if (simulation % 8 == 0)
+                if (simulation % 6 == 0)
                 {
                     simulation = 0;
                     endBoost();
@@ -356,28 +356,28 @@ namespace Minesweeper
         //ends boost and enables timer toggle
         private void endBoost()
         {
-            button1.Show();
             simulation = 0;
             boosted = false;
-            this.BackColor = Color.LightGray;
+            timer1.Start();
             grid.revertAll();
-            if(timer1.Enabled)
-            timer1.Stop();
+            boostedLabel.ForeColor = Color.Black;
             boostedLabel.Hide();
-            Invalidate();
+            button1.Show();
+            Invalidate(true);
         }
 
         //starts boost and enables timer toggle
         private void enableBoost()
         {
+            grid.showAll();
             button1.Hide();
             boostedLabel.Show();
             boostedLabel.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - boostedLabel.Width / 2, mainScreen.Top - boostedLabel.Height-5);
-            this.BackColor = Color.Orange;
+            boostedLabel.ForeColor = Color.Orange;
             simulation = 0;
             boosted = true;
-            grid.showAll();
-            Invalidate();
+            timer1.Start();
+            Invalidate(true);
         }
 
         //everything on click..
@@ -413,12 +413,6 @@ namespace Minesweeper
                 if (!boosted&&Game.openedTiles>tileBefore)
                 {
                     currentStreak++;
-                    if (Game.openedTiles >= 1 && !timer1.Enabled)
-                    {
-                        timer1.Enabled = true;
-                        timer1.Start();
-                    }
-
                     if (currentStreak == 10)
                     {
                         currentStreak = 0;
@@ -707,6 +701,11 @@ namespace Minesweeper
                 setScreenOptions(DIFF);
                 centerTheScreen();
                 grid.changeMatrix();
+            }
+            else if (e.KeyCode == Keys.B)
+            {
+                currentStreak = 0;
+                enableBoost();
             }
         }
 
