@@ -295,7 +295,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.Window;
-            this.label13.Location = new System.Drawing.Point(236, 492);
+            this.label13.Location = new System.Drawing.Point(230, 492);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(103, 18);
             this.label13.TabIndex = 20;
@@ -305,7 +305,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 568);
+            this.ClientSize = new System.Drawing.Size(561, 544);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.label12);

@@ -25,7 +25,7 @@ namespace Minesweeper
             this.achievements = achievements;
             this.BackgroundImage = Properties.Resources.background;
             pictureBox7.Image = Properties.Resources.mine;
-            Back = new Button(new Point(450, 450), Properties.Resources.btnBackDark, Properties.Resources.btnBackLight, 125, 59);
+            Back = new Button(new Point(400, 450), Properties.Resources.btnBackDark, Properties.Resources.btnBackLight, 125, 59);
 
             boxes = new PictureBox[6];
             boxes[0] = pictureBox1;
@@ -47,12 +47,12 @@ namespace Minesweeper
             pictureBox5.Image.Tag = "Trap";
             pictureBox4.Image.Tag = "Shuriken";
 
-            Point a = new Point(pictureBox7.Location.X - 5, pictureBox7.Location.Y - 3);
+            Point a = new Point(pictureBox7.Location.X - 10, pictureBox7.Location.Y - 7);
             Size b = new Size(120, 125);
             selected = new Rectangle(a, b);//selected e pravoagolnikot sho kazuva so koj skin igrame
             for (int i = 0; i < 6; i++){
                 if ((string)boxes[i].Image.Tag == (string)skin.image.Tag){ // ja naogjam bombata sho ja koristi i ja "selektiram"
-                    a = new Point(boxes[i].Location.X - 5, boxes[i].Location.Y - 3);
+                    a = new Point(boxes[i].Location.X - 10, boxes[i].Location.Y - 7);
                     b = new Size(120, 125);
                     selected = new Rectangle(a, b);
                 }
@@ -129,7 +129,7 @@ namespace Minesweeper
             if (achievements[5].iSUnlocked())
             {
                 click = true;
-                from = new Point(pictureBox4.Location.X - 5, pictureBox4.Location.Y - 3);
+                from = new Point(pictureBox4.Location.X - 10, pictureBox4.Location.Y - 7);
                 to = new Point(130, 125);
                 Invalidate();
             }
@@ -140,7 +140,7 @@ namespace Minesweeper
             if (achievements[0].iSUnlocked())
             {
                 click = true;
-                from = new Point(pictureBox1.Location.X - 5, pictureBox1.Location.Y - 3);
+                from = new Point(pictureBox1.Location.X - 10, pictureBox1.Location.Y - 7);
                 to = new Point(130, 125);
                 Invalidate();
             }
@@ -150,7 +150,7 @@ namespace Minesweeper
             if (achievements[1].iSUnlocked())
             {
                 click = true;
-                from = new Point(pictureBox2.Location.X - 5, pictureBox2.Location.Y - 3);
+                from = new Point(pictureBox2.Location.X - 10, pictureBox2.Location.Y - 7);
                 to = new Point(130, 125);
                 Invalidate();
             }
@@ -161,7 +161,7 @@ namespace Minesweeper
             if (achievements[2].iSUnlocked())
             {
                 click = true;
-                from = new Point(pictureBox3.Location.X - 5, pictureBox3.Location.Y - 3);
+                from = new Point(pictureBox3.Location.X - 10, pictureBox3.Location.Y - 7);
                 to = new Point(130, 125);
                 Invalidate();
             }
@@ -172,7 +172,7 @@ namespace Minesweeper
             if (achievements[3].iSUnlocked())
             {
                 click = true;
-                from = new Point(pictureBox6.Location.X - 5, pictureBox6.Location.Y - 3);
+                from = new Point(pictureBox6.Location.X - 10, pictureBox6.Location.Y - 7);
                 to = new Point(130, 125);
                 Invalidate();
             }
@@ -183,7 +183,7 @@ namespace Minesweeper
             if (achievements[4].iSUnlocked())
             {
                 click = true;
-                from = new Point(pictureBox5.Location.X - 5, pictureBox5.Location.Y - 3);
+                from = new Point(pictureBox5.Location.X - 10, pictureBox5.Location.Y - 7);
                 to = new Point(130, 125);
                 Invalidate();
             }
@@ -274,7 +274,7 @@ namespace Minesweeper
             if (achievements[0].iSUnlocked())
             {
                 skin.image = achievements[0].getImage();
-                from = new Point(pictureBox1.Location.X - 5, pictureBox1.Location.Y - 3);
+                from = new Point(pictureBox1.Location.X - 10, pictureBox1.Location.Y - 7);
                 selected.Location = from;
 
             }
@@ -285,7 +285,7 @@ namespace Minesweeper
             if (achievements[1].iSUnlocked())
             {
                 skin.image = achievements[1].getImage();
-                from = new Point(pictureBox2.Location.X - 5, pictureBox2.Location.Y - 3);
+                from = new Point(pictureBox2.Location.X - 10, pictureBox2.Location.Y - 7);
                 selected.Location = from;
             }
         }
@@ -295,7 +295,7 @@ namespace Minesweeper
             if (achievements[2].iSUnlocked())
             {
                 skin.image = achievements[2].getImage();
-                from = new Point(pictureBox3.Location.X - 5, pictureBox3.Location.Y - 3);
+                from = new Point(pictureBox3.Location.X - 10, pictureBox3.Location.Y - 7);
                 selected.Location = from;
             }
         }
@@ -305,7 +305,7 @@ namespace Minesweeper
             if (achievements[5].iSUnlocked())
             {
                 skin.image = achievements[5].getImage();
-                from = new Point(pictureBox4.Location.X - 5, pictureBox4.Location.Y - 3);
+                from = new Point(pictureBox4.Location.X - 10, pictureBox4.Location.Y - 7);
                 selected.Location = from;
             }
         }
@@ -315,7 +315,7 @@ namespace Minesweeper
             if (achievements[4].iSUnlocked())
             {
                 skin.image = achievements[4].getImage();
-                from = new Point(pictureBox5.Location.X - 5, pictureBox5.Location.Y - 3);
+                from = new Point(pictureBox5.Location.X - 10, pictureBox5.Location.Y - 7);
                 selected.Location = from;
             }
         }
@@ -325,7 +325,7 @@ namespace Minesweeper
             if (achievements[3].iSUnlocked())
             {
                 skin.image = achievements[3].getImage();
-                from = new Point(pictureBox6.Location.X - 5, pictureBox6.Location.Y - 3);
+                from = new Point(pictureBox6.Location.X - 10, pictureBox6.Location.Y - 7);
                 selected.Location = from;
             }
         }
@@ -335,14 +335,14 @@ namespace Minesweeper
             Image mine = Properties.Resources.mine;
             mine.Tag = "Mine";
             skin.image = mine;
-            from = new Point(pictureBox7.Location.X - 5, pictureBox7.Location.Y - 3);
+            from = new Point(pictureBox7.Location.X - 10, pictureBox7.Location.Y - 7);
             selected.Location = from;
         }
 
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
             click = true;
-            from = new Point(pictureBox7.Location.X - 5, pictureBox7.Location.Y - 3);
+            from = new Point(pictureBox7.Location.X - 10, pictureBox7.Location.Y - 7);
             to = new Point(130, 125);
             Invalidate();
         }

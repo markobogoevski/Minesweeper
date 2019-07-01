@@ -1,7 +1,6 @@
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe.config
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
-C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csprojAssemblyReference.cache
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.AchievementsForm.resources
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Game.resources
 C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Leaderboards.resources

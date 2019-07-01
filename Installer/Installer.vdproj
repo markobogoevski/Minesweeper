@@ -15,14 +15,14 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_040D84BBF42A4CF3A7A94FAED86067FA"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_6F0282BDECDEB921EA6B69063D905DB9"
+        "OwnerKey" = "8:_7490FF8C6A3843A0B92678D4EE429703"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6F0282BDECDEB921EA6B69063D905DB9"
-        "OwnerKey" = "8:_040D84BBF42A4CF3A7A94FAED86067FA"
+        "MsmKey" = "8:_7490FF8C6A3843A0B92678D4EE429703"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_040D84BBF42A4CF3A7A94FAED86067FA"
+        "OwnerKey" = "8:_7490FF8C6A3843A0B92678D4EE429703"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -267,15 +267,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Minesweeper"
-        "ProductCode" = "8:{348168B8-198C-4397-8D93-C1F8D7DF2789}"
-        "PackageCode" = "8:{72B96E08-99CA-4610-8262-3033177FABD9}"
+        "ProductCode" = "8:{643569A5-A584-41AE-90CA-B26AC0AB719C}"
+        "PackageCode" = "8:{4BA4C6FB-E544-4D5B-9451-CF6BFE850978}"
         "UpgradeCode" = "8:{7C98387D-CD51-47C0-A7F3-C9C557F18D33}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:1.1.3"
         "Manufacturer" = "8:Skopskey Inc"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -388,7 +388,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6F3730206F5247F9B9EA15ADB4E9ABFD"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_361FFC657363492E9D8C50B54F0E4E79"
             {
             "Name" = "8:Minesweeper"
             "Arguments" = "8:"
@@ -396,13 +396,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_040D84BBF42A4CF3A7A94FAED86067FA"
+            "Target" = "8:_7490FF8C6A3843A0B92678D4EE429703"
             "Folder" = "8:_05BBF286256E409EAC9FD6723F404B40"
             "WorkingFolder" = "8:_713198AC41AB46869F4FC0CFA282BC95"
             "Icon" = "8:_FDF8CB77904D4EDB8E49F18411CC9153"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_89E032EF13104F13B17621C2E2A8F4DA"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EC68FCD213004B17A5D39E81CDB01543"
             {
             "Name" = "8:Minesweeper"
             "Arguments" = "8:"
@@ -410,7 +410,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_040D84BBF42A4CF3A7A94FAED86067FA"
+            "Target" = "8:_7490FF8C6A3843A0B92678D4EE429703"
             "Folder" = "8:_CC62E60D6CA24D2DB94953206B551E15"
             "WorkingFolder" = "8:_713198AC41AB46869F4FC0CFA282BC95"
             "Icon" = "8:_FDF8CB77904D4EDB8E49F18411CC9153"
@@ -815,7 +815,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_040D84BBF42A4CF3A7A94FAED86067FA"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7490FF8C6A3843A0B92678D4EE429703"
             {
             "SourcePath" = "8:..\\Minesweeper\\obj\\Debug\\Minesweeper.exe"
             "TargetName" = "8:"
