@@ -25,7 +25,7 @@ namespace Minesweeper
             this.achievements = achievements;
             this.BackgroundImage = Properties.Resources.background;
             pictureBox7.Image = Properties.Resources.mine;
-            Back = new Button(new Point(450, 480), Properties.Resources.btnBackDark, Properties.Resources.btnBackLight, 125, 59);
+            Back = new Button(new Point(450, 450), Properties.Resources.btnBackDark, Properties.Resources.btnBackLight, 125, 59);
 
             boxes = new PictureBox[6];
             boxes[0] = pictureBox1;
@@ -48,12 +48,12 @@ namespace Minesweeper
             pictureBox4.Image.Tag = "Shuriken";
 
             Point a = new Point(pictureBox7.Location.X - 5, pictureBox7.Location.Y - 3);
-            Size b = new Size(125, 125);
+            Size b = new Size(120, 125);
             selected = new Rectangle(a, b);//selected e pravoagolnikot sho kazuva so koj skin igrame
             for (int i = 0; i < 6; i++){
                 if ((string)boxes[i].Image.Tag == (string)skin.image.Tag){ // ja naogjam bombata sho ja koristi i ja "selektiram"
                     a = new Point(boxes[i].Location.X - 5, boxes[i].Location.Y - 3);
-                    b = new Size(125, 125);
+                    b = new Size(120, 125);
                     selected = new Rectangle(a, b);
                 }
             }
@@ -130,7 +130,7 @@ namespace Minesweeper
             {
                 click = true;
                 from = new Point(pictureBox4.Location.X - 5, pictureBox4.Location.Y - 3);
-                to = new Point(125, 125);
+                to = new Point(130, 125);
                 Invalidate();
             }
         }
@@ -141,7 +141,7 @@ namespace Minesweeper
             {
                 click = true;
                 from = new Point(pictureBox1.Location.X - 5, pictureBox1.Location.Y - 3);
-                to = new Point(125, 125);
+                to = new Point(130, 125);
                 Invalidate();
             }
         }
@@ -151,7 +151,7 @@ namespace Minesweeper
             {
                 click = true;
                 from = new Point(pictureBox2.Location.X - 5, pictureBox2.Location.Y - 3);
-                to = new Point(125, 127);
+                to = new Point(130, 125);
                 Invalidate();
             }
         }
@@ -162,7 +162,7 @@ namespace Minesweeper
             {
                 click = true;
                 from = new Point(pictureBox3.Location.X - 5, pictureBox3.Location.Y - 3);
-                to = new Point(125, 125);
+                to = new Point(130, 125);
                 Invalidate();
             }
         }
@@ -173,7 +173,7 @@ namespace Minesweeper
             {
                 click = true;
                 from = new Point(pictureBox6.Location.X - 5, pictureBox6.Location.Y - 3);
-                to = new Point(125, 125);
+                to = new Point(130, 125);
                 Invalidate();
             }
         }
@@ -184,7 +184,7 @@ namespace Minesweeper
             {
                 click = true;
                 from = new Point(pictureBox5.Location.X - 5, pictureBox5.Location.Y - 3);
-                to = new Point(125, 125);
+                to = new Point(130, 125);
                 Invalidate();
             }
         }
@@ -342,8 +342,8 @@ namespace Minesweeper
         private void pictureBox7_MouseDown(object sender, MouseEventArgs e)
         {
             click = true;
-            from = new Point(pictureBox7.Location.X - 3, pictureBox7.Location.Y - 3);
-            to = new Point(125, 125);
+            from = new Point(pictureBox7.Location.X - 5, pictureBox7.Location.Y - 3);
+            to = new Point(130, 125);
             Invalidate();
         }
 
@@ -358,7 +358,7 @@ namespace Minesweeper
         {
             Back.Draw(e.Graphics);
             Pen pen = new Pen(Color.PeachPuff, 3);
-            Rectangle rect = new Rectangle(from.X, from.Y, to.X, to.Y);
+            Rectangle rect = new Rectangle(from.X, from.Y, to.X-10, to.Y);
             Pen markedPen = new Pen(Color.Peru, 4);
             GraphicsPath path;
             if (click) //mouse down go setira click na true
