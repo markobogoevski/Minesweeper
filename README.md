@@ -29,7 +29,11 @@ When a player wins a game and his time is in the top 10, the _Name_ form appears
 
 Also, when the game is won, a check occurs to see whether the player's time meets the requirements of some locked achievement. In that case the achievement unlocks permanently and the player is notified. The achievements list is located in the Assets folder in the `achievements.lst` file, so when an unlock occurs the _Achievement_ object representing that unlocked achievement is updated and the list is again serialized in the same file.
 
-###### **_INSERT SPINNING WHEEL EXPLANATION HERE_**
+Also when then player hits a mine, it is 50% chance for Spinning wheel form to open.
+The spinning wheel (roulette) gives opportunity to continue where it stopped. The wheel is equally divided on 6 parts each of it containing either heart (life) or bomb(2 hearts, 4 bombs).
+By clicking the button "Spin" it randomly shifts right its images from 4 to 15 times or by clicking "Cheat" it spins 10 times and wins a second chance. Triangular indicator on top shows which "award" is about to be picked when the wheel stops.
+When the wheel stops, "Accept" button is shown in the bottom right corner when clicked accepts the "award". Heart gives another chance, Bomb is a lost game.
+Spinning the wheel is implemented by alternating background color of every part of the wheel, shifting and rotating each image by some predefined angle.
 
 The player can click the "Achievments & Skins" button to view all skins for the bombs that he can unlock (picture 2). Upon hovering over a skin a tag is shown which represents the needed objective or achievment to unlock the skin. Upon clicking on an unlocked skin that skin will be selected, resulting in changing the image of the bomb in the game. The mine image is selected by default and doesn't require unlocking. The player can exit this menu and return to the main menu by closing the window or clicking the _Back to menu_ button.
 
