@@ -84,20 +84,20 @@
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
             this.newGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(259, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
             // 
             // leaderboardsToolStripMenuItem
             // 
             this.leaderboardsToolStripMenuItem.Name = "leaderboardsToolStripMenuItem";
             this.leaderboardsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
+            this.leaderboardsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.leaderboardsToolStripMenuItem.Text = "Leaderboards";
             this.leaderboardsToolStripMenuItem.Click += new System.EventHandler(this.leaderboardsToolStripMenuItem_Click);
             // 
@@ -108,7 +108,7 @@
             this.mediumToolStripMenuItem,
             this.hardToolStripMenuItem});
             this.chooseDifficultyToolStripMenuItem.Name = "chooseDifficultyToolStripMenuItem";
-            this.chooseDifficultyToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
+            this.chooseDifficultyToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.chooseDifficultyToolStripMenuItem.Text = "Choose difficulty";
             // 
             // easyToolStripMenuItem
@@ -138,14 +138,14 @@
             // 
             this.backToMainMenuToolStripMenuItem.Name = "backToMainMenuToolStripMenuItem";
             this.backToMainMenuToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.backToMainMenuToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
+            this.backToMainMenuToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.backToMainMenuToolStripMenuItem.Text = "Back to main menu";
             this.backToMainMenuToolStripMenuItem.Click += new System.EventHandler(this.backToMainMenuToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(259, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(174, 6);
             // 
             // enterFullscreenToolStripMenuItem
             // 
@@ -158,13 +158,14 @@
             // flag
             // 
             this.flag.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flag.AutoSize = true;
             this.flag.BackColor = System.Drawing.Color.Transparent;
             this.flag.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flag.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.flag.Location = new System.Drawing.Point(939, 114);
             this.flag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.flag.Name = "flag";
-            this.flag.Size = new System.Drawing.Size(147, 41);
+            this.flag.Size = new System.Drawing.Size(144, 33);
             this.flag.TabIndex = 4;
             this.flag.Text = "Flags: 00";
             this.flag.Paint += new System.Windows.Forms.PaintEventHandler(this.flag_Paint);
@@ -172,6 +173,7 @@
             // time
             // 
             this.time.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.time.AutoSize = true;
             this.time.BackColor = System.Drawing.Color.Transparent;
             this.time.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.time.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -208,6 +210,7 @@
             // 
             // button1
             // 
+            this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.BackgroundImage = global::Minesweeper.Properties.Resources.smileyHappy;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -215,7 +218,7 @@
             this.button1.Location = new System.Drawing.Point(527, 33);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 58);
+            this.button1.Size = new System.Drawing.Size(45, 38);
             this.button1.TabIndex = 6;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
