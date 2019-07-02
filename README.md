@@ -41,7 +41,7 @@ When a player wins a game and his time is in the top 10, the _Name_ form appears
 
 Also, when the game is won, a check occurs to see whether the player's time meets the requirements of some locked achievement. In that case the achievement unlocks permanently and the player is notified. The achievements list is located in the Assets folder in the `achievements.lst` file, so when an unlock occurs the _Achievement_ object representing that unlocked achievement is updated and the list is again serialized in the same file.
 
-![A pop up notifying the player that he unlocked an achievement](images/unlock_achiev.PNG "Unlocked achievement")
+![A pop up notifying the player that he unlocked an achievement](images/unlock_aciev.PNG "Unlocked achievement")
 
 When the player hits a mine, there is a 50% chance for the _Spinning wheel_ form to open. The spinning wheel (roulette) gives the player an opportunity to continue from the point of the game where he messed up. The wheel is equally divided in 6 parts, each containing either a heart (life) or one of the bomb skins (2 hearts, 4 bombs). By clicking the button "Spin" the wheel starts shifting the images to the right, from 4 to 15 times. A triangular indicator on top shows which "award" is about to be picked when the wheel stops turning. Clicking "Cheat" will result in 10 shifts, thus ending with a hearth on top. Clicking either of the "Cheat" or "Spin" buttons hides them both, disabling further interaction with those buttons. When the wheel stops, the "Accept" button is shown in the bottom right corner and when clicked accepts the "award". A heart gives the player another chance, any of the bomb skins result in a lost game.
 
