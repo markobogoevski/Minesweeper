@@ -51,7 +51,7 @@ The player can click the "Achievments & Skins" button to view all skins for the 
 
 ![The "Achievements & Skins" form with all achievements unlocked](images/achievements.png) ![The "Achievements & Skins" form showing off locked achievements and on hover label option](images/achievements_locked.png)
 
-The menu also has a "Leaderboards" button which enables the player to check out the top 10 scores for each difficulty sorted by their finish times (picture 3). Each row in the leaderboards menu represents a score, which contains information about the name of the player, the time needed to finish the game and the date when this game was played. By default when the menu opens it will show the top 10 scores for _easy_ difficulty. The player can change which difficulty is shown using the three buttons marked with _Easy, Medium_ and _Hard,_ each representing it's respective difficulty. Exiting from the menu can be done using the _Back to menu_ button or closing the window.
+The menu also has a "Leaderboards" button which enables the player to check out the top 10 scores for each difficulty sorted by their finish times. Each row in the leaderboards menu represents a score, which contains information about the name of the player, the time needed to finish the game and the date when this game was played. By default when the menu opens it will show the top 10 scores for _easy_ difficulty. The player can change which difficulty is shown using the three buttons marked with _Easy, Medium_ and _Hard,_ each representing it's respective difficulty. Exiting from the menu can be done using the _Back to menu_ button or closing the window.
 
 ![The leaderboards form](images/leaderboards.png)
 

@@ -41,11 +41,10 @@ namespace Minesweeper
         bool secondChance;
         Tile hintTile { get; set; }
         List<Achievement> achievements;
+
         //Drawing
         public static Screen windowConfiguration = Screen.PrimaryScreen;
-
         public static Size windowSizeConf = windowConfiguration.WorkingArea.Size;
-
         public static Size mainWindowSize { get; set; }
         public static int tileRowNumber { get; set; }
         public static int tileColumnNumber { get; set; }
