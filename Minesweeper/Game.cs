@@ -158,6 +158,7 @@ namespace Minesweeper
             mainScreen.Location = new Point((ClientSize.Width - mainScreen.Width) / 2,
                HeightOffset);
             //center labels
+
             button1.Location = new Point(mainScreen.Left + mainScreen.Width / 2 - button1.Width / 2, mainScreen.Top - button1.Height - 5);
             time.Location = new Point(mainScreen.Left, mainScreen.Top-time.Height);
             flag.Location = new Point(mainScreen.Right-flag.Width, mainScreen.Top-flag.Height);
@@ -176,44 +177,44 @@ namespace Minesweeper
                         //setting easy options
                         numberOfBombs = 10;
                         tileRowNumber = tileColumnNumber = 10;
-                        this.MinimumSize = new Size(468, 515);
+                        this.MinimumSize = new Size(Game.TileWidth*tileColumnNumber, Game.TileHeight*tileRowNumber);
                         this.MaximumSize = new Size(1200, 915);
                        
                         //setting font and menu items
                         easyToolStripMenuItem.Checked = true;
                         mediumToolStripMenuItem.Checked = false;
                         hardToolStripMenuItem.Checked = false;
-                        time.Font = new Font(time.Font.FontFamily, 16);
-                        flag.Font = new Font(flag.Font.FontFamily, 16);
+                        time.Font = new Font(time.Font.FontFamily, 14);
+                        flag.Font = new Font(flag.Font.FontFamily, 14);
                         break;
                     case difficulty.INTERMEDIATE:
                         //setting medium options
                         tileRowNumber = tileColumnNumber = 16;
                         numberOfBombs = 40;
-                        this.MinimumSize = new Size(520, 585);
+                        this.MinimumSize = new Size(Game.TileWidth * tileColumnNumber, Game.TileHeight * tileRowNumber);
                         this.MaximumSize = new Size(1440, 990);
 
                         //setting font and menu items
                         easyToolStripMenuItem.Checked = false;
                         mediumToolStripMenuItem.Checked = true;
                         hardToolStripMenuItem.Checked = false;
-                        time.Font = new Font(time.Font.FontFamily, 14);
-                        flag.Font = new Font(flag.Font.FontFamily, 14);
+                        time.Font = new Font(time.Font.FontFamily, 12);
+                        flag.Font = new Font(flag.Font.FontFamily, 12);
                         break;
                     case difficulty.HARD:
                         //setting medium options
                         tileRowNumber = 16;
                         tileColumnNumber = 30;
                         numberOfBombs = 99;
-                        this.MinimumSize = new Size(950, 600);
+                        this.MinimumSize = new Size(Game.TileWidth * tileColumnNumber, Game.TileHeight * tileRowNumber);
                         this.MaximumSize = new Size(1550, 950);
 
                         //setting font and menu items
                         easyToolStripMenuItem.Checked = false;
                         mediumToolStripMenuItem.Checked = false;
                         hardToolStripMenuItem.Checked = true;
-                        time.Font = new Font(time.Font.FontFamily, 12);
-                        flag.Font = new Font(flag.Font.FontFamily, 12);
+                        time.Font = new Font(time.Font.FontFamily, 10);
+                        flag.Font = new Font(flag.Font.FontFamily, 10);
                         break;
                 }
 
@@ -227,7 +228,7 @@ namespace Minesweeper
                     coefHeight = (float)mainScreen.Size.Height / this.ClientSize.Height;
                
 
-                Invalidate();
+                Invalidate(true);
             }
             else
             {
@@ -235,7 +236,7 @@ namespace Minesweeper
                 previousSize = this.ClientSize;
                 this.ClientSize = new Size(mainScreen.Size.Width + 2 * WidthOffset, mainScreen.Size.Height + HeightOffset
                     + miniMenu.Height);
-                Invalidate();
+                Invalidate(true);
             }
         }
 
