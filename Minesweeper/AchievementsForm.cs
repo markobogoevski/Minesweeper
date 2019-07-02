@@ -66,7 +66,7 @@ namespace Minesweeper
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            label7.Text = "45 seconds on Easy mode";
+            label7.Text = "45 seconds on Easy";
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace Minesweeper
 
         private void pictureBox2_MouseEnter(object sender, EventArgs e)
         {
-            label8.Text = "15 seconds on Easy mode";
+            label8.Text = "15 seconds on Easy";
         }
 
         private void pictureBox2_MouseLeave(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace Minesweeper
 
         private void pictureBox3_MouseEnter(object sender, EventArgs e)
         {
-            label9.Text = "4 minutes on Medium mode";
+            label9.Text = "4 minutes on Medium";
         }
 
         private void pictureBox3_MouseLeave(object sender, EventArgs e)

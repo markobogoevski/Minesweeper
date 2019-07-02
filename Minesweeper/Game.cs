@@ -734,5 +734,32 @@ namespace Minesweeper
         {
             this.Close();
         }
+
+        private void enterFullscreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!fullscreen)
+            {
+                previousTileSize = Game.TileHeight;
+                previousMaxSize = this.MaximumSize;
+                MaximumSize = new Size(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height);
+                previousState = this.WindowState;
+                previousStyle = this.FormBorderStyle;
+                FormBorderStyle = FormBorderStyle.None;
+                WindowState = FormWindowState.Maximized;
+                Game_ResizeEnd(null, null);
+                fullscreen = true;
+            }
+            else if (fullscreen)
+            {
+                fullscreen = false;
+                MaximumSize = previousMaxSize;
+                FormBorderStyle = previousStyle;
+                WindowState = previousState;
+                Game.TileHeight = Game.TileWidth = previousTileSize;
+                setScreenOptions(DIFF);
+                centerTheScreen();
+                grid.changeMatrix();
+            }
+        }
     }
 }
