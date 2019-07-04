@@ -99,7 +99,7 @@ public void tileClicked(int i,int j)
             }
         }
 ```
-The other algorhitms are straightforward and follow the main logic of the game. All click and hover effects are implemented using windows forms events. The _Program_ class runs a new instance of the _Main menu_ form, which stays opened all the time, hiding it self when a new form is instantiated using one of the buttons and then reappears (calls the _Show()_ function) when that form is closed. All forms are set to appear on the middle of the screen (centered) and are not resizable nor maximizable. The game form is the only one that can be in full-screen mode.
+The other algorhitms are straightforward and follow the main logic of the game. All click and hover effects are implemented using windows forms events. The _Program_ class runs a new instance of the _Main menu_ form, which stays opened all the time, hiding it self when a new form is instantiated using one of the buttons and then reappears (calls the _Show()_ function) when that form is closed. All forms are set to appear on the middle of the screen (centered) and are not resizable nor maximizable. The only exception to this is the game form, which can also run in full-screen mode.
 
 In-game buttons are implemented as drawn rectangles through a special class "Button". They all have on hover event which changes the picture of the button to a lighter one and also resizes the button, giving it +10% width and height. When the mouse leaves the button, this effect is reverted. On key down the buttons change their size back to the original, but keep the lighter picture from the hover event and on key up they execute the code they were meant to do, such as return to main menu, start the game, etc.
 

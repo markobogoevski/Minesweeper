@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Name));
             this.tbName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
@@ -77,6 +78,7 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.tbName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Name";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Name";

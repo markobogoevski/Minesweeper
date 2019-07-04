@@ -42,3 +42,4 @@ C:\Users\Marko\source\repos\Minesweeper6\Minesweeper\Minesweeper\obj\Debug\Mines
 C:\Users\Marko\source\repos\Minesweeper6\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.CoreCompileInputs.cache
 C:\Users\Marko\source\repos\Minesweeper6\Minesweeper\Minesweeper\obj\Debug\Minesweeper.exe
 C:\Users\Marko\source\repos\Minesweeper6\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
+C:\Users\Andrej Milovanovikj\Desktop\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csprojAssemblyReference.cache

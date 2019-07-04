@@ -319,7 +319,6 @@
     <None Include="Resources\pixelBackground.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Minesweeper.ico" />
     <Content Include="MinesweeperIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
